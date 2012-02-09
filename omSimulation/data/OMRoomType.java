@@ -7,5 +7,5 @@ package omSimulation.data;
  * @author A. Schoedon
  */
 public enum OMRoomType {
-    Cellar, Room, Misc
+  Cellar, Room, Misc
 }
