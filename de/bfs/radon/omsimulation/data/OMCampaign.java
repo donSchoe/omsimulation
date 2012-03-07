@@ -1,4 +1,25 @@
-package omSimulation.data;
+package de.bfs.radon.omsimulation.data;
+
+/*
+ * OM Simulation Tool: This software is a simulation tool for virtual
+ * orientated measurement (OM) campaigns following the protocol "6+1" to
+ * determine and evaluate the level of radon exposure in buildings.
+ * 
+ * Copyright (C) 2012 Alexander Schoedon <donc_oe@qhor.net>
+ * 
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -37,6 +58,8 @@ public class OMCampaign {
    * unit is [%].
    */
   private int RandomNoise;
+
+  private OMRoom[] RoomPattern;
 
   /**
    * Stores an array of different rooms of the simulated survey campaign.
@@ -334,8 +357,10 @@ public class OMCampaign {
               type = OMCampaignType.Three;
             } else {
               type = OMCampaignType.Two;
-              OMHelper
-                  .writeLog("Error: At least 3 different rooms are needed to create a campaign.");
+              if (OMHelper.isLogOutputEnabled()) {
+                OMHelper
+                    .writeLog("Error: At least 3 different rooms are needed to create a campaign.");
+              }
             }
           }
         }
@@ -368,8 +393,10 @@ public class OMCampaign {
               type = OMCampaignType.Three;
             } else {
               type = OMCampaignType.Two;
-              OMHelper
-                  .writeLog("Error: At least 3 different rooms are needed to create a campaign.");
+              if (OMHelper.isLogOutputEnabled()) {
+                OMHelper
+                    .writeLog("Error: At least 3 different rooms are needed to create a campaign.");
+              }
             }
           }
         }
@@ -386,8 +413,10 @@ public class OMCampaign {
               type = OMCampaignType.Three;
             } else {
               type = OMCampaignType.Two;
-              OMHelper
-                  .writeLog("Error: At least 3 different rooms are needed to create a campaign.");
+              if (OMHelper.isLogOutputEnabled()) {
+                OMHelper
+                    .writeLog("Error: At least 3 different rooms are needed to create a campaign.");
+              }
             }
           }
         } else {
@@ -396,18 +425,24 @@ public class OMCampaign {
               type = OMCampaignType.Three;
             } else {
               type = OMCampaignType.Two;
-              OMHelper
-                  .writeLog("Error: At least 3 different rooms are needed to create a campaign.");
+              if (OMHelper.isLogOutputEnabled()) {
+                OMHelper
+                    .writeLog("Error: At least 3 different rooms are needed to create a campaign.");
+              }
             }
           } else {
             if (rooms[4].getId() != rooms[5].getId()) {
               type = OMCampaignType.Two;
-              OMHelper
-                  .writeLog("Error: At least 3 different rooms are needed to create a campaign.");
+              if (OMHelper.isLogOutputEnabled()) {
+                OMHelper
+                    .writeLog("Error: At least 3 different rooms are needed to create a campaign.");
+              }
             } else {
               type = OMCampaignType.One;
-              OMHelper
-                  .writeLog("Error: At least 3 different rooms are needed to create a campaign.");
+              if (OMHelper.isLogOutputEnabled()) {
+                OMHelper
+                    .writeLog("Error: At least 3 different rooms are needed to create a campaign.");
+              }
             }
           }
         }
@@ -442,6 +477,26 @@ public class OMCampaign {
   }
 
   /**
+   * 
+   */
+  public OMRoom[] getRoomPattern() {
+    return this.RoomPattern;
+  }
+
+  /**
+   * Sets an array of rooms of the simulated survey campaign and triggers a
+   * re-calculation of all attributes.
+   * 
+   * @param rooms
+   *          An array of rooms of the simulated survey campaign.
+   * @throws IOException
+   *           If creating log file or writing logs fails.
+   */
+  private void setRoomPattern(OMRoom[] rooms) {
+    this.RoomPattern = rooms;
+  }
+
+  /**
    * Gets an array of rooms of the simulated survey campaign.
    * 
    * @return An array of rooms of the simulated survey campaign.
@@ -464,7 +519,9 @@ public class OMCampaign {
       this.Rooms = rooms;
       calculateAttributes();
     } else {
-      OMHelper.writeLog("Error: 6 rooms are needed to create a campaign.");
+      if (OMHelper.isLogOutputEnabled()) {
+        OMHelper.writeLog("Error: 6 rooms are needed to create a campaign.");
+      }
     }
   }
 
@@ -509,6 +566,14 @@ public class OMCampaign {
   private void setRoomValues() {
     OMRoom[] rooms = this.Rooms;
     int start = this.Start;
+    String variation = this.Variation;
+    char[] variationChar = variation.toCharArray();
+    int cellarStart = this.Start;
+    for (int i = 0; i < variationChar.length; i++) {
+      if (variationChar[i] == 'C' || variationChar[i] == 'c') {
+        cellarStart = cellarStart + i * 12;
+      }
+    }
     int total = 144;
     int day = 24;
     int randomNoise = this.RandomNoise * 10;
@@ -517,6 +582,9 @@ public class OMCampaign {
     double[] values = new double[total];
     int x = 0;
     double[] tmpValues = rooms[0].getValues();
+    if (start == cellarStart) {
+      start = start + day;
+    }
     for (int i = start; i < start + day; i++) {
       if (randomNoise > 0) {
         tmpNoise = ((double) generator.nextInt(randomNoise * 2) - (double) randomNoise) / 1000;
@@ -527,6 +595,9 @@ public class OMCampaign {
       x++;
     }
     start = start + day;
+    if (start == cellarStart) {
+      start = start + day;
+    }
     tmpValues = rooms[1].getValues();
     for (int i = start; i < start + day; i++) {
       if (randomNoise > 0) {
@@ -538,6 +609,9 @@ public class OMCampaign {
       x++;
     }
     start = start + day;
+    if (start == cellarStart) {
+      start = start + day;
+    }
     tmpValues = rooms[2].getValues();
     for (int i = start; i < start + day; i++) {
       if (randomNoise > 0) {
@@ -549,6 +623,9 @@ public class OMCampaign {
       x++;
     }
     start = start + day;
+    if (start == cellarStart) {
+      start = start + day;
+    }
     tmpValues = rooms[3].getValues();
     for (int i = start; i < start + day; i++) {
       if (randomNoise > 0) {
@@ -560,6 +637,9 @@ public class OMCampaign {
       x++;
     }
     start = start + day;
+    if (start == cellarStart) {
+      start = start + day;
+    }
     tmpValues = rooms[4].getValues();
     for (int i = start; i < start + day; i++) {
       if (randomNoise > 0) {
@@ -571,6 +651,9 @@ public class OMCampaign {
       x++;
     }
     start = start + day;
+    if (start == cellarStart) {
+      start = start + day;
+    }
     tmpValues = rooms[5].getValues();
     for (int i = start; i < start + day; i++) {
       if (randomNoise > 0) {
@@ -602,7 +685,14 @@ public class OMCampaign {
    */
   private void setCellarValues() {
     OMRoom cellar = this.Cellar;
+    String variation = this.Variation;
+    char[] variationChar = variation.toCharArray();
     int start = this.Start;
+    for (int i = 0; i < variationChar.length; i++) {
+      if (variationChar[i] == 'C' || variationChar[i] == 'c') {
+        start = start + i * 12;
+      }
+    }
     int total = 24;
     int day = 24;
     int randomNoise = this.RandomNoise * 10;
@@ -1250,11 +1340,14 @@ public class OMCampaign {
         tmpVariation = tmpVariation + rooms[i].getId();
       }
       setVariation(tmpVariation);
+      setRoomPattern(rooms);
       setRandomNoise(randomNoise);
       calculateAttributes();
     } catch (Exception e) {
-      OMHelper.writeLog("Error: " + e.getMessage());
-      OMHelper.writeLog("Error: Failed to create campaign.");
+      if (OMHelper.isLogOutputEnabled()) {
+        OMHelper.writeLog("Error: " + e.getMessage());
+        OMHelper.writeLog("Error: Failed to create campaign.");
+      }
     }
   }
 

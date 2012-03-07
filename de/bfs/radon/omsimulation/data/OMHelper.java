@@ -1,4 +1,4 @@
-package omSimulation.data;
+package de.bfs.radon.omsimulation.data;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -6,6 +6,27 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+
+/*
+ * OM Simulation Tool: This software is a simulation tool for virtual
+ * orientated measurement (OM) campaigns following the protocol "6+1" to
+ * determine and evaluate the level of radon exposure in buildings.
+ * 
+ * Copyright (C) 2012 Alexander Schoedon <donc_oe@qhor.net>
+ * 
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Public abstract class OMHelper providing helper methods for writing
@@ -19,32 +40,43 @@ public abstract class OMHelper {
    * Stores the generic log writer, used for the whole program's log output.
    */
   private static BufferedWriter LogOutput;
+  private static boolean isLogOutputEnabled = false;
 
   /**
    * Sets the log-writer, creating a timestamp, a filename based on the
    * timestamp and the project name and finally initializing the log writer.
    * 
-   * @param projectName
-   *          The name of the current project to identify the log file.
+   * @param logType
+   *          The type of the current log to identify the log file.
    * @throws IOException
    *           If creating log file or writing logs fails.
    */
-  public static void setLogOutput(String projectName) throws IOException {
+  public static void setLogOutput(String path, String logType)
+      throws IOException {
     Format format = new SimpleDateFormat("yyyyMMdd_HHmmss_SSS");
     double current = System.currentTimeMillis();
     String timestamp = format.format(current);
-    if (projectName == null) {
-      projectName = "main";
+    if (logType == null) {
+      logType = timestamp;
     } else {
-      if (projectName.length() == 0) {
-        projectName = "main";
+      if (logType.length() == 0) {
+        logType = timestamp;
       }
     }
-    String logName = timestamp + "_" + projectName + ".log";
+    String logName = path + "_" + logType + ".log";
     File logFile = new File(logName);
     FileWriter logWriter = new FileWriter(logFile);
     BufferedWriter logOutput = new BufferedWriter(logWriter);
     LogOutput = logOutput;
+    setLogOutputEnabled(true);
+  }
+
+  public static boolean isLogOutputEnabled() {
+    return isLogOutputEnabled;
+  }
+
+  private static void setLogOutputEnabled(boolean isLogOutput) {
+    OMHelper.isLogOutputEnabled = isLogOutput;
   }
 
   /**
@@ -91,7 +123,7 @@ public abstract class OMHelper {
    */
   public static double calculateGSD(long n, double[] values, double geoMean) {
     double gsd = 0.0;
-    double[] logValues = new double[(int)n];
+    double[] logValues = new double[(int) n];
     for (int i = 0; i < n; i++) {
       if (values[i] != 0) {
         logValues[i] = Math.log(values[i]);
@@ -157,5 +189,6 @@ public abstract class OMHelper {
    */
   public static void closeLog() throws IOException {
     LogOutput.close();
+    setLogOutputEnabled(false);
   }
 }
