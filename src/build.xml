@@ -1,15 +1,13 @@
 <?xml version="1.0"?>
 
 <!-- ant makefile for OM Simulation Tool 0.4, (c) 2012 Alexander Schoedon -->
-<!-- BUILD:               $ ant                                           -->
-<!-- BUILD AND TEST:      $ ant run                                       -->
 
-<project name="OMSimulation" default="jar" basedir="..">
+<project name="OMSimulation" default="run" basedir="..">
     <property name="name" value="omsimulation" />
     <property name="Name" value="OMSimulation" />
-    <property name="version" value="0.4.45-beta3" />
+    <property name="version" value="0.4.46-beta4" />
     <property name="author" value="Alexander Schoedon" />
-    <property name="modified" value="2012-03-09" />
+    <property name="modified" value="2012-03-10" />
     <property name="year" value="2012" />
     <property name="bin.dir" value="bin" />
     <property name="doc.dir" value="doc" />
@@ -27,7 +25,7 @@
 java -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*:${bin.dir}/${name}-${version}.jar ${main.class}
         </echo>
         <echo file="${run.bat}">@echo off
-java -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*:${bin.dir}/${name}-${version}.jar ${main.class}
+javaw -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*;${bin.dir}/${name}-${version}.jar ${main.class}
         </echo>
         <echo>Running: ${bin.dir}/${name}-${version}.jar</echo>
         <java fork="true" classname="${main.class}">

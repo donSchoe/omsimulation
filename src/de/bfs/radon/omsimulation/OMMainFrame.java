@@ -52,7 +52,7 @@ public class OMMainFrame extends JFrame {
   /**
    * Stores the tool's version string.
    */
-  private static final String version = "v0.4:45-beta3";
+  private static final String version = "v0.4.46-beta4";
 
   /**
    * Stores the tabbed pane used for navigating throught the panels.
