@@ -1,8 +1,8 @@
-----------------------------------
-* OM Simulation Tool v0.3.39-dev *
-----------------------------------
+------------------------------------
+* OM Simulation Tool v0.4:45-beta3 *
+------------------------------------
 
-Copyright (C) 2012 Alexander Schoedon <donc_oe@qhor.net>
+Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
 
 
 1. Introduction
@@ -44,19 +44,21 @@ this program. If not, see <http://www.gnu.org/licenses/>.
 
 3. Latest Version
 ----------------------------------
-The latest version is (NOT) available at github:
-- http://github.com/donSchoe/OMSimulation
+The latest version is available at github:
+- http://github.com/donschoe/omsimulation
 
 
 4. Documentation
 ----------------------------------
-Documentation is being prepared and will be published soon(TM).
+Documentation is being prepared and will be published soon:
+- http://github.com/donschoe/omsimulation/wiki
+
+The documentation includes a tutorial on installing and running this software.
 
 
 5. Dependencies
 ----------------------------------
 The OM-Simulation tool requires JDK 1.7.0 (Java SE 7) or higher.
-With some dirty hacks it should work with JDK 1.6.x aswell.
 
 The following 3rd-party-libraries are required:
 - Apache Commons Math 2.2 or higher.
@@ -64,6 +66,7 @@ The following 3rd-party-libraries are required:
 - iTextPDF 5.2.0 or higher.
 - JCommon 1.0.17 or higher.
 - JFreeChart 1.0.14 or higher.
+- JCalendar 1.4 or higher.
 
 These libs are included in this build. Please note the remark at the end
 of this document (8. Notice).
@@ -71,6 +74,37 @@ of this document (8. Notice).
 
 6. Changelog
 ----------------------------------
+0.4:45-beta3: (2012-03-10)
+    - fixed some minor unicode issues
+    - created ant build script
+      - created manifest
+      - created javadocs
+      - created launch scripts
+    - ready to roll
+
+0.4:44-beta3: (2012-03-09)
+    - fixed: threads tend to collide
+	- fixed: some minor bugs
+	- fixed: some performance issues
+	- created buffer for refreshing charts in background thread
+	- updated log strings
+
+0.4:43-beta2: (2012-03-08)
+    - added code documentation
+	- renamed field variables to fit with java conventions (lowerCamelCase)
+	- removed obsolete status-update methods
+
+0.4:42-beta1: (2012-03-08)
+    - misc rooms can now be inspected in data panel
+	- all values below detection limit are now treated the same way: =limit/2
+	- distribution charts for rooms are now red and for cellars are now blue
+	- added date chooser for import panel
+	- fixed: caught exceptions when updating background tabs
+	- fixed: export buttons went missing on testing panel while analyzing
+
+0.4:41-alpha1: (2012-03-06)
+    - 0.3:40-dev fork to start public testing
+
 0.3:40-dev: (2012-03-06)
     - added PDF+CSV exports to all charts
     - caught malformed input
@@ -113,7 +147,8 @@ of this document (8. Notice).
 0.3:33-dev: (2012-02-23)
     - testing panel: charts look great now
     - fixed some serious bugs in OMCampaign
-      - while collecting values for cellar and rooms, the cellar position was not taken into account
+      - while collecting values for cellar and rooms, the cellar position was
+        not taken into account
       - this was only noticeable through the graphical analysis
       - should work pretty fine now 
 	
@@ -158,9 +193,11 @@ of this document (8. Notice).
 
 0.2:18-dev: (2012-02-07)
     - fix: status (perc) was calculated wrong (int too small data type)
-    - fix: calculation of total simulations was wrong: last possible simulation got truncated
-    - fix: random was calculated wrong: last integer has to be excluded, simulation got truncated (random only)
-    - fix: valueCount was calculated wrong: last data set got truncated (lol) 
+    - fix: calculation of total simulations was wrong: last possible
+           simulation got truncated
+    - fix: random was calculated wrong: last integer has to be excluded,
+           simulation got truncated (random only)
+    - fix: valueCount was calculated wrong: last data set got truncated 
 
 0.2:17-dev: (2012-02-06)
     - finished benchmark tests (3b)
@@ -203,8 +240,10 @@ of this document (8. Notice).
 	
 0.2:8-dev: (2012-01-26)
     - added campaign types
-    - completely overhauled campaigns to separately calculate attributes for both: normal rooms and cellars
+    - completely overhauled campaigns to separately calculate attributes for
+      both: normal rooms and cellars
     - added the functionality to add random noise to campaigns
+
     - fixed empty measurement values using the half of detection limit
     - prepared libraries for db4b object database 
 	
@@ -218,7 +257,7 @@ of this document (8. Notice).
 
 7. Contributors
 ----------------------------------
-- Alexander Schoedon <donc_oe@qhor.net>
+- Alexander Schoedon <a.schoedon@student.htw-berlin.de>
 
 
 8. Notice
@@ -226,8 +265,11 @@ of this document (8. Notice).
 This product includes software developed by
 - The Apache Software Foundation (http://www.apache.org/): Commons.Math
 - The Versant Corporation (http://www.versant.com/): DB4O
-- The Object Refinery Limited (http://www.object-refinery.com/): JFreeChart, JFreeCommon
+- The Object Refinery Limited (http://www.object-refinery.com/): JFreeChart,
+                                                                 JFreeCommon
 - The iText Software Corp. and 1T3XT BVBA (http://itextpdf.com/): iTextPDF
+- Kai Tödter (http://toedter.com/): JCalendar
 
-For more details about these products see the separate README(s), NOTICE(s) and LICENSE(s).
+For more details about these products see the separate README(s),
+NOTICE(s) and LICENSE(s).
 
