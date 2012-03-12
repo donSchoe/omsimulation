@@ -1,7 +1,8 @@
 /*
- * OM Simulation Tool: This software is a simulation tool for virtual
- * orientated measurement (OM) campaigns following the protocol "6+1" to
- * determine and evaluate the level of radon exposure in buildings.
+ * OM Simulation Tool: This tool intends to test and evaluate the scientific
+ * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
+ * virtual measurement campaigns based on real radon concentration data 
+ * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
  * 
@@ -437,11 +438,13 @@ public class OMPanelImport extends JPanel implements ActionListener {
         if (OMHelper.isLogOutputEnabled()) {
           OMHelper.writeLog(getLogMsg());
         }
-      } catch (IOException ignore) {
+      } catch (IOException ioe) {
+        ioe.printStackTrace();
       }
       try {
         Thread.sleep(100);
-      } catch (InterruptedException ignore) {
+      } catch (InterruptedException ie) {
+        ie.printStackTrace();
       }
     }
 
@@ -461,7 +464,8 @@ public class OMPanelImport extends JPanel implements ActionListener {
         if (OMHelper.isLogOutputEnabled()) {
           OMHelper.writeLog(getLogMsg());
         }
-      } catch (IOException ignore) {
+      } catch (IOException ioe) {
+        ioe.printStackTrace();
       }
     }
 
@@ -507,10 +511,10 @@ public class OMPanelImport extends JPanel implements ActionListener {
         if (total > 100) {
           total = total / 60.0;
           unit = " minutes.";
-        }
-        if (total > 100) {
-          total = total / 60.0;
-          unit = " hours.";
+          if (total > 100) {
+            total = total / 60.0;
+            unit = " hours.";
+          }
         }
         if (status == 100) {
           tmpUpdate("Import finished after " + decFormat.format(total) + unit,
@@ -525,12 +529,13 @@ public class OMPanelImport extends JPanel implements ActionListener {
               JOptionPane.ERROR_MESSAGE);
         }
         OMHelper.closeLog();
-      } catch (IOException e) {
-        tmpUpdate("Error: " + e.getMessage(), 0);
+      } catch (IOException ioe) {
+        tmpUpdate("Error: " + ioe.getMessage(), 0);
         tmpUpdate("Error: Completely failed.", 0);
         JOptionPane.showMessageDialog(null,
-            "Completely failed.\n" + e.getMessage(), "Error",
+            "Completely failed.\n" + ioe.getMessage(), "Error",
             JOptionPane.ERROR_MESSAGE);
+        ioe.printStackTrace();
       }
       return null;
     }
@@ -568,6 +573,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
         csv = new String[0];
         tmpUpdate("Error: " + e.getMessage(), 0);
         tmpUpdate("Error: Failed to read CSV-File.", 0);
+        e.printStackTrace();
       }
       OMRoom[] rooms = parseRooms(csv, detectionLimit);
       OMBuilding current = separateRooms(name, date, rooms);
@@ -632,6 +638,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
         csv = new String[0];
         tmpUpdate("Error: " + e.getMessage(), 0);
         tmpUpdate("Error: Failed to read CSV-File" + fileName + ".", 0);
+        e.printStackTrace();
       }
       tmpArray = null;
       return csv;
@@ -736,6 +743,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
         rooms = new OMRoom[0];
         tmpUpdate("Error: " + e.getMessage(), 0);
         tmpUpdate("Error: Failed to parse rooms.", 0);
+        e.printStackTrace();
       }
       return rooms;
     }
@@ -855,11 +863,13 @@ public class OMPanelImport extends JPanel implements ActionListener {
         JPanel jpanelData = new OMPanelData(getOmbFile());
         tab.add(jpanelData, "Data", 1);
         tab.updateUI();
-      } catch (Exception ignore) {
+      } catch (Exception e) {
+        e.printStackTrace();
       }
       try {
-        Thread.sleep(500);
-      } catch (InterruptedException ignore) {
+        Thread.sleep(950);
+      } catch (InterruptedException ie) {
+        ie.printStackTrace();
       }
       try {
         JTabbedPane tab = (JTabbedPane) getParent();
@@ -867,11 +877,13 @@ public class OMPanelImport extends JPanel implements ActionListener {
         JPanel jpanelSimulation = new OMPanelSimulation(getOmbFile());
         tab.add(jpanelSimulation, "Simulation", 2);
         tab.updateUI();
-      } catch (Exception ignore) {
+      } catch (Exception e) {
+        e.printStackTrace();
       }
       try {
-        Thread.sleep(500);
-      } catch (InterruptedException ignore) {
+        Thread.sleep(950);
+      } catch (InterruptedException ie) {
+        ie.printStackTrace();
       }
       try {
         JTabbedPane tab = (JTabbedPane) getParent();
@@ -879,7 +891,8 @@ public class OMPanelImport extends JPanel implements ActionListener {
         JPanel jpanelTesting = new OMPanelTesting(getOmbFile());
         tab.add(jpanelTesting, "Analyse", 4);
         tab.updateUI();
-      } catch (Exception ignore) {
+      } catch (Exception e) {
+        e.printStackTrace();
       }
     }
   }
@@ -973,6 +986,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
     spnrDetectionLimit.addFocusListener(new FocusAdapter() {
       @Override
       public void focusLost(FocusEvent e) {
+
         setDetectionLimit((int) spnrDetectionLimit.getValue());
       }
     });
@@ -1038,7 +1052,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
       public void actionPerformed(ActionEvent arg0) {
         JFileChooser fileDialog = new JFileChooser();
         fileDialog.setFileFilter(new FileNameExtensionFilter("*.omb", "omb"));
-        fileDialog.showOpenDialog(getParent());
+        fileDialog.showSaveDialog(getParent());
         final File file = fileDialog.getSelectedFile();
         if (file != null) {
           String omb;

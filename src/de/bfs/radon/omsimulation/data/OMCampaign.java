@@ -1,7 +1,8 @@
 /*
- * OM Simulation Tool: This software is a simulation tool for virtual
- * orientated measurement (OM) campaigns following the protocol "6+1" to
- * determine and evaluate the level of radon exposure in buildings.
+ * OM Simulation Tool: This tool intends to test and evaluate the scientific
+ * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
+ * virtual measurement campaigns based on real radon concentration data 
+ * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
  * 
@@ -1349,6 +1350,7 @@ public class OMCampaign {
       if (OMHelper.isLogOutputEnabled()) {
         OMHelper.writeLog("Error: " + e.getMessage());
         OMHelper.writeLog("Error: Failed to create campaign.");
+        e.printStackTrace();
       }
     }
   }

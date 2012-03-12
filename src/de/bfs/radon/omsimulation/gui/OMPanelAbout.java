@@ -1,7 +1,8 @@
 /*
- * OM Simulation Tool: This software is a simulation tool for virtual
- * orientated measurement (OM) campaigns following the protocol "6+1" to
- * determine and evaluate the level of radon exposure in buildings.
+ * OM Simulation Tool: This tool intends to test and evaluate the scientific
+ * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
+ * virtual measurement campaigns based on real radon concentration data 
+ * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
  * 
@@ -58,11 +59,12 @@ public class OMPanelAbout extends JPanel {
     txtpnTest.setForeground(UIManager.getColor("CheckBox.darkShadow"));
     txtpnTest.setFont(new Font("SansSerif", Font.PLAIN, 12));
     txtpnTest.setEditable(false);
-    txtpnTest.setText("OM Simulation Tool " + version
-        + ", 03/2012.\r\n\r\nThis software is a simulation tool for "
-        + " virtual orientated measurement (OM) campaigns following the"
-        + " protocol \"6+1\" to determine and evaluate the level of radon"
-        + " exposure in buildings.\r\n\r\nImplementation by Alexander"
+     txtpnTest.setText("OM Simulation Tool " + version
+        + ", 03/2012.\r\n\r\nThis tool intends to test and evaluate the"
+        + " scientific robustness of the protocol \"6+1\". Therefore, it"
+        + " generates a huge amount of virtual measurement campaigns based"
+        + " on real radon concentration data following the mentioned protocol."
+        + "\r\n\r\nImplementation by Alexander"
         + " Schoedon, <a.schoedon@student.htw-berlin.de>\r\nBetriebliche"
         + " Umweltinformatik, Industrial Environmental Informatics\r\n"
         + "Hochschule f\u00FCr Technik und Wirtschaft Berlin, University "
@@ -71,7 +73,7 @@ public class OMPanelAbout extends JPanel {
         + " Radiation Protection and Environment SW 1.1\r\nBundesamt"
         + " f\u00FCr Strahlenschutz, German Federal Office for Radiation"
         + " Protection");
-    txtpnTest.setBounds(10, 11, 520, 198);
+    txtpnTest.setBounds(10, 11, 520, 298);
     add(txtpnTest);
 
     JLabel lblLogoBfs = new JLabel(
@@ -97,12 +99,13 @@ public class OMPanelAbout extends JPanel {
         .setText("This program is free software: you can redistribute it "
             + "and/or modify it under the terms of the GNU General Public License "
             + "as published by the Free Software Foundation, either version 3 "
-            + "of the License, or (at your option) any later  version.");
+            + "of the License, or (at your option) any later  version.\r\n\r\n" 
+            + "Source available at: http://github.com/donschoe/omsimulation");
     txtpnThisSoftwareIs.setForeground(Color.DARK_GRAY);
     txtpnThisSoftwareIs.setFont(new Font("SansSerif", Font.PLAIN, 12));
     txtpnThisSoftwareIs.setEditable(false);
     txtpnThisSoftwareIs.setBackground((Color) null);
-    txtpnThisSoftwareIs.setBounds(10, 429, 520, 70);
+    txtpnThisSoftwareIs.setBounds(10, 400, 520, 95);
     add(txtpnThisSoftwareIs);
 
   }

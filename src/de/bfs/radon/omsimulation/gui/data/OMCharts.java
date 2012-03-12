@@ -1,7 +1,8 @@
 /*
- * OM Simulation Tool: This software is a simulation tool for virtual
- * orientated measurement (OM) campaigns following the protocol "6+1" to
- * determine and evaluate the level of radon exposure in buildings.
+ * OM Simulation Tool: This tool intends to test and evaluate the scientific
+ * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
+ * virtual measurement campaigns based on real radon concentration data 
+ * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
  * 
@@ -95,7 +96,7 @@ public abstract class OMCharts {
     dataSet.addSeries(series);
     title = title + ": " + room.getType().toString() + " " + room.getId();
     JFreeChart chart = ChartFactory.createXYLineChart(title, "T [h]",
-        "Rn [Bq/m\0x00B3]", dataSet, PlotOrientation.VERTICAL, false, true, false);
+        "Rn [Bq/m\u00B3]", dataSet, PlotOrientation.VERTICAL, false, true, false);
     XYPlot plot = (XYPlot) chart.getPlot();
     double positiveDeviation = room.getAvarage() + room.getDeviation();
     double negativeDeviation = room.getAvarage() - room.getDeviation();
@@ -256,7 +257,7 @@ public abstract class OMCharts {
     dataSet.addSeries(cellarSeries);
     dataSet.addSeries(roomSeries2);
     JFreeChart chart = ChartFactory.createXYLineChart(title, "T [h]",
-        "Rn [Bq/m\0x00B3]", dataSet, PlotOrientation.VERTICAL, false, true, false);
+        "Rn [Bq/m\u00B3]", dataSet, PlotOrientation.VERTICAL, false, true, false);
     XYPlot plot = (XYPlot) chart.getPlot();
     ValueMarker sepMarker;
     Color sepColor = Color.BLACK;
@@ -429,7 +430,7 @@ public abstract class OMCharts {
           / (double) distValues.length);
     }
     dataSet.addSeries(distSeries);
-    JFreeChart chart = ChartFactory.createXYLineChart(title, "Rn [Bq/m\0x00B3]",
+    JFreeChart chart = ChartFactory.createXYLineChart(title, "Rn [Bq/m\u00B3]",
         "F(emp)", dataSet, PlotOrientation.VERTICAL, false, true, false);
     XYPlot plot = (XYPlot) chart.getPlot();
     float[] dash = { 5, 3 };

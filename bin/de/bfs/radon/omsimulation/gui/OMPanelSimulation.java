@@ -1,7 +1,8 @@
 /*
- * OM Simulation Tool: This software is a simulation tool for virtual
- * orientated measurement (OM) campaigns following the protocol "6+1" to
- * determine and evaluate the level of radon exposure in buildings.
+ * OM Simulation Tool: This tool intends to test and evaluate the scientific
+ * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
+ * virtual measurement campaigns based on real radon concentration data 
+ * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
  * 
@@ -582,7 +583,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       progressBarSimulation.setValue(i);
       try {
         Thread.sleep(100);
-      } catch (InterruptedException ignore) {
+      } catch (InterruptedException ie) {
+        ie.printStackTrace();
       }
     }
 
@@ -751,10 +753,10 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         if (total > 100) {
           total = total / 60.0;
           unit = " minutes.";
-        }
-        if (total > 100) {
-          total = total / 60.0;
-          unit = " hours.";
+          if (total > 100) {
+            total = total / 60.0;
+            unit = " hours.";
+          }
         }
         if (status == 100) {
           tmpUpdate("Simulation finished after " + decFormat.format(total)
@@ -769,12 +771,13 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
               JOptionPane.ERROR_MESSAGE);
         }
         OMHelper.closeLog();
-      } catch (IOException e) {
-        tmpUpdate("Error: " + e.getMessage(), 0);
+      } catch (IOException ioe) {
+        tmpUpdate("Error: " + ioe.getMessage(), 0);
         tmpUpdate("Error: Completely Failed.", 0);
         JOptionPane.showMessageDialog(null,
-            "Completely failed.\n" + e.getMessage(), "Error",
+            "Completely failed.\n" + ioe.getMessage(), "Error",
             JOptionPane.ERROR_MESSAGE);
+        ioe.printStackTrace();
       }
       return null;
     }
@@ -1140,7 +1143,13 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           }
         }
         tmpUpdate("Generated " + x + " campaigns.", (int) perc);
-        String logName = getOmsFile() + "_simulation.result.csv";
+        String csvPath = "";
+        if (getOmsFile() != null && !getOmsFile().equals("") && !getOmsFile().equals(" ")) {
+          csvPath = getOmsFile();
+        } else {
+          csvPath = getOmbFile();
+        }
+        String logName = csvPath + "_simulation.result.csv";
         File logFile = new File(logName);
         FileWriter logWriter = new FileWriter(logFile);
         BufferedWriter csvOutput = new BufferedWriter(logWriter);
@@ -1422,7 +1431,9 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                 mod = a % 100;
                 if (mod == 0) {
                   perc = (long) (((double) x / (double) absoluteTotal) * (double) 100.0);
-                  tmpUpdate("Status: " + perc + "%", (int) perc);
+                  tmpUpdate("Status: " + perc + "% (Estimated time left: "
+                    + timeLeft(((double) x / (double) absoluteTotal) * (double) 100.0) + ")",
+                    (int) perc);
                 }
                 if (total > 1) {
                   start = generator.nextInt(total);
@@ -1460,7 +1471,9 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                   mod = a % 100;
                   if (mod == 0) {
                     perc = (long) (((double) x / (double) absoluteTotal) * (double) 100.0);
-                    tmpUpdate("Status: " + perc + "%", (int) perc);
+                    tmpUpdate("Status: " + perc + "% (Estimated time left: "
+                      + timeLeft(((double) x / (double) absoluteTotal) * (double) 100.0) + ")",
+                      (int) perc);
                   }
                   if (total > 1) {
                     start = generator.nextInt(total);
@@ -1501,7 +1514,9 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                     mod = a % 100;
                     if (mod == 0) {
                       perc = (long) (((double) x / (double) absoluteTotal) * (double) 100.0);
-                      tmpUpdate("Status: " + perc + "%", (int) perc);
+                      tmpUpdate("Status: " + perc + "% (Estimated time left: "
+                        + timeLeft(((double) x / (double) absoluteTotal) * (double) 100.0) + ")",
+                        (int) perc);
                     }
                     if (total > 1) {
                       start = generator.nextInt(total);
@@ -1544,7 +1559,9 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                       mod = a % 100;
                       if (mod == 0) {
                         perc = (long) (((double) x / (double) absoluteTotal) * (double) 100.0);
-                        tmpUpdate("Status: " + perc + "%", (int) perc);
+                        tmpUpdate("Status: " + perc + "% (Estimated time left: "
+                          + timeLeft(((double) x / (double) absoluteTotal) * (double) 100.0) + ")",
+                          (int) perc);
                       }
                       if (total > 1) {
                         start = generator.nextInt(total);
@@ -1626,7 +1643,13 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                 JOptionPane.ERROR_MESSAGE);
           }
           tmpUpdate("Generated " + x + " campaigns.", (int) perc);
-          String logName = getOmsFile() + "_simulation.result.csv";
+          String csvPath = "";
+          if (getOmsFile() != null && !getOmsFile().equals("") && !getOmsFile().equals(" ")) {
+            csvPath = getOmsFile();
+          } else {
+            csvPath = getOmbFile();
+          }
+          String logName = csvPath + "_simulation.result.csv";
           File logFile = new File(logName);
           FileWriter logWriter = new FileWriter(logFile);
           BufferedWriter csvOutput = new BufferedWriter(logWriter);
@@ -1952,6 +1975,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           .write("\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \"");
       csvOutput.newLine();
 
+
       csvOutput.write("\" \";\" \";\" \";\"N\";\"" + x
           + "\";\" \";\" \";\" \";\" \";\" \"");
     }
@@ -2122,26 +2146,26 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         strFormat = "#";
         time = time / 60.0;
         unit = " minutes.";
-      }
-      if (time > 100) {
-        strFormat = "#.#";
-        time = time / 60.0;
-        unit = " hours.";
-      }
-      if (time > 48) {
-        strFormat = "#.##";
-        time = time / 24.0;
-        unit = " days.";
-      }
-      if (time > 50) {
-        strFormat = "#.##";
-        time = time / 28.0;
-        unit = " months.";
-      }
-      if (time > 20) {
-        strFormat = "#.##";
-        time = days / 365.2424;
-        unit = " years.";
+        if (time > 100) {
+          strFormat = "#.#";
+          time = time / 60.0;
+          unit = " hours.";
+          if (time > 48) {
+            strFormat = "#.##";
+            time = time / 24.0;
+            unit = " days.";     
+            if (time > 50) {
+              strFormat = "#.##";
+              time = time / 28.0;
+              unit = " months.";
+              if (time > 20) {
+                strFormat = "#.##";
+                time = days / 365.2424;
+                unit = " years.";
+              }
+            }
+          }
+        }
       }
       DecimalFormat decFormat = new DecimalFormat(strFormat);
       return decFormat.format(time) + unit;
@@ -2164,7 +2188,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       setCursor(null);
       try {
         Thread.sleep(500);
-      } catch (InterruptedException ignore) {
+      } catch (InterruptedException ie) {
+        ie.printStackTrace();
       }
       if (!isSystematic) {
         try {
@@ -2174,6 +2199,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           tab.add(jpanelResults, "Results", 3);
           tab.updateUI();
         } catch (Exception e) {
+          e.printStackTrace();
         }
       }
     }
@@ -2253,7 +2279,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       public void actionPerformed(ActionEvent arg0) {
         JFileChooser fileDialog = new JFileChooser();
         fileDialog.setFileFilter(new FileNameExtensionFilter("*.oms", "oms"));
-        fileDialog.showOpenDialog(getParent());
+        fileDialog.showSaveDialog(getParent());
         final File file = fileDialog.getSelectedFile();
         if (file != null) {
           String oms;
@@ -2752,6 +2778,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
     } else {
       setRandomNoise(0);
     }
+
     if (isSystematic) {
       btnStart.setEnabled(false);
       comboBoxSelectProject.setEnabled(false);

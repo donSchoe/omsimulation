@@ -1,5 +1,5 @@
 ------------------------------------
-* OM Simulation Tool v0.4.47-beta4 *
+* OM Simulation Tool v0.4.48-beta4 *
 ------------------------------------
 
 Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -7,14 +7,26 @@ Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
 
 1. Introduction
 ----------------------------------
-This software is a simulation tool for virtual orientation measurement (om) 
-campaigns following the protocol "6+1" to determine and evaluate the level 
-of radon exposure in buildings.
+This tool intends to test and evaluate the scientific robustness of the
+protocol `6+1`. Therefore, it generates a huge amount of virtual measurement
+campaigns based on real radon concentration data following the mentioned
+protocol.
 
-The protocol "6+1" refers to a quick measurement procedure to gauge the
-radon concentration on six days (6) in habitated rooms of a building and
-on one day (+1) in an inhabitated room close to the surface with potentially
-high radon concentration.
+This tool is **not** used for evaluating the level of radon exposure in
+buildings. Prerequisite for using this simulation tool is that you already
+know if a building has a radon issue or not.
+
+`OM` stands for `orientation measurement` and refers to the quick procedure
+of the protocol `6+1`.
+
+The protocol `6+1` refers to a quick measurement procedure to gauge the radon
+concentration on six days `6` in habitated rooms of a building (e.g. bed room,
+living room, etc.) and on one day `+1` in an uninhabitated room close to the
+surface with potentially high radon concentration (e.g. boiler room, laundry,
+etc.).
+
+For more information refer to the FAQ section of the documentation.
+- http://github.com/donschoe/omsimulation/wiki/faq
 
 For questions regarding this project contact:
 - Dr. Bernd Hoffmann <bhoffmann@bfs.de>
@@ -83,6 +95,14 @@ of this document (8. Notice).
 
 6. Changelog
 ----------------------------------
+0.4.48-beta4: (2012-03-12)
+    - added MANUAL.html
+    - fixed: unicode symbols
+    - fixed: save dialogs now are "save" dialogs (not "open")
+    - fixed: timeleft() calculation (now really!)
+    - fixed: csvresults-path for systematic campaigns
+    - improved exception handling
+
 0.4.47-beta4: (2012-03-11)
     - fixed timeleft() calculation for systematic campaigns
     - created a .command file for mac users with `cd $(dirname $0)`

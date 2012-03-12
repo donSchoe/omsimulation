@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="ReText 1.1.2">
+  <title>Manual</title>
+</head>
+<body>
+<h1>Manual</h1>
+<p>This tool intends to test and evaluate the scientific robustness of the protocol <code>6+1</code>. Therefore, it generates a huge amount of virtual measurement campaigns based on real radon concentration data following the mentioned protocol.</p>
+<p>This tool is <strong>not</strong> used for evaluating the level of radon exposure in buildings. Prerequisite for using this simulation tool is that you already know if a building has a radon issue or not.</p>
+<p><code>OM</code> stands for <code>orientation measurement</code> and refers to the quick procedure of the protocol <code>6+1</code>.</p>
+<p>The protocol <code>6+1</code> refers to a quick measurement procedure to gauge the radon concentration on six days <code>6</code> in habitated rooms of a building (e.g. bed room, living room, etc.) and on one day <code>+1</code> in an uninhabitated room close to the surface with potentially high radon concentration (e.g. boiler room, laundry, etc.).</p>
+<h2>Help content</h2>
+<ul>
+<li><a href="https://github.com/donSchoe/omsimulation/wiki/Installation">Requirements and installation</a></li>
+<li><a href="https://github.com/donSchoe/omsimulation/wiki/Data">Data preperation and import</a></li>
+<li><a href="https://github.com/donSchoe/omsimulation/wiki/Simulations">Running simulations</a></li>
+<li><a href="https://github.com/donSchoe/omsimulation/wiki/Results">Analysing results</a></li>
+<li><a href="https://github.com/donSchoe/omsimulation/wiki/Export">Data Export</a></li>
+<li><a href="https://github.com/donSchoe/omsimulation/wiki/FAQ">FAQ</a></li>
+</ul>
+<h2>License</h2>
+<p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with this program. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+<h2>Documentation</h2>
+<p>Latest documentation can be found at the github wiki. <a href="https://github.com/donSchoe/omsimulation/wiki">https://github.com/donSchoe/omsimulation/wiki</a> (<em>This page.</em>)</p>
+<p>For source API, have a look at the javadocs. <a href="http://donschoe.github.com/omsimulation">http://donSchoe.github.com/omsimulation</a></p>
+<h2>Troubleshooting</h2>
+<p>If you come accross any problems or need any further help, please file an issue at <a href="https://github.com/donSchoe/omsimulation/issues">https://github.com/donSchoe/omsimulation/issues</a> or contact me at <a href="a.schoedon@student.htw-berlin.de">a.schoedon@student.htw-berlin.de</a>.</p>
+<h2>Notice</h2>
+<p>This product includes software developed by</p>
+<ul>
+<li>The Apache Software Foundation (<a href="http://www.apache.org/">http://www.apache.org/</a>): Commons.Math</li>
+<li>The Versant Corporation (<a href="http://www.versant.com/">http://www.versant.com/</a>): DB4O</li>
+<li>The Object Refinery Limited (<a href="http://www.object-refinery.com/">http://www.object-refinery.com/</a>): JFreeChart, JFreeCommon</li>
+<li>The iText Software Corp. and 1T3XT BVBA (<a href="http://itextpdf.com/">http://itextpdf.com/</a>): iTextPDF</li>
+<li>Kai Tödter (<a href="http://toedter.com/">http://toedter.com/</a>): JCalendar</li>
+</ul>
+<p>Note the seperate README, NOTICE and LICENSE files in the <code>./lib/read/</code> directory.</p>
+<hr />
+<h1>Installation</h1>
+<h2>System requirements</h2>
+<p>The <strong>omsimulation</strong> tool is implemented in Java and therefore able to run on any plattform that supports the Java virtual machine (JVM).</p>
+<p>Minimum (<em>recommended</em>) system requirements:</p>
+<ul>
+<li>Operating system: Windows, Linux, Mac OS, Solaris (<em>Windows, Linux, Solaris</em>)</li>
+<li>Memory space RAM: 2 GB (<em>4 GB</em>)</li>
+<li>Disk space HDD: 5 GB (<em>50 GB</em>)</li>
+<li>Screen resolution: 800x600 (<em>1024x768</em>)</li>
+<li>Java Runtime Environment 7, JRE 7</li>
+</ul>
+<h2>Preparation and installation</h2>
+<p>The <strong>omsimulation</strong> tool requires the latest Java version 7 (JRE 7), it wont work with versions prior 7. To download Java 7, please refer to: <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
+<p>To find out how to install Java on your System, please refer to: <a href="http://docs.oracle.com/javase/7/docs/webnotes/install/index.html">http://docs.oracle.com/javase/7/docs/webnotes/install/index.html</a></p>
+<p>The <strong>omsimulation</strong> tool depends on the following 3rd-party-libraries which are included with the software. No further action required.</p>
+<ul>
+<li>Apache Commons Math 2.2</li>
+<li>DB4O 8.0</li>
+<li>iTextPDF 5.2.0</li>
+<li>JCommon 1.0.17</li>
+<li>JFreeChart 1.0.14</li>
+<li>JCalendar 1.4</li>
+</ul>
+<p>Note the separate licenses for using and distributing them in the <code>./lib/read</code> directory.</p>
+<h2>Running the tool</h2>
+<h3>Windows</h3>
+<ol>
+<li>Download the latest <strong>omsimulation</strong> tool: <a href="https://github.com/donSchoe/omsimulation/zipball/master">https://github.com/donSchoe/omsimulation/zipball/master</a></li>
+<li>Extract the zipball (for example) to <code>C:\Program files\OMSimulation\</code>.</li>
+<li>Navigate to the extracted files and run <code>omsimulation-x.y.z-win32.bat</code> which is a batch script file taking care of setting all VM settings and classpaths required by the tool.</li>
+<li>Now the program should run.</li>
+</ol>
+<h3>Linux/Unix</h3>
+<ol>
+<li>Download the latest <strong>omsimulation</strong> tool: <a href="https://github.com/donSchoe/omsimulation/tarball/master">https://github.com/donSchoe/omsimulation/tarball/master</a></li>
+<li>Extract the tarball (for example) to <code>/home/myname/OMSimulation/</code>.</li>
+<li>Navigate to the extracted files and find the shell script file <code>omsimulation-x.y.z-linux.sh</code> taking care of setting all VM settings and classpaths required by the tool.</li>
+<li>Make it executable. <code>$ chmod +x omsimulation-x.y.z-linux.sh</code></li>
+<li>Run it. <code>$ ./omsimulation-x.y.z-linux.sh</code></li>
+<li>Now the program should run.</li>
+</ol>
+<h3>MacOS</h3>
+<ol>
+<li>Download the latest <strong>omsimulation</strong> tool: <a href="https://github.com/donSchoe/omsimulation/tarball/master">https://github.com/donSchoe/omsimulation/tarball/master</a></li>
+<li>Extract the tarball and navigate to the extracted files. </li>
+<li>Find the shell script file <code>omsimulation-x.y.z-macos.command</code> taking care of setting all VM settings and classpaths required by the tool.</li>
+<li>Make it executable. <code>$ chmod +x omsimulation-x.y.z-macos.command</code></li>
+<li>Run it by clicking it or dragging it into the terminal window.</li>
+<li>Now the program should run.</li>
+</ol>
+<hr />
+<h1>Data preparation</h1>
+<p>The <strong>omsimulation</strong> tool works with radon data prepared in CSV files. CSV files can easily be created using Microsoft Excel, Libre Office Calc or similar tools. One CSV file will be created for each building that has to be analysed, containing all the rooms with radon data of at least one measurement per hour.</p>
+<p>To get an idea how the files should look like, take a closer look at the <code>example.csv</code> which is delivered with the tool.</p>
+<pre><code>ID;C1;C2;R1;R2;R3;R4;R5;R6;R7;M1;M2
+0;2310;1032;1456;946;466;1496;192;805;2135;1337;490
+1;4701;1488;2037;1529;661;1692;85;1782;2647;2268;492
+2;6024;360;1928;1713;670;985;85;2041;1190;2893;456
+[...]
+399;10553;4439;3978;221;3225;3988;6837;682;5871;7099;1520
+400;10996;4993;3895;368;3696;3985;7576;1987;5866;7355;1666
+401;10317;5124;4227;645;3759;5187;6610;2684;6369;7291;1838
+</code></pre>
+<p>The first row is the header which includes the meta information of the CSV data.</p>
+<pre><code>ID;C1;C2;R1;R2;R3;R4;R5;R6;R7;M1;M2
+</code></pre>
+<p>The first column is the <code>ID</code> which equals the hour of the measurements <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, etc. The other columns are unique identifiers for the rooms with radon data. The rooms <code>C1</code> - <code>Cn</code> are cellar rooms or other uninhabitated rooms close to the surface with potentially high radon data, e.g. boiler room, laundry, etc. The rooms <code>R1</code> - <code>Rn</code> are normal, inhabitated rooms where people live, work or sleep, e.g. bed room, living room, etc. The rooms <code>M1</code> - <code>Mn</code> are miscellaneous rooms which are not important for the simulations e.g. corridor, attic, etc. Rooms tagged with <code>M</code> will be ignored by the software for now and can be skipped while creating CSV files.</p>
+<p>All the following rows are the radon data series. One row equals radon data sets for one hour. If you have more than one radon measurement per hour you need to create avarage values over one hour.</p>
+<pre><code>0;2310;1032;1456;946;466;1496;192;805;2135;1337;490
+1;4701;1488;2037;1529;661;1692;85;1782;2647;2268;492
+2;6024;360;1928;1713;670;985;85;2041;1190;2893;456
+</code></pre>
+<p>Note that there are limits for this software tool due to performance and memory. The maximum size allowed for CSV files to be imported is a building with eight normal rooms <code>R</code>, four cellar rooms <code>C</code> and a maximum collection of <code>1008</code> data sets which equals about six weeks of one-per-hour-recordings.</p>
+<p>The minimum size of an object should contain at least three normal rooms <code>R</code>, one cellar room <code>C</code> and at least <code>168</code> data sets which equals one week.</p>
+<p>To quickly find out how this tool works, you can start importing the <code>example.csv</code> which contains real radon data from a real object. The CSV file has been anonymized due to obligation of data protection.</p>
+<h2>Data import</h2>
+<p>The data <code>Import</code> tab is the first view which you see after launching the application. To run simulations later on, or to simply inspect the CSV files, the data needs to be converted to a format which can be processed by this tool without parsing the CSV again and again.</p>
+<p>The <strong>omsimulation</strong> tool parses the CSV files and converts them to OMB object files, which behave like tiny object databases. The OMB files include the whole imported building with all it's rooms.</p>
+<p>To import data, simply follow these steps:</p>
+<ol>
+<li>Enter a <code>Project Name</code> which can be chosen freely.</li>
+<li>Enter a <code>Project Date</code> which can be chosen freely. Either use the start date of the radon measuring or simply use the day of the import (e.g. <code>Today</code>).</li>
+<li>Specify the <code>Detection Limit</code> of the used instruments. This is important to handle radon values close to 0 Bq/m³ or below 0 (e.g. -999). All detected values which are lower than the entered detection limit will be set to 50% of the detection limit. Example: If you enter 20 Bq/m³, all values &lt;20 Bq/m³ will be set to 10 Bq/m³.</li>
+<li><code>Read CSV-File</code>: Enter the full path to the CSV file. You can use the file browser to locate and open the CSV file.</li>
+<li><code>Save OMB-File</code>: Enter the full path of the OMB object file which will be created after import. Again, simply use the file browser.</li>
+</ol>
+<p>Finally, click the <code>Import</code> button and the application will start to parse the CSV, set up rooms and create an OMB object file. A progress bar will show up and display the status and message windows will pop up to inform about success or any errors that may occur.</p>
+<h2>Data inspection</h2>
+<p>To analyse the imported data switch to the second tab <code>Data</code>.</p>
+<p>If you just imported a CSV file, you will already see the first radon concentration charts. If not, load an OMB object file.</p>
+<ol>
+<li><code>Select OMB-File</code>: Enter the full path of the OMB object or simply use the file browser again.</li>
+<li>Click the <code>Load</code> button to load the object from the file.</li>
+<li>The <code>Select Project</code> combo box will show the loaded object upon success.</li>
+<li>Use the <code>Select Room</code> combo box to choose a room which radon concentration has to be displayed.</li>
+</ol>
+<p>A chart displaying the radon concentration over the time will appear. The x-axis will display the time of the measurements in hours <code>T [h]</code> and the y-axis will display the detected radon concentration in the room's air <code>Rn [Bq/m³]</code>. Two dashed lines display the arithmic mean <code>AM</code> and maximum <code>MAX</code> of the selected room. In addition, an arrow pointer shows the actual location of the maximum <code>MAX</code>. The bright range marker displays the standard deviation <code>SD</code> of the radon values.</p>
+<p>To zoom into the chart, use the mouse and draw a rectangle over the area which should be displayed. To zoom out, use the right-click context-menu. To enlarge the chart, click the <code>Fullscreen</code> button.</p>
+<hr />
+<h1>Simulations</h1>
+<p>Running simulations is the core functionallity of the <strong>omsimulation</strong> tool. Firstly, an OMB object file has to be loaded.</p>
+<ol>
+<li><code>Open OMB-File</code>: Enter the full path to the OMB object or simply use the file browser.</li>
+<li>Click the <code>Load</code> button to load the building from the object file.</li>
+<li>The <code>Select Project</code> combo box should display the loaded object upon success.</li>
+</ol>
+<p>Now, there are two different ways to run simulations.</p>
+<ol>
+<li>Systematic simulations which generate all possible variations of rooms and start times (= virtual campaigns).</li>
+<li>Random simulations which generate probabilistical a limited amount of virtual campaigns.</li>
+</ol>
+<h2>Systematic simulations</h2>
+<p>Selecting <code>Systematic</code> simulation will generate all possible campaigns. For the <code>example.csv</code> file this would be around 16,581,600 campaigns. On a standard office computer this takes ca. 25 minutes and needs up to 2.5 GB disk space.</p>
+<p>The results of systematic simulations are only written to a LOG file and a CSV file which are stored at the same location as the previously loaded OMB file.</p>
+<p>The LOG file contains any step of the simulation including any generated virtual campaign in logical order. To open LOG files of the size of 1.0 GB and more I suggest using tools like <a href="http://www.swiftgear.com/ltfviewer/features.html">LTFViewer</a> (Windows) or <a href="http://www.greenwoodsoftware.com/less/">Less</a> (Unix).</p>
+<p>The CSV file contains a summary of all statistics calculated for all generated campaigns and can be opened with Microsoft Excel, Libre Office Calc or any similar tool.</p>
+<p>Due to the huge amount of data generated by systematic simulations it's not possible to do some graphical analysis of the results. Therefore, systematic simulations are only for orientation purposes.</p>
+<p>For detailed analysis of the results, run limited random simulations.</p>
+<h2>Random simulations</h2>
+<p>Random simulations are the best way for fast evaluation of buildings. To run random simulations, several settings need to be specified:</p>
+<ol>
+<li>Select the radio button <code>Random</code> and enter a number of how many campaigns should be generated. Random simulations are limited to at least <code>10</code> and at maximum <code>100,000</code> virtual campaigns.</li>
+<li>Select the <code>Ratio</code> of how many rooms should be taken into account. <code>3 of 6</code> means for example that campaigns using 3 rooms on 6 days will be generated, <code>4 of 6</code> means 4 rooms on 6 days, and so on. Set the ratio to a positive value. Any value will do. A ratio of <code>0:2:5:20</code> will generate 0% campaigns using 3 rooms, 7.4% using 4 rooms, 18.5% using 5 rooms and 74.1% using 6 different rooms. The default suggested ratio is <code>2:5:20:73</code>. Disabling the ratio <code>0:0:0:0</code> will generate all types at equal parts of 25%.</li>
+<li><code>Save OMS-File</code>: Enter the full path to an OMS simulation file which stores the virtual campaigns for further processing and analysis. Again, simply use the file browser.</li>
+</ol>
+<h2>Random Noise</h2>
+<p>Both the systematic and the random simulations can be altered by adding a <code>Random noise</code>. If you enter for example <code>5%</code>, this will modify all radon values to a new value which differs by something between -5% to +5% from the initial value.</p>
+<p>Hit <code>Start</code> to run the simulations and continue to the <code>Results</code> tab after completion.</p>
+<hr />
+<h1>Results</h1>
+<h2>Analysing results</h2>
+<p>Switching to the <code>Results</code> tab displays distribution charts of the results of the random simulations. After running a simulation the charts should be loaded automatically. To import a recent simulation manually, just follow these steps.</p>
+<ol>
+<li><code>Open OMS-File</code>: Enter the absolute path to an OMS simulation object or use the file browser to choose an OMS file.</li>
+<li>Click the <code>Load</code> button to import the simulation object.</li>
+<li>The combo box <code>Select Simulation</code> should display the loaded simulation object upon success.</li>
+<li>Now <code>Select Statistics</code> to analyse the distribution charts of each statistical value.</li>
+</ol>
+<p>Every simulation collects </p>
+<ul>
+<li>all arithmetic means of rooms <code>R_AM</code> and cellars <code>C_AM</code>,</li>
+<li>all geometic means of rooms <code>R_GM</code> and cellars <code>C_GM</code>,</li>
+<li>all medians of rooms <code>R_MED</code> and cellars <code>C_MED</code> and</li>
+<li>all maxima of rooms <code>R_MAX</code> and cellars <code>C_MAX</code>.</li>
+</ul>
+<p>These values can be viewed by selecting the proper entry of the <code>Select Statistics</code> combo box. All charts display a continuous probability distribution. Five annotation pointers will mark the minimum <code>MIN</code> and maximum value <code>MAX</code>, the quantiles 5 <code>Q5</code> and 95 <code>Q95</code> aswell as the median <code>Q50</code>. The bright domain marker highlights all values inbetween the <code>Q5</code> and <code>Q95</code> quantiles.</p>
+<p>To zoom into the chart, use the mouse and draw a rectangle over the area which should be displayed. To zoom out, use the right-click context-menu. To enlarge the chart, click the <code>Fullscreen</code> button.</p>
+<p>Hovering the mouse over any position at the graph should always display a tooltip with the current data.</p>
+<p>Note that any pair of data at the graph is clickable. A click will display the connected campaign. For example, to find out which generated campaign showed the highest cellar maximum, simply:</p>
+<ol>
+<li>Select the <code>CellarMaxima</code> / <code>C_MAX</code> entry from the <code>Select Statistics</code> combo box.</li>
+<li>In the distribution chart, zoom into the upper right corner where you can see the pointer annotation <code>MAX</code>.</li>
+<li>Click on the end of the graph where the virtual campaign is expected. A new tab will show up, the <code>Analyse</code> tab, showing the detailed view of the selected campaign.</li>
+</ol>
+<h2>Manual simulation</h2>
+<p>The <code>Analyse</code> tab is used to display the radon concentration chart of a single virtual campaign.</p>
+<ul>
+<li>It displays the order of the measured rooms, e.g. <code>Campaign: R2R4R7R6C1R5R3</code>.</li>
+<li>It displays the start time of the campaign, e.g. <code>Start: 224</code>.</li>
+<li>It displays the radon concentration graph of inhabitated rooms <code>R</code> in red and of uninhabitated/cellar rooms <code>C</code> in blue.</li>
+<li>It displays the room arithmetic mean <code>R_AM</code>, standard deviation <code>R_SD</code> and room maximum <code>R_MAX</code> with red range markers. An arrow pointer annotation points out the location of the room maximum.</li>
+<li>Analogue the same applies do the cellar statistics: cellar arithmetic mean <code>C_AM</code>, standard deviation <code>C_SD</code> and maximum <code>C_MAX</code> are displayed in blue.</li>
+<li>Virtually switching a room within a campaign is highlighted by a gray domain axis marker.</li>
+</ul>
+<p>In order to manually simulate a campaign, load a previously imported OMB object file.</p>
+<ol>
+<li><code>Open OMB-File</code>: Enter the absolute path of the OMB object file or use the file browser.</li>
+<li>Click the <code>Load</code> button to import the object.</li>
+<li>The building should appear in the combo box <code>Select Project</code>.</li>
+<li>Now select any combination of 6 rooms <code>R</code> and 1 cellar <code>C</code>, remember the protocol "6+1".</li>
+<li>Use the time slider to adjust the <code>Start time</code> of the virtual campaign.</li>
+</ol>
+<p>Again, to zoom into the chart, use the mouse and draw a rectangle over the area which should be displayed. To zoom out, use the right-click context-menu. To enlarge the chart, click the <code>Fullscreen</code> button. Hovering the mouse over any position at the graph should always display a tooltip with the current data.</p>
+<hr />
+<h1>Export</h1>
+<h2>Building and simulation objects</h2>
+<p>The <strong>omsimulation</strong> tool parses the CSV files and converts them to OMB building objects. The OMB files include the whole imported building with all it's rooms and are used to run simulations.</p>
+<p>The OMS simulation objects are generated while running random simulations. They store all generated virtual campaigns and all connected statistical values which are used for analysis later on.</p>
+<h2>Exporting logs</h2>
+<p>LOG files contain any logical step the <strong>omsimulation</strong> tool does while importing CSV files and running simulations. Logs will be created automatically and stored right next to the selected OMB/OMS object files. There is no further action required to export the logs.</p>
+<p>Keep an eye on the size of logs. Simulation logs can exceed the size of one and more GB pretty fast.</p>
+<h2>Exporting raw data</h2>
+<p>Raw data can be exported to CSV files for further processing with other software like Microsoft Excel or Libre Office Calc.</p>
+<ul>
+<li>Radon concentration charts of a single room in the <code>Data</code> tab can be exported to CSV using the <code>Export chart to CSV</code> button at the bottom of the view.</li>
+<li>A summary of simulation results will be generated automatically and stored right next to the selected OMB/OMS object files. There is no further action required to export them.</li>
+<li>To export detailled results of simulations to CSV file format, switch to the <code>Results</code> tab and use the <code>Export chart to CSV</code> button at the bottom of the view.</li>
+<li>To export a single campaign, switch to the <code>Analyse</code> tab and use the <code>Export chart to CSV</code> button at the bottom.</li>
+</ul>
+<h2>Exporting charts</h2>
+<p>All charts can be exported to PNG image files and PDF vector document files.</p>
+<ul>
+<li>To create PDF documents, simply use the <code>Export chart to PDF</code> buttons below any chart. The documents will be stored in DIN A4 landscape format.</li>
+<li>To create PNG images, use the right-click context-menu inside the chart and select the menu entry <code>Save as...</code></li>
+<li>To print a chart directly, use the context-menu and select <code>Print...</code></li>
+</ul>
+<hr />
+<h1>FAQ</h1>
+<h2>What is this tool being used for?</h2>
+<p>This tool intends to test and evaluate the scientific robustness of the protocol <code>6+1</code>. Therefore, it generates a huge amount of virtual measurement campaigns based on real radon concentration data following the mentioned protocol.</p>
+<h2>What is this tool NOT being used for?</h2>
+<p>This tool is <strong>not</strong> used for evaluating the level of radon exposure in buildings. Prerequisite for using this simulation tool is that you already know if a building has a radon issue or not.</p>
+<h2>What is the protocol <code>6+1</code>?</h2>
+<p>The protocol <code>6+1</code> refers to a quick measurement procedure to gauge the radon concentration on six days <code>6</code> in habitated rooms of a building (e.g. bed room, living room, etc.) and on one day <code>+1</code> in an uninhabitated room close to the surface with potentially high radon concentration (e.g. boiler room, laundry, etc.).</p>
+<p>For more information, please refer to the following literature (German):</p>
+<ul>
+<li>
+<p><strong>Radon</strong> - <em>Messung und Bewertung</em>, 1st edition, April 2011, joint publication of radon agencies from Austria, Switzerland, southern Germany and South Tyrol, <a href="http://www.ages.at/uploads/media/Radon_-_Messung_und_Bewertung_02.pdf">http://www.ages.at/uploads/media/Radon_-_Messung_und_Bewertung_02.pdf</a>, page 10</p>
+</li>
+<li>
+<p>Marcus Hoffmann: <strong>Radonsanierungen im Kanton Tessin (Schweiz)</strong>, conference paper: <em>5. Sächsischer Radontag - 7. Tagung Radonsicheres Bauen</em>, Dresden, 20th September 2011, joint publication of radon agencies from Austria, Switzerland, southern Germany and South Tyrol, <a href="http://www.smul.sachsen.de/umwelt/download/tg7_tagungsband_kpl_2011.pdf">http://www.smul.sachsen.de/umwelt/download/tg7_tagungsband_kpl_2011.pdf</a>, pages 63ff</p>
+</li>
+</ul>
+<h2>What does <code>OM</code> stand for?</h2>
+<p><code>OM</code> stands for <code>orientation measurement</code> and refers to the quick procedure of the protocol <code>6+1</code>.</p>
+</body>
+</html>

@@ -1,7 +1,8 @@
 /*
- * OM Simulation Tool: This software is a simulation tool for virtual
- * orientated measurement (OM) campaigns following the protocol "6+1" to
- * determine and evaluate the level of radon exposure in buildings.
+ * OM Simulation Tool: This tool intends to test and evaluate the scientific
+ * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
+ * virtual measurement campaigns based on real radon concentration data 
+ * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
  * 
@@ -278,7 +279,8 @@ public class OMPanelTesting extends JPanel implements ActionListener {
       progressBar.setValue(i);
       try {
         Thread.sleep(100);
-      } catch (InterruptedException ignore) {
+      } catch (InterruptedException ie) {
+        ie.printStackTrace();
       }
     }
 
@@ -434,6 +436,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
         comboBoxProjects.removeActionListener(a[i]);
       }
     } catch (Exception e) {
+      e.printStackTrace();
     }
     try {
       PropertyChangeListener[] p = comboBoxProjects
@@ -442,6 +445,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
         comboBoxProjects.removePropertyChangeListener(p[i]);
       }
     } catch (Exception e) {
+      e.printStackTrace();
     }
   }
 
@@ -602,7 +606,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
       public void actionPerformed(ActionEvent e) {
         JFileChooser fileDialog = new JFileChooser();
         fileDialog.setFileFilter(new FileNameExtensionFilter("*.csv", "csv"));
-        fileDialog.showOpenDialog(getParent());
+        fileDialog.showSaveDialog(getParent());
         final File file = fileDialog.getSelectedFile();
         if (file != null) {
           String csv;
@@ -686,6 +690,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
                 null,
                 "Failed to write CSV. Please check permissions!\n"
                     + ioe.getMessage(), "Failed", JOptionPane.ERROR_MESSAGE);
+            ioe.printStackTrace();
           }
         } else {
           JOptionPane.showMessageDialog(null,
@@ -704,7 +709,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
       public void actionPerformed(ActionEvent e) {
         JFileChooser fileDialog = new JFileChooser();
         fileDialog.setFileFilter(new FileNameExtensionFilter("*.pdf", "pdf"));
-        fileDialog.showOpenDialog(getParent());
+        fileDialog.showSaveDialog(getParent());
         final File file = fileDialog.getSelectedFile();
         if (file != null) {
           String pdf;
@@ -743,10 +748,12 @@ public class OMPanelTesting extends JPanel implements ActionListener {
                   null,
                   "Failed to write PDF. Please check permissions!\n"
                       + ioe.getMessage(), "Failed", JOptionPane.ERROR_MESSAGE);
+              ioe.printStackTrace();
             }
           } catch (IOException ioe) {
             JOptionPane.showMessageDialog(null, "Failed to create chart!\n"
                 + ioe.getMessage(), "Failed", JOptionPane.ERROR_MESSAGE);
+            ioe.printStackTrace();
           }
         } else {
           JOptionPane.showMessageDialog(null,
@@ -1009,8 +1016,8 @@ public class OMPanelTesting extends JPanel implements ActionListener {
           chartFrame.setResizable(true);
           chartFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
           chartFrame.setVisible(true);
-        } catch (IOException e) {
-          e.printStackTrace();
+        } catch (IOException ioe) {
+          ioe.printStackTrace();
         }
       }
     });
@@ -1178,8 +1185,9 @@ public class OMPanelTesting extends JPanel implements ActionListener {
       } else {
         isSimulated = false;
       }
-    } catch (IOException ignore) {
+    } catch (IOException ioe) {
       isSimulated = false;
+      ioe.printStackTrace();
     }
   }
 
