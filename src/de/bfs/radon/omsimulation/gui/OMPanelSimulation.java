@@ -1951,6 +1951,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       csvOutput
           .write("\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \"");
       csvOutput.newLine();
+
       csvOutput.write("\" \";\" \";\" \";\"N\";\"" + x
           + "\";\" \";\" \";\" \";\" \";\" \"");
     }
@@ -2116,6 +2117,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double timePassed = (System.currentTimeMillis() - getStart()) / 1000;
       double time = (timePassed / perc * 100.0) - timePassed;
       String unit = " seconds.";
+      final double days = time / 60.0 / 60.0 / 24.0;
       if (time > 100) {
         strFormat = "#";
         time = time / 60.0;
@@ -2126,15 +2128,14 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         time = time / 60.0;
         unit = " hours.";
       }
-      final double days = time / 60.0 / 60.0 / 24.0;
       if (time > 48) {
         strFormat = "#.##";
-        time = days;
+        time = time / 24.0;
         unit = " days.";
       }
       if (time > 50) {
         strFormat = "#.##";
-        time = days / 28.0;
+        time = time / 28.0;
         unit = " months.";
       }
       if (time > 20) {

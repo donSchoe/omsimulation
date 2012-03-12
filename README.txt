@@ -1,5 +1,5 @@
 ------------------------------------
-* OM Simulation Tool v0.4.46-beta4 *
+* OM Simulation Tool v0.4.47-beta4 *
 ------------------------------------
 
 Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -7,9 +7,14 @@ Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
 
 1. Introduction
 ----------------------------------
-This software is a simulation tool for virtual orientated measurement (OM) 
+This software is a simulation tool for virtual orientation measurement (om) 
 campaigns following the protocol "6+1" to determine and evaluate the level 
 of radon exposure in buildings.
+
+The protocol "6+1" refers to a quick measurement procedure to gauge the
+radon concentration on six days (6) in habitated rooms of a building and
+on one day (+1) in an inhabitated room close to the surface with potentially
+high radon concentration.
 
 For questions regarding this project contact:
 - Dr. Bernd Hoffmann <bhoffmann@bfs.de>
@@ -56,7 +61,8 @@ Documentation can be found at the github wiki:
 The documentation includes a tutorial on installing and running this software.
 - http://github.com/donschoe/omsimulation/wiki/installation
 
-For source API, have a look at the javadocs in ./doc/index.html
+For source API, have a look at the javadocs:
+- http://donschoe.github.com/omsimulation
 
 
 5. Dependencies
@@ -77,6 +83,10 @@ of this document (8. Notice).
 
 6. Changelog
 ----------------------------------
+0.4.47-beta4: (2012-03-11)
+    - fixed timeleft() calculation for systematic campaigns
+    - created a .command file for mac users with `cd $(dirname $0)`
+
 0.4.46-beta4: (2012-03-10)
     - fixed the batch script for windows
     - updated documentation and readme
@@ -229,6 +239,7 @@ of this document (8. Notice).
     - created new testdata to simulate many different setups
 	
 0.2.12-dev: (2012-01-31)
+
     - created new class for helper functions (log, calc, etc..)
     - created testdate to simulate many different setups
     - updated buildings to generate its own variation schemes (3/4/5/6 of x)

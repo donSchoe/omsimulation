@@ -5,16 +5,17 @@
 <project name="OMSimulation" default="run" basedir="..">
     <property name="name" value="omsimulation" />
     <property name="Name" value="OMSimulation" />
-    <property name="version" value="0.4.46-beta4" />
+    <property name="version" value="0.4.47-beta4" />
     <property name="author" value="Alexander Schoedon" />
-    <property name="modified" value="2012-03-10" />
+    <property name="modified" value="2012-03-11" />
     <property name="year" value="2012" />
     <property name="bin.dir" value="bin" />
     <property name="doc.dir" value="doc" />
     <property name="lib.dir" value="lib" />
     <property name="src.dir" value="src" />
-    <property name="run.sh" value="${name}-${version}-unix.sh" />
+    <property name="run.sh" value="${name}-${version}-linux.sh" />
     <property name="run.bat" value="${name}-${version}-win32.bat" />
+    <property name="run.cmd" value="${name}-${version}-macos.command" />
     <property name="packages" value="de.bfs.radon.omsimulation.*,de.bfs.radon.omsimulation.data.*, de.bfs.radon.omsimulation.gui.*,de.bfs.radon.omsimulation.gui.data.*" />
     <property name="main.class" value="de.bfs.radon.omsimulation.OMMainFrame"/>
     <path id="classpath">
@@ -24,9 +25,15 @@
         <echo file="${run.sh}">#!/bin/sh
 java -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*:${bin.dir}/${name}-${version}.jar ${main.class}
         </echo>
+        <chmod file="${run.sh}" perm="ugo+rx"/>
         <echo file="${run.bat}">@echo off
 javaw -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*;${bin.dir}/${name}-${version}.jar ${main.class}
         </echo>
+        <echo file="${run.cmd}">#!/bin/bash
+cd "$(dirname "$0")"
+java -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*:${bin.dir}/${name}-${version}.jar ${main.class}
+        </echo>
+        <chmod file="${run.cmd}" perm="ugo+rx"/>
         <echo>Running: ${bin.dir}/${name}-${version}.jar</echo>
         <java fork="true" classname="${main.class}">
             <classpath>
@@ -70,6 +77,7 @@ javaw -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*;${bin.dir}/${name}-
     <target name="clean">
         <delete file="${run.sh}" />
         <delete file="${run.bat}" />
+        <delete file="${run.cmd}" />
         <delete file="${src.dir}/${name}.manifest" />
         <delete dir="${bin.dir}" />
         <delete dir="${doc.dir}" />
