@@ -2242,12 +2242,12 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
 
     btnStart = new JButton("Start");
     btnStart.addActionListener(this);
-    btnStart.setBounds(616, 329, 124, 23);
+    btnStart.setBounds(616, 326, 124, 23);
     btnStart.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(btnStart);
 
     progressBarSimulation = new JProgressBar();
-    progressBarSimulation.setBounds(10, 474, 730, 25);
+    progressBarSimulation.setBounds(10, 475, 730, 23);
     progressBarSimulation.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     progressBarSimulation.setVisible(false);
     add(progressBarSimulation);
@@ -2259,7 +2259,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
 
     lblOmsFile = new JLabel("Save OMS-File");
     lblOmsFile.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    lblOmsFile.setBounds(170, 257, 133, 14);
+    lblOmsFile.setBounds(174, 272, 120, 14);
     add(lblOmsFile);
 
     txtOmsFile = new JTextField();
@@ -2269,7 +2269,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         setOmsFile(txtOmsFile.getText());
       }
     });
-    txtOmsFile.setBounds(297, 254, 309, 20);
+    txtOmsFile.setBounds(304, 269, 302, 20);
     txtOmsFile.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(txtOmsFile);
     txtOmsFile.setColumns(10);
@@ -2294,32 +2294,32 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         }
       }
     });
-    btnBrowseOms.setBounds(616, 253, 124, 23);
+    btnBrowseOms.setBounds(616, 268, 124, 23);
     btnBrowseOms.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(btnBrowseOms);
 
     lblSelectProject = new JLabel("Select Project");
-    lblSelectProject.setBounds(10, 68, 133, 14);
+    lblSelectProject.setBounds(10, 65, 132, 14);
     lblSelectProject.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(lblSelectProject);
 
     lblSimulationType = new JLabel("Simulation Type");
-    lblSimulationType.setBounds(10, 97, 133, 14);
+    lblSimulationType.setBounds(10, 94, 132, 14);
     lblSimulationType.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(lblSimulationType);
 
     lblCampaigns = new JLabel("campaigns");
-    lblCampaigns.setBounds(414, 123, 91, 14);
+    lblCampaigns.setBounds(421, 122, 185, 14);
     lblCampaigns.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(lblCampaigns);
 
     lblRatio = new JLabel("Ratio");
-    lblRatio.setBounds(170, 153, 44, 14);
+    lblRatio.setBounds(174, 152, 44, 14);
     lblRatio.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(lblRatio);
 
     lblPercent = new JLabel("%");
-    lblPercent.setBounds(246, 282, 494, 14);
+    lblPercent.setBounds(246, 302, 360, 14);
     lblPercent.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(lblPercent);
 
@@ -2331,7 +2331,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       }
     });
     spnrRandomCampaigns.setModel(new SpinnerNumberModel(10000, 10, 100000, 1));
-    spnrRandomCampaigns.setBounds(297, 121, 107, 18);
+    spnrRandomCampaigns.setBounds(304, 119, 107, 22);
     spnrRandomCampaigns.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(spnrRandomCampaigns);
 
@@ -2348,7 +2348,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       }
     });
     spnrRatio3.setModel(new SpinnerNumberModel(2, 0, 10000, 1));
-    spnrRatio3.setBounds(323, 151, 81, 18);
+    spnrRatio3.setBounds(330, 149, 81, 22);
     spnrRatio3.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(spnrRatio3);
 
@@ -2365,7 +2365,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       }
     });
     spnrRatio4.setModel(new SpinnerNumberModel(5, 0, 10000, 1));
-    spnrRatio4.setBounds(323, 177, 81, 18);
+    spnrRatio4.setBounds(330, 179, 81, 22);
     spnrRatio4.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(spnrRatio4);
 
@@ -2382,7 +2382,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       }
     });
     spnrRatio5.setModel(new SpinnerNumberModel(20, 0, 10000, 1));
-    spnrRatio5.setBounds(323, 203, 81, 18);
+    spnrRatio5.setBounds(330, 209, 81, 22);
     spnrRatio5.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(spnrRatio5);
 
@@ -2399,7 +2399,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       }
     });
     spnrRatio6.setModel(new SpinnerNumberModel(73, 0, 10000, 1));
-    spnrRatio6.setBounds(323, 229, 81, 18);
+    spnrRatio6.setBounds(330, 239, 81, 22);
     spnrRatio6.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(spnrRatio6);
 
@@ -2416,7 +2416,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       }
     });
     spnrRandomNoise.setModel(new SpinnerNumberModel(5, 0, 20, 1));
-    spnrRandomNoise.setBounds(153, 280, 83, 18);
+    spnrRandomNoise.setBounds(153, 299, 83, 22);
     spnrRandomNoise.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(spnrRandomNoise);
 
@@ -2433,7 +2433,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         }
       }
     });
-    chckbxRatio3.setBounds(220, 149, 97, 23);
+    chckbxRatio3.setBounds(237, 149, 80, 23);
     chckbxRatio3.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(chckbxRatio3);
 
@@ -2450,7 +2450,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         }
       }
     });
-    chckbxRatio4.setBounds(220, 175, 97, 23);
+    chckbxRatio4.setBounds(237, 179, 80, 23);
     chckbxRatio4.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(chckbxRatio4);
 
@@ -2467,7 +2467,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         }
       }
     });
-    chckbxRatio5.setBounds(220, 201, 97, 23);
+    chckbxRatio5.setBounds(237, 209, 80, 23);
     chckbxRatio5.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(chckbxRatio5);
 
@@ -2484,7 +2484,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         }
       }
     });
-    chckbxRatio6.setBounds(220, 227, 97, 23);
+    chckbxRatio6.setBounds(237, 239, 80, 23);
     chckbxRatio6.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(chckbxRatio6);
 
@@ -2501,7 +2501,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         }
       }
     });
-    chckbxRandomNoise.setBounds(10, 278, 137, 23);
+    chckbxRandomNoise.setBounds(10, 299, 137, 23);
     chckbxRandomNoise.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(chckbxRandomNoise);
 
@@ -2545,7 +2545,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         }
       }
     });
-    btnRefresh.setBounds(616, 64, 124, 23);
+    btnRefresh.setBounds(616, 61, 124, 23);
     btnRefresh.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(btnRefresh);
 
@@ -2553,7 +2553,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         "Select an OMB-Object file to run simulations. Limited random simulations can be saved as OMS-Simulation files used for analysis.");
     lblHelp.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     lblHelp.setForeground(Color.GRAY);
-    lblHelp.setBounds(10, 11, 730, 14);
+    lblHelp.setBounds(10, 10, 730, 14);
     add(lblHelp);
 
     txtOmbFile = new JTextField();
@@ -2619,7 +2619,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         }
       }
     });
-    rdbtnSystematic.setBounds(149, 93, 356, 23);
+    rdbtnSystematic.setBounds(152, 90, 356, 23);
     rdbtnSystematic.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(rdbtnSystematic);
 
@@ -2645,7 +2645,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         }
       }
     });
-    rdbtnRandom.setBounds(149, 119, 142, 23);
+    rdbtnRandom.setBounds(152, 119, 142, 23);
     rdbtnRandom.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(rdbtnRandom);
 
@@ -2703,7 +2703,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         lblCampaigns.setEnabled(b);
       }
     });
-    comboBoxSelectProject.setBounds(153, 65, 453, 21);
+    comboBoxSelectProject.setBounds(152, 61, 454, 22);
     comboBoxSelectProject.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(comboBoxSelectProject);
 

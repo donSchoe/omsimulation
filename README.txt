@@ -1,5 +1,5 @@
 ------------------------------------
-* OM Simulation Tool v0.4.48-beta4 *
+* OM Simulation Tool v0.4.49-beta4 *
 ------------------------------------
 
 Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -95,6 +95,9 @@ of this document (8. Notice).
 
 6. Changelog
 ----------------------------------
+0.4.49-beta4: (2012-03-22)
+    - fixed some minor layout issues (mac)
+
 0.4.48-beta4: (2012-03-12)
     - added MANUAL.html
     - fixed: unicode symbols

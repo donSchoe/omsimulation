@@ -907,32 +907,32 @@ public class OMPanelImport extends JPanel implements ActionListener {
         "Import CSV-Files and convert them to OMB-Project-Files which can be used by this tool to run simulations.");
     lblHelp.setForeground(Color.GRAY);
     lblHelp.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    lblHelp.setBounds(10, 11, 729, 20);
+    lblHelp.setBounds(10, 10, 730, 14);
     add(lblHelp);
 
     lblProjectName = new JLabel("Project Name");
     lblProjectName.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    lblProjectName.setBounds(10, 45, 89, 14);
+    lblProjectName.setBounds(10, 36, 132, 14);
     add(lblProjectName);
 
     lblProjectDate = new JLabel("Project Date");
     lblProjectDate.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    lblProjectDate.setBounds(10, 70, 89, 14);
+    lblProjectDate.setBounds(10, 65, 132, 14);
     add(lblProjectDate);
 
     lblCsvFile = new JLabel("Read CSV-File");
     lblCsvFile.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    lblCsvFile.setBounds(10, 120, 89, 14);
+    lblCsvFile.setBounds(10, 123, 132, 14);
     add(lblCsvFile);
 
     lblDetectionLimit = new JLabel("Detection Limit");
     lblDetectionLimit.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    lblDetectionLimit.setBounds(10, 95, 89, 14);
+    lblDetectionLimit.setBounds(10, 94, 132, 14);
     add(lblDetectionLimit);
 
     lblBqm = new JLabel("Bq/m\u00B3");
     lblBqm.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    lblBqm.setBounds(580, 95, 160, 14);
+    lblBqm.setBounds(616, 94, 124, 14);
     add(lblBqm);
 
     txtProjectName = new JTextField();
@@ -946,9 +946,9 @@ public class OMPanelImport extends JPanel implements ActionListener {
 
     lblSaveOmbfile = new JLabel("Save OMB-File");
     lblSaveOmbfile.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    lblSaveOmbfile.setBounds(10, 145, 89, 14);
+    lblSaveOmbfile.setBounds(10, 152, 132, 14);
     add(lblSaveOmbfile);
-    txtProjectName.setBounds(109, 42, 529, 20);
+    txtProjectName.setBounds(152, 33, 454, 20);
     add(txtProjectName);
     txtProjectName.setColumns(10);
 
@@ -960,7 +960,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
         setCsvFile(txtCsvFile.getText());
       }
     });
-    txtCsvFile.setBounds(109, 117, 529, 20);
+    txtCsvFile.setBounds(152, 120, 454, 20);
     add(txtCsvFile);
     txtCsvFile.setColumns(10);
 
@@ -972,12 +972,12 @@ public class OMPanelImport extends JPanel implements ActionListener {
         setOmbFile(txtOmbFile.getText());
       }
     });
-    txtOmbFile.setBounds(109, 142, 529, 20);
+    txtOmbFile.setBounds(152, 148, 454, 20);
     add(txtOmbFile);
     txtOmbFile.setColumns(10);
 
     projectDateChooser = new JDateChooser();
-    projectDateChooser.setBounds(109, 68, 461, 18);
+    projectDateChooser.setBounds(152, 61, 454, 22);
     projectDateChooser.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     projectDateChooser.setDate(new Date());
     add(projectDateChooser);
@@ -992,7 +992,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
     });
     spnrDetectionLimit.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     spnrDetectionLimit.setModel(new SpinnerNumberModel(20, 1, 100, 1));
-    spnrDetectionLimit.setBounds(109, 93, 461, 18);
+    spnrDetectionLimit.setBounds(152, 90, 454, 22);
     add(spnrDetectionLimit);
 
     chckbxToday = new JCheckBox("Today");
@@ -1008,12 +1008,12 @@ public class OMPanelImport extends JPanel implements ActionListener {
         }
       }
     });
-    chckbxToday.setBounds(580, 66, 159, 23);
+    chckbxToday.setBounds(616, 61, 124, 23);
     add(chckbxToday);
 
     progressBarImport = new JProgressBar();
     progressBarImport.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    progressBarImport.setBounds(10, 476, 729, 23);
+    progressBarImport.setBounds(10, 475, 730, 23);
     progressBarImport.setVisible(false);
     add(progressBarImport);
 
@@ -1038,12 +1038,12 @@ public class OMPanelImport extends JPanel implements ActionListener {
         }
       }
     });
-    btnBrowseCsv.setBounds(648, 116, 91, 23);
+    btnBrowseCsv.setBounds(616, 119, 124, 23);
     add(btnBrowseCsv);
 
     btnImport = new JButton("Import");
     btnImport.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    btnImport.setBounds(648, 175, 91, 23);
+    btnImport.setBounds(616, 177, 124, 23);
     btnImport.addActionListener(this);
 
     btnBrowseOmb = new JButton("Browse");
@@ -1067,7 +1067,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
         }
       }
     });
-    btnBrowseOmb.setBounds(648, 141, 91, 23);
+    btnBrowseOmb.setBounds(616, 148, 124, 23);
     add(btnBrowseOmb);
     add(btnImport);
   }

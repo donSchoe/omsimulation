@@ -30,7 +30,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
-import javax.swing.UIManager;
 
 /**
  * Creates and shows the credits panel for this software tool.
@@ -38,6 +37,12 @@ import javax.swing.UIManager;
  * @author A. Schoedon
  */
 public class OMPanelAbout extends JPanel {
+
+  private JLabel lblLogoBfs;
+  private JLabel lblLogoHtw;
+  private JLabel lblLogoGpl;
+  private JTextPane txtpnCredits;
+  private JTextPane txtpnLicense;
 
   /**
    * Unique serial version ID.
@@ -54,13 +59,13 @@ public class OMPanelAbout extends JPanel {
   public OMPanelAbout(String version) {
     setLayout(null);
 
-    JTextPane txtpnTest = new JTextPane();
-    txtpnTest.setBackground(null);
-    txtpnTest.setForeground(UIManager.getColor("CheckBox.darkShadow"));
-    txtpnTest.setFont(new Font("SansSerif", Font.PLAIN, 12));
-    txtpnTest.setEditable(false);
-     txtpnTest.setText("OM Simulation Tool " + version
-        + ", 03/2012.\r\n\r\nThis tool intends to test and evaluate the"
+    txtpnCredits = new JTextPane();
+    txtpnCredits.setBackground(null);
+    txtpnCredits.setForeground(Color.GRAY);
+    txtpnCredits.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
+    txtpnCredits.setEditable(false);
+    txtpnCredits.setText("OM Simulation Tool " + version
+        + ", March 2012.\r\n\r\nThis tool intends to test and evaluate the"
         + " scientific robustness of the protocol \"6+1\". Therefore, it"
         + " generates a huge amount of virtual measurement campaigns based"
         + " on real radon concentration data following the mentioned protocol."
@@ -73,40 +78,40 @@ public class OMPanelAbout extends JPanel {
         + " Radiation Protection and Environment SW 1.1\r\nBundesamt"
         + " f\u00FCr Strahlenschutz, German Federal Office for Radiation"
         + " Protection");
-    txtpnTest.setBounds(10, 11, 520, 298);
-    add(txtpnTest);
+    txtpnCredits.setBounds(10, 10, 520, 298);
+    add(txtpnCredits);
 
-    JLabel lblLogoBfs = new JLabel(
+    lblLogoBfs = new JLabel(
         createImageIcon("/de/bfs/radon/omsimulation/gui/img/bfs.png"));
     lblLogoBfs.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     lblLogoBfs.setBounds(613, 159, 127, 50);
     add(lblLogoBfs);
 
-    JLabel lblLogoHtw = new JLabel(
+    lblLogoHtw = new JLabel(
         createImageIcon("/de/bfs/radon/omsimulation/gui/img/htw.png"));
     lblLogoHtw.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     lblLogoHtw.setBounds(613, 74, 127, 74);
     add(lblLogoHtw);
 
-    JLabel lblLogoGpl = new JLabel(
+    lblLogoGpl = new JLabel(
         createImageIcon("/de/bfs/radon/omsimulation/gui/img/gpl.png"));
     lblLogoGpl.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     lblLogoGpl.setBounds(613, 429, 127, 51);
     add(lblLogoGpl);
 
-    JTextPane txtpnThisSoftwareIs = new JTextPane();
-    txtpnThisSoftwareIs
+    txtpnLicense = new JTextPane();
+    txtpnLicense
         .setText("This program is free software: you can redistribute it "
             + "and/or modify it under the terms of the GNU General Public License "
             + "as published by the Free Software Foundation, either version 3 "
-            + "of the License, or (at your option) any later  version.\r\n\r\n" 
-            + "Source available at: http://github.com/donschoe/omsimulation");
-    txtpnThisSoftwareIs.setForeground(Color.DARK_GRAY);
-    txtpnThisSoftwareIs.setFont(new Font("SansSerif", Font.PLAIN, 12));
-    txtpnThisSoftwareIs.setEditable(false);
-    txtpnThisSoftwareIs.setBackground((Color) null);
-    txtpnThisSoftwareIs.setBounds(10, 400, 520, 95);
-    add(txtpnThisSoftwareIs);
+            + "of the License, or (at your option) any later version.\r\n\r\n"
+            + "The source is available at: http://github.com/donschoe/omsimulation");
+    txtpnLicense.setForeground(Color.GRAY);
+    txtpnLicense.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
+    txtpnLicense.setEditable(false);
+    txtpnLicense.setBackground((Color) null);
+    txtpnLicense.setBounds(10, 400, 520, 95);
+    add(txtpnLicense);
 
   }
 

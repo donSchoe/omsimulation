@@ -279,7 +279,7 @@ public class OMPanelResults extends JPanel {
       panelChart = createDistributionPanel(title, statistics, roomType, false,
           true);
       panelDistribution = new JPanel();
-      panelDistribution.setBounds(10, 114, 730, 352);
+      panelDistribution.setBounds(10, 118, 730, 347);
       panelDistribution.add(panelChart);
       return null;
     }
@@ -415,13 +415,13 @@ public class OMPanelResults extends JPanel {
     setLayout(null);
 
     lblExportChartTo = new JLabel("Export chart to ...");
-    lblExportChartTo.setBounds(436, 476, 144, 14);
+    lblExportChartTo.setBounds(436, 479, 144, 14);
     lblExportChartTo.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     lblExportChartTo.setVisible(false);
     add(lblExportChartTo);
 
     btnMaximize = new JButton("Fullscreen");
-    btnMaximize.setBounds(10, 472, 124, 23);
+    btnMaximize.setBounds(10, 475, 124, 23);
     btnMaximize.setFont(new Font("SansSerif", Font.PLAIN, 11));
     btnMaximize.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent arg0) {
@@ -556,7 +556,7 @@ public class OMPanelResults extends JPanel {
         }
       }
     });
-    btnCsv.setBounds(590, 472, 70, 23);
+    btnCsv.setBounds(590, 475, 70, 23);
     btnCsv.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     btnCsv.setVisible(false);
     add(btnCsv);
@@ -654,19 +654,19 @@ public class OMPanelResults extends JPanel {
         }
       }
     });
-    btnPdf.setBounds(670, 472, 70, 23);
+    btnPdf.setBounds(670, 475, 70, 23);
     btnPdf.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     btnPdf.setVisible(false);
     add(btnPdf);
 
     lblSelectSimulation = new JLabel("Select Simulation");
     lblSelectSimulation.setFont(new Font("SansSerif", Font.PLAIN, 11));
-    lblSelectSimulation.setBounds(10, 64, 132, 14);
+    lblSelectSimulation.setBounds(10, 65, 132, 14);
     add(lblSelectSimulation);
 
     lblSelectStatistics = new JLabel("Select Statistics");
     lblSelectStatistics.setFont(new Font("SansSerif", Font.PLAIN, 11));
-    lblSelectStatistics.setBounds(10, 89, 132, 14);
+    lblSelectStatistics.setBounds(10, 94, 132, 14);
     add(lblSelectStatistics);
 
     comboBoxSimulations = new JComboBox<OMSimulation>();
@@ -724,7 +724,7 @@ public class OMPanelResults extends JPanel {
         lblSelectStatistics.setEnabled(b);
       }
     });
-    comboBoxSimulations.setBounds(152, 60, 454, 22);
+    comboBoxSimulations.setBounds(152, 61, 454, 22);
     add(comboBoxSimulations);
 
     btnRefresh = new JButton("Load");
@@ -775,7 +775,7 @@ public class OMPanelResults extends JPanel {
 
     comboBoxStatistics = new JComboBox<OMStatistics>();
     comboBoxStatistics.setFont(new Font("SansSerif", Font.PLAIN, 11));
-    comboBoxStatistics.setBounds(152, 85, 454, 22);
+    comboBoxStatistics.setBounds(152, 90, 454, 22);
     comboBoxStatistics.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent arg0) {
         updateDistribution();
@@ -783,16 +783,16 @@ public class OMPanelResults extends JPanel {
     });
     add(comboBoxStatistics);
 
-    btnRefresh.setBounds(616, 60, 124, 23);
+    btnRefresh.setBounds(616, 61, 124, 23);
     add(btnRefresh);
 
     panelDistribution = new JPanel();
-    panelDistribution.setBounds(10, 114, 730, 352);
+    panelDistribution.setBounds(10, 118, 730, 347);
     add(panelDistribution);
 
     progressBar = new JProgressBar();
     progressBar.setFont(new Font("SansSerif", Font.PLAIN, 11));
-    progressBar.setBounds(10, 477, 730, 22);
+    progressBar.setBounds(10, 475, 730, 23);
     add(progressBar);
 
     progressBar.setEnabled(false);
@@ -812,7 +812,7 @@ public class OMPanelResults extends JPanel {
 
     lblSelectOms = new JLabel("Open OMS-File");
     lblSelectOms.setFont(new Font("SansSerif", Font.PLAIN, 11));
-    lblSelectOms.setBounds(10, 35, 132, 14);
+    lblSelectOms.setBounds(10, 36, 132, 14);
     add(lblSelectOms);
 
     txtOmsFile = new JTextField();
@@ -824,7 +824,7 @@ public class OMPanelResults extends JPanel {
     });
     txtOmsFile.setFont(new Font("SansSerif", Font.PLAIN, 11));
     txtOmsFile.setColumns(10);
-    txtOmsFile.setBounds(152, 32, 454, 20);
+    txtOmsFile.setBounds(152, 33, 454, 20);
     add(txtOmsFile);
 
     buttonBrowse = new JButton("Browse");
@@ -848,7 +848,7 @@ public class OMPanelResults extends JPanel {
       }
     });
     buttonBrowse.setFont(new Font("SansSerif", Font.PLAIN, 11));
-    buttonBrowse.setBounds(616, 31, 124, 23);
+    buttonBrowse.setBounds(616, 32, 124, 23);
     add(buttonBrowse);
     progressBar.setVisible(false);
   }
@@ -879,7 +879,7 @@ public class OMPanelResults extends JPanel {
     JFreeChart chart = OMCharts.createDistributionChart(title, statistics,
         roomType, preview);
     ChartPanel chartPanel = new ChartPanel(chart);
-    chartPanel.setPreferredSize(new Dimension(730, 352));
+    chartPanel.setPreferredSize(new Dimension(730, 347));
     if (mouseEvent) {
       chartPanel.addChartMouseListener(new ChartMouseListener() {
         @Override

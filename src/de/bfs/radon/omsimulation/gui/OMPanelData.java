@@ -348,7 +348,7 @@ public class OMPanelData extends JPanel {
     setLayout(null);
 
     lblExportChartTo = new JLabel("Export chart to ...");
-    lblExportChartTo.setBounds(436, 476, 144, 14);
+    lblExportChartTo.setBounds(436, 479, 144, 14);
     lblExportChartTo.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     lblExportChartTo.setVisible(false);
     add(lblExportChartTo);
@@ -399,7 +399,7 @@ public class OMPanelData extends JPanel {
         }
       }
     });
-    btnCsv.setBounds(590, 472, 70, 23);
+    btnCsv.setBounds(590, 475, 70, 23);
     btnCsv.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     btnCsv.setVisible(false);
     add(btnCsv);
@@ -446,19 +446,19 @@ public class OMPanelData extends JPanel {
         }
       }
     });
-    btnPdf.setBounds(670, 472, 70, 23);
+    btnPdf.setBounds(670, 475, 70, 23);
     btnPdf.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     btnPdf.setVisible(false);
     add(btnPdf);
 
     lblSelectProject = new JLabel("Select Project");
     lblSelectProject.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    lblSelectProject.setBounds(10, 64, 132, 14);
+    lblSelectProject.setBounds(10, 65, 132, 14);
     add(lblSelectProject);
 
     lblSelectRoom = new JLabel("Select Room");
     lblSelectRoom.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    lblSelectRoom.setBounds(10, 93, 132, 14);
+    lblSelectRoom.setBounds(10, 94, 132, 14);
     add(lblSelectRoom);
 
     panelData = new JPanel();
@@ -509,7 +509,7 @@ public class OMPanelData extends JPanel {
         }
       }
     });
-    btnRefresh.setBounds(616, 60, 124, 23);
+    btnRefresh.setBounds(616, 61, 124, 23);
     add(btnRefresh);
 
     btnMaximize = new JButton("Fullscreen");
@@ -537,7 +537,7 @@ public class OMPanelData extends JPanel {
         }
       }
     });
-    btnMaximize.setBounds(10, 472, 124, 23);
+    btnMaximize.setBounds(10, 475, 124, 23);
     btnMaximize.setVisible(false);
     add(btnMaximize);
 
@@ -613,7 +613,7 @@ public class OMPanelData extends JPanel {
         panelData.setBackground(c);
       }
     });
-    comboBoxProjects.setBounds(152, 60, 454, 22);
+    comboBoxProjects.setBounds(152, 61, 454, 22);
     add(comboBoxProjects);
 
     comboBoxRooms = new JComboBox<OMRoom>();
@@ -631,12 +631,12 @@ public class OMPanelData extends JPanel {
         }
       }
     });
-    comboBoxRooms.setBounds(152, 89, 454, 22);
+    comboBoxRooms.setBounds(152, 90, 454, 22);
     add(comboBoxRooms);
 
     progressBar = new JProgressBar();
     progressBar.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    progressBar.setBounds(10, 476, 730, 23);
+    progressBar.setBounds(10, 475, 730, 23);
     progressBar.setVisible(false);
     add(progressBar);
 
@@ -648,7 +648,7 @@ public class OMPanelData extends JPanel {
         "Select an OMB-Object file to analyse its data. You can inspect radon concentration for each room.");
     lblHelp.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     lblHelp.setForeground(Color.GRAY);
-    lblHelp.setBounds(10, 11, 730, 14);
+    lblHelp.setBounds(10, 10, 730, 14);
     add(lblHelp);
 
     txtOmbFile = new JTextField();

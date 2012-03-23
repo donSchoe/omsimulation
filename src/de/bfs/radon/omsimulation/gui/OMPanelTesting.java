@@ -596,7 +596,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
     isSimulated = false;
 
     lblExportChartTo = new JLabel("Export chart to ...");
-    lblExportChartTo.setBounds(436, 476, 144, 14);
+    lblExportChartTo.setBounds(436, 479, 144, 14);
     lblExportChartTo.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     lblExportChartTo.setVisible(false);
     add(lblExportChartTo);
@@ -699,7 +699,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
         }
       }
     });
-    btnCsv.setBounds(590, 472, 70, 23);
+    btnCsv.setBounds(590, 475, 70, 23);
     btnCsv.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     btnCsv.setVisible(false);
     add(btnCsv);
@@ -762,7 +762,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
         }
       }
     });
-    btnPdf.setBounds(670, 472, 70, 23);
+    btnPdf.setBounds(670, 475, 70, 23);
     btnPdf.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     btnPdf.setVisible(false);
     add(btnPdf);
@@ -778,13 +778,13 @@ public class OMPanelTesting extends JPanel implements ActionListener {
     add(lblSelectRooms);
 
     lblStartTime = new JLabel("Start Time");
-    lblStartTime.setBounds(10, 119, 132, 14);
+    lblStartTime.setBounds(10, 123, 132, 14);
     lblStartTime.setFont(new Font("SansSerif", Font.PLAIN, 11));
     add(lblStartTime);
 
     lblWarning = new JLabel("Select 6 rooms and 1 cellar!");
     lblWarning.setForeground(Color.RED);
-    lblWarning.setBounds(565, 90, 175, 14);
+    lblWarning.setBounds(565, 123, 175, 14);
     lblWarning.setFont(new Font("SansSerif", Font.PLAIN, 11));
     lblWarning.setVisible(false);
     add(lblWarning);
@@ -797,7 +797,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
 
     spnrStartTime = new JSpinner();
     spnrStartTime.setModel(new SpinnerNumberModel(0, 0, 0, 1));
-    spnrStartTime.setBounds(447, 117, 108, 18);
+    spnrStartTime.setBounds(447, 120, 108, 22);
     spnrStartTime.setFont(new Font("SansSerif", Font.PLAIN, 11));
     add(spnrStartTime);
 
@@ -807,17 +807,17 @@ public class OMPanelTesting extends JPanel implements ActionListener {
     add(btnRefresh);
 
     btnMaximize = new JButton("Fullscreen");
-    btnMaximize.setBounds(10, 472, 124, 23);
+    btnMaximize.setBounds(10, 475, 124, 23);
     btnMaximize.setFont(new Font("SansSerif", Font.PLAIN, 11));
     add(btnMaximize);
 
     panelCampaign = new JPanel();
-    panelCampaign.setBounds(10, 150, 730, 319);
+    panelCampaign.setBounds(10, 150, 730, 315);
     panelCampaign.setFont(new Font("SansSerif", Font.PLAIN, 11));
     add(panelCampaign);
 
     progressBar = new JProgressBar();
-    progressBar.setBounds(10, 480, 730, 23);
+    progressBar.setBounds(10, 475, 730, 23);
     progressBar.setFont(new Font("SansSerif", Font.PLAIN, 11));
     progressBar.setVisible(false);
     add(progressBar);
@@ -831,7 +831,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
         "Select an OMB-Object file to manually simulate virtual campaigns.");
     lblHelp.setForeground(Color.GRAY);
     lblHelp.setFont(new Font("SansSerif", Font.PLAIN, 11));
-    lblHelp.setBounds(10, 11, 730, 14);
+    lblHelp.setBounds(10, 10, 730, 14);
     add(lblHelp);
 
     txtOmbFile = new JTextField();
@@ -846,37 +846,37 @@ public class OMPanelTesting extends JPanel implements ActionListener {
     add(btnBrowse);
 
     comboBoxRoom1 = new JComboBox<OMRoom>();
-    comboBoxRoom1.setBounds(152, 90, 49, 22);
+    comboBoxRoom1.setBounds(152, 90, 75, 22);
     comboBoxRoom1.setFont(new Font("SansSerif", Font.PLAIN, 11));
     add(comboBoxRoom1);
 
     comboBoxRoom2 = new JComboBox<OMRoom>();
-    comboBoxRoom2.setBounds(211, 90, 49, 22);
+    comboBoxRoom2.setBounds(237, 90, 75, 22);
     comboBoxRoom2.setFont(new Font("SansSerif", Font.PLAIN, 11));
     add(comboBoxRoom2);
 
     comboBoxRoom3 = new JComboBox<OMRoom>();
-    comboBoxRoom3.setBounds(270, 90, 49, 22);
+    comboBoxRoom3.setBounds(323, 90, 75, 22);
     comboBoxRoom3.setFont(new Font("SansSerif", Font.PLAIN, 11));
     add(comboBoxRoom3);
 
     comboBoxRoom4 = new JComboBox<OMRoom>();
-    comboBoxRoom4.setBounds(329, 90, 49, 22);
+    comboBoxRoom4.setBounds(408, 90, 75, 22);
     comboBoxRoom4.setFont(new Font("SansSerif", Font.PLAIN, 11));
     add(comboBoxRoom4);
 
     comboBoxRoom5 = new JComboBox<OMRoom>();
-    comboBoxRoom5.setBounds(388, 90, 49, 22);
+    comboBoxRoom5.setBounds(494, 90, 75, 22);
     comboBoxRoom5.setFont(new Font("SansSerif", Font.PLAIN, 11));
     add(comboBoxRoom5);
 
     comboBoxRoom6 = new JComboBox<OMRoom>();
-    comboBoxRoom6.setBounds(447, 90, 49, 22);
+    comboBoxRoom6.setBounds(579, 90, 75, 22);
     comboBoxRoom6.setFont(new Font("SansSerif", Font.PLAIN, 11));
     add(comboBoxRoom6);
 
     comboBoxRoom7 = new JComboBox<OMRoom>();
-    comboBoxRoom7.setBounds(506, 90, 49, 22);
+    comboBoxRoom7.setBounds(665, 90, 75, 22);
     comboBoxRoom7.setFont(new Font("SansSerif", Font.PLAIN, 11));
     add(comboBoxRoom7);
 
@@ -1062,7 +1062,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
   protected JPanel createCampaignPanel(OMCampaign campaign, boolean preview) {
     JFreeChart chart = OMCharts.createCampaignChart(campaign, preview);
     ChartPanel chartPanel = new ChartPanel(chart);
-    chartPanel.setPreferredSize(new Dimension(730, 319));
+    chartPanel.setPreferredSize(new Dimension(730, 315));
     JPanel campaignPanel = (JPanel) chartPanel;
     return campaignPanel;
   }
@@ -1176,7 +1176,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
         JPanel campaignChart = createCampaignPanel(campaign, false);
         remove(panelCampaign);
         panelCampaign = new JPanel();
-        panelCampaign.setBounds(10, 150, 730, 319);
+        panelCampaign.setBounds(10, 150, 730, 315);
         panelCampaign.add(campaignChart);
         add(panelCampaign);
         isSimulated = true;
