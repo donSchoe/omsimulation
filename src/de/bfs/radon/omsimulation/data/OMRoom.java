@@ -39,33 +39,33 @@ public class OMRoom {
   /**
    * Stores the unique ID of the room which is used to parse the type.
    */
-  private String id;
+  private String     id;
 
   /**
    * Stores an array of radon values for the certain room. Each value[i] equals
    * the avarage of one hour. The unit is [Bq/m^3].
    */
-  private double[] values;
+  private double[]   values;
 
   /**
    * Stores the total number of measurements for the room. The unit is [h].
    */
-  private int count;
+  private int        count;
 
   /**
    * Stores the arithmetic average of all values. The unit is [Bq/m^3].
    */
-  private double avarage;
+  private double     avarage;
 
   /**
    * Stores the highest value out of all measurements. The unit is [Bq/m^3].
    */
-  private double maxima;
+  private double     maxima;
 
   /**
    * Stores the standard deviation of all values. The unit is [Bq/m^3].
    */
-  private double deviation;
+  private double     deviation;
 
   /**
    * Gets the type of the room: Normal, Cellar, Misc.
@@ -84,26 +84,26 @@ public class OMRoom {
     String id = this.id;
     char c = id.charAt(0);
     switch (c) {
-    case 'C': {
-      type = OMRoomType.Cellar;
-      break;
-    }
-    case 'c': {
-      type = OMRoomType.Cellar;
-      break;
-    }
-    case 'R': {
-      type = OMRoomType.Room;
-      break;
-    }
-    case 'r': {
-      type = OMRoomType.Room;
-      break;
-    }
-    default: {
-      type = OMRoomType.Misc;
-      break;
-    }
+      case 'C': {
+        type = OMRoomType.Cellar;
+        break;
+      }
+      case 'c': {
+        type = OMRoomType.Cellar;
+        break;
+      }
+      case 'R': {
+        type = OMRoomType.Room;
+        break;
+      }
+      case 'r': {
+        type = OMRoomType.Room;
+        break;
+      }
+      default: {
+        type = OMRoomType.Misc;
+        break;
+      }
     }
     this.type = type;
   }

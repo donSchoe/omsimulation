@@ -26,6 +26,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
@@ -84,69 +85,69 @@ public class OMPanelResults extends JPanel {
   /**
    * Unique serial version ID.
    */
-  private static final long serialVersionUID = -6271878950235202218L;
+  private static final long       serialVersionUID = -6271878950235202218L;
 
   /**
    * Stores the absolute path to the OMS object which will be analysed in this
    * panel.
    */
-  private String omsFile;
+  private String                  omsFile;
 
   /**
    * UI: Label "Select Simulation"
    */
-  private JLabel lblSelectSimulation;
+  private JLabel                  lblSelectSimulation;
 
   /**
    * UI: Label "Select Statistics"
    */
-  private JLabel lblSelectStatistics;
+  private JLabel                  lblSelectStatistics;
 
   /**
    * UI: Label for first orientation, content: "Select an OMS-Simulation file to
    * analyse the simulation results and display the distribution chart."
    */
-  private JLabel lblHelp;
+  private JLabel                  lblHelp;
 
   /**
    * UI: Label "Select OMS-File"
    */
-  private JLabel lblSelectOms;
+  private JLabel                  lblSelectOms;
 
   /**
    * UI: Label "Export chart to..."
    */
-  private JLabel lblExportChartTo;
+  private JLabel                  lblExportChartTo;
 
   /**
    * UI: Text field to enter the absolute path to the OMS object.
    */
-  private JTextField txtOmsFile;
+  private JTextField              txtOmsFile;
 
   /**
    * UI: Button to load the selected OMS file to the panel.
    */
-  private JButton btnRefresh;
+  private JButton                 btnRefresh;
 
   /**
    * UI: Button to open a file browser to save an OMS file.
    */
-  private JButton buttonBrowse;
+  private JButton                 buttonBrowse;
 
   /**
    * UI: Button to export the chart to CSV.
    */
-  private JButton btnCsv;
+  private JButton                 btnCsv;
 
   /**
    * UI: Button to export the chart to PDF.
    */
-  private JButton btnPdf;
+  private JButton                 btnPdf;
 
   /**
    * UI: Button to display the chart in fullscreen mode.
    */
-  private JButton btnMaximize;
+  private JButton                 btnMaximize;
 
   /**
    * UI: Combobox to select a simulation to analyse.
@@ -162,29 +163,29 @@ public class OMPanelResults extends JPanel {
    * UI: Progress bar to display the status of certain actions performed on this
    * panel.
    */
-  private JProgressBar progressBar;
+  private JProgressBar            progressBar;
 
   /**
    * UI: Panel where the statistics distribution chart is drawn to.
    */
-  private JPanel panelDistribution;
+  private JPanel                  panelDistribution;
 
   /**
    * UI: Panel which is used as a place holder for the chart.
    */
-  private JPanel panelChart;
+  private JPanel                  panelChart;
 
   /**
    * Stores the task to load OMS files to the panel which will be executed in a
    * separate thread to ensure the UI wont freeze.
    */
-  private RefreshSimulations refreshSimulationsTask;
+  private RefreshSimulations      refreshSimulationsTask;
 
   /**
    * Stores the task to update the charts which will be executed in a separate
    * thread to ensure the UI wont freeze.
    */
-  private RefreshCharts refreshChartsTask;
+  private RefreshCharts           refreshChartsTask;
 
   /**
    * Gets the absolute path to the OMS object which will be analysed in this
@@ -230,54 +231,54 @@ public class OMPanelResults extends JPanel {
           .getSelectedItem();
       OMRoomType roomType = null;
       switch (statisticsType) {
-      case RoomArithmeticMeans:
-        title = "R_AM, " + title;
-        statistics = simulation.getRoomAmDescriptiveStats();
-        roomType = OMRoomType.Room;
-        break;
-      case RoomGeometricMeans:
-        title = "R_GM, " + title;
-        statistics = simulation.getRoomGmDescriptiveStats();
-        roomType = OMRoomType.Room;
-        break;
-      case RoomMedianQ50:
-        title = "R_MED, " + title;
-        statistics = simulation.getRoomMedDescriptiveStats();
-        roomType = OMRoomType.Room;
-        break;
-      case RoomMaxima:
-        title = "R_MAX, " + title;
-        statistics = simulation.getRoomMaxDescriptiveStats();
-        roomType = OMRoomType.Room;
-        break;
-      case CellarArithmeticMeans:
-        title = "C_AM, " + title;
-        statistics = simulation.getCellarAmDescriptiveStats();
-        roomType = OMRoomType.Cellar;
-        break;
-      case CellarGeometricMeans:
-        title = "C_GM, " + title;
-        statistics = simulation.getCellarGmDescriptiveStats();
-        roomType = OMRoomType.Cellar;
-        break;
-      case CellarMedianQ50:
-        title = "C_MED, " + title;
-        statistics = simulation.getCellarMedDescriptiveStats();
-        roomType = OMRoomType.Cellar;
-        break;
-      case CellarMaxima:
-        title = "C_MAX, " + title;
-        statistics = simulation.getCellarMaxDescriptiveStats();
-        roomType = OMRoomType.Cellar;
-        break;
-      default:
-        title = "R_AM, " + title;
-        statistics = simulation.getRoomAmDescriptiveStats();
-        roomType = OMRoomType.Misc;
-        break;
+        case RoomArithmeticMeans:
+          title = "R_AM, " + title;
+          statistics = simulation.getRoomAmDescriptiveStats();
+          roomType = OMRoomType.Room;
+          break;
+        case RoomGeometricMeans:
+          title = "R_GM, " + title;
+          statistics = simulation.getRoomGmDescriptiveStats();
+          roomType = OMRoomType.Room;
+          break;
+        case RoomMedianQ50:
+          title = "R_MED, " + title;
+          statistics = simulation.getRoomMedDescriptiveStats();
+          roomType = OMRoomType.Room;
+          break;
+        case RoomMaxima:
+          title = "R_MAX, " + title;
+          statistics = simulation.getRoomMaxDescriptiveStats();
+          roomType = OMRoomType.Room;
+          break;
+        case CellarArithmeticMeans:
+          title = "C_AM, " + title;
+          statistics = simulation.getCellarAmDescriptiveStats();
+          roomType = OMRoomType.Cellar;
+          break;
+        case CellarGeometricMeans:
+          title = "C_GM, " + title;
+          statistics = simulation.getCellarGmDescriptiveStats();
+          roomType = OMRoomType.Cellar;
+          break;
+        case CellarMedianQ50:
+          title = "C_MED, " + title;
+          statistics = simulation.getCellarMedDescriptiveStats();
+          roomType = OMRoomType.Cellar;
+          break;
+        case CellarMaxima:
+          title = "C_MAX, " + title;
+          statistics = simulation.getCellarMaxDescriptiveStats();
+          roomType = OMRoomType.Cellar;
+          break;
+        default:
+          title = "R_AM, " + title;
+          statistics = simulation.getRoomAmDescriptiveStats();
+          roomType = OMRoomType.Misc;
+          break;
       }
       panelChart = createDistributionPanel(title, statistics, roomType, false,
-          true);
+          false, true);
       panelDistribution = new JPanel();
       panelDistribution.setBounds(10, 118, 730, 347);
       panelDistribution.add(panelChart);
@@ -389,23 +390,16 @@ public class OMPanelResults extends JPanel {
    * 
    * @param oms
    *          Absolute path to an OMS object file to load on init.
+   * @param simulation
+   *          The OMS simulation object.
    */
-  public OMPanelResults(String oms) {
+  public OMPanelResults(String oms, OMSimulation simulation) {
     initialize();
     setOmsFile(oms);
     txtOmsFile.setText(oms);
-    btnRefresh.setEnabled(false);
-    comboBoxSimulations.setEnabled(false);
-    setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-    progressBar.setStringPainted(true);
-    progressBar.setVisible(true);
-    progressBar.setIndeterminate(true);
-    btnPdf.setVisible(false);
-    btnCsv.setVisible(false);
-    btnMaximize.setVisible(false);
-    lblExportChartTo.setVisible(false);
-    refreshSimulationsTask = new RefreshSimulations();
-    refreshSimulationsTask.execute();
+    comboBoxSimulations.addItem(simulation);
+    comboBoxSimulations.setEnabled(true);
+    comboBoxSimulations.setSelectedIndex(0);
   }
 
   /**
@@ -436,57 +430,59 @@ public class OMPanelResults extends JPanel {
                 .getSelectedItem();
             OMRoomType roomType = null;
             switch (statisticsType) {
-            case RoomArithmeticMeans:
-              title = "R_AM, " + title;
-              statistics = simulation.getRoomAmDescriptiveStats();
-              roomType = OMRoomType.Room;
-              break;
-            case RoomGeometricMeans:
-              title = "R_GM, " + title;
-              statistics = simulation.getRoomGmDescriptiveStats();
-              roomType = OMRoomType.Room;
-              break;
-            case RoomMedianQ50:
-              title = "R_MED, " + title;
-              statistics = simulation.getRoomMedDescriptiveStats();
-              roomType = OMRoomType.Room;
-              break;
-            case RoomMaxima:
-              title = "R_MAX, " + title;
-              statistics = simulation.getRoomMaxDescriptiveStats();
-              roomType = OMRoomType.Room;
-              break;
-            case CellarArithmeticMeans:
-              title = "C_AM, " + title;
-              statistics = simulation.getCellarAmDescriptiveStats();
-              roomType = OMRoomType.Cellar;
-              break;
-            case CellarGeometricMeans:
-              title = "C_GM, " + title;
-              statistics = simulation.getCellarGmDescriptiveStats();
-              roomType = OMRoomType.Cellar;
-              break;
-            case CellarMedianQ50:
-              title = "C_MED, " + title;
-              statistics = simulation.getCellarMedDescriptiveStats();
-              roomType = OMRoomType.Cellar;
-              break;
-            case CellarMaxima:
-              title = "C_MAX, " + title;
-              statistics = simulation.getCellarMaxDescriptiveStats();
-              roomType = OMRoomType.Cellar;
-              break;
-            default:
-              title = "R_AM, " + title;
-              statistics = simulation.getRoomAmDescriptiveStats();
-              roomType = OMRoomType.Misc;
-              break;
+              case RoomArithmeticMeans:
+                title = "R_AM, " + title;
+                statistics = simulation.getRoomAmDescriptiveStats();
+                roomType = OMRoomType.Room;
+                break;
+              case RoomGeometricMeans:
+                title = "R_GM, " + title;
+                statistics = simulation.getRoomGmDescriptiveStats();
+                roomType = OMRoomType.Room;
+                break;
+              case RoomMedianQ50:
+                title = "R_MED, " + title;
+                statistics = simulation.getRoomMedDescriptiveStats();
+                roomType = OMRoomType.Room;
+                break;
+              case RoomMaxima:
+                title = "R_MAX, " + title;
+                statistics = simulation.getRoomMaxDescriptiveStats();
+                roomType = OMRoomType.Room;
+                break;
+              case CellarArithmeticMeans:
+                title = "C_AM, " + title;
+                statistics = simulation.getCellarAmDescriptiveStats();
+                roomType = OMRoomType.Cellar;
+                break;
+              case CellarGeometricMeans:
+                title = "C_GM, " + title;
+                statistics = simulation.getCellarGmDescriptiveStats();
+                roomType = OMRoomType.Cellar;
+                break;
+              case CellarMedianQ50:
+                title = "C_MED, " + title;
+                statistics = simulation.getCellarMedDescriptiveStats();
+                roomType = OMRoomType.Cellar;
+                break;
+              case CellarMaxima:
+                title = "C_MAX, " + title;
+                statistics = simulation.getCellarMaxDescriptiveStats();
+                roomType = OMRoomType.Cellar;
+                break;
+              default:
+                title = "R_AM, " + title;
+                statistics = simulation.getRoomAmDescriptiveStats();
+                roomType = OMRoomType.Misc;
+                break;
             }
             JPanel chartPanel = createDistributionPanel(title, statistics,
-                roomType, false, true);
+                roomType, false, true, true);
             chartFrame.getContentPane().add(chartPanel);
             chartFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            chartFrame.setBounds(10, 61, 730, 404);
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            chartFrame.setBounds(0, 0, (int) dim.getWidth(),
+                (int) dim.getHeight());
             chartFrame.setTitle("OM Simulation Tool: " + title);
             chartFrame.setResizable(true);
             chartFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -535,9 +531,6 @@ public class OMPanelResults extends JPanel {
                   + (int) campaigns[i].getCellarMedian() + "\";\""
                   + (int) campaigns[i].getCellarMaxima() + "\"");
               csvOutput.newLine();
-              if (campaigns.length > 65535) {
-                i++;
-              }
             }
             JOptionPane.showMessageDialog(null, "CSV saved successfully!\n"
                 + csvPath, "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -585,51 +578,51 @@ public class OMPanelResults extends JPanel {
               .getSelectedItem();
           OMRoomType roomType = null;
           switch (statisticsType) {
-          case RoomArithmeticMeans:
-            title = "R_AM, " + title;
-            statistics = simulation.getRoomAmDescriptiveStats();
-            roomType = OMRoomType.Room;
-            break;
-          case RoomGeometricMeans:
-            title = "R_GM, " + title;
-            statistics = simulation.getRoomGmDescriptiveStats();
-            roomType = OMRoomType.Room;
-            break;
-          case RoomMedianQ50:
-            title = "R_MED, " + title;
-            statistics = simulation.getRoomMedDescriptiveStats();
-            roomType = OMRoomType.Room;
-            break;
-          case RoomMaxima:
-            title = "R_MAX, " + title;
-            statistics = simulation.getRoomMaxDescriptiveStats();
-            roomType = OMRoomType.Room;
-            break;
-          case CellarArithmeticMeans:
-            title = "C_AM, " + title;
-            statistics = simulation.getCellarAmDescriptiveStats();
-            roomType = OMRoomType.Cellar;
-            break;
-          case CellarGeometricMeans:
-            title = "C_GM, " + title;
-            statistics = simulation.getCellarGmDescriptiveStats();
-            roomType = OMRoomType.Cellar;
-            break;
-          case CellarMedianQ50:
-            title = "C_MED, " + title;
-            statistics = simulation.getCellarMedDescriptiveStats();
-            roomType = OMRoomType.Cellar;
-            break;
-          case CellarMaxima:
-            title = "C_MAX, " + title;
-            statistics = simulation.getCellarMaxDescriptiveStats();
-            roomType = OMRoomType.Cellar;
-            break;
-          default:
-            title = "R_AM, " + title;
-            statistics = simulation.getRoomAmDescriptiveStats();
-            roomType = OMRoomType.Misc;
-            break;
+            case RoomArithmeticMeans:
+              title = "R_AM, " + title;
+              statistics = simulation.getRoomAmDescriptiveStats();
+              roomType = OMRoomType.Room;
+              break;
+            case RoomGeometricMeans:
+              title = "R_GM, " + title;
+              statistics = simulation.getRoomGmDescriptiveStats();
+              roomType = OMRoomType.Room;
+              break;
+            case RoomMedianQ50:
+              title = "R_MED, " + title;
+              statistics = simulation.getRoomMedDescriptiveStats();
+              roomType = OMRoomType.Room;
+              break;
+            case RoomMaxima:
+              title = "R_MAX, " + title;
+              statistics = simulation.getRoomMaxDescriptiveStats();
+              roomType = OMRoomType.Room;
+              break;
+            case CellarArithmeticMeans:
+              title = "C_AM, " + title;
+              statistics = simulation.getCellarAmDescriptiveStats();
+              roomType = OMRoomType.Cellar;
+              break;
+            case CellarGeometricMeans:
+              title = "C_GM, " + title;
+              statistics = simulation.getCellarGmDescriptiveStats();
+              roomType = OMRoomType.Cellar;
+              break;
+            case CellarMedianQ50:
+              title = "C_MED, " + title;
+              statistics = simulation.getCellarMedDescriptiveStats();
+              roomType = OMRoomType.Cellar;
+              break;
+            case CellarMaxima:
+              title = "C_MAX, " + title;
+              statistics = simulation.getCellarMaxDescriptiveStats();
+              roomType = OMRoomType.Cellar;
+              break;
+            default:
+              title = "R_AM, " + title;
+              statistics = simulation.getRoomAmDescriptiveStats();
+              roomType = OMRoomType.Misc;
+              break;
           }
           JFreeChart chart = OMCharts.createDistributionChart(title,
               statistics, roomType, false);
@@ -866,6 +859,9 @@ public class OMPanelResults extends JPanel {
    *          The room type to determine the color of the chart.
    * @param preview
    *          Will hide annotations, labels and headlines if set true.
+   * @param fullscreen
+   *          Will correctly adjust the preferred size to screen resolution if
+   *          true.
    * @param mouseEvent
    *          Will enable mouseClickedEvent if set true. Use with care, and only
    *          inside the results panel. Set to false if you are unsure what you
@@ -875,11 +871,17 @@ public class OMPanelResults extends JPanel {
    */
   public JPanel createDistributionPanel(String title,
       DescriptiveStatistics statistics, OMRoomType roomType, boolean preview,
-      boolean mouseEvent) {
+      boolean fullscreen, boolean mouseEvent) {
     JFreeChart chart = OMCharts.createDistributionChart(title, statistics,
         roomType, preview);
     ChartPanel chartPanel = new ChartPanel(chart);
-    chartPanel.setPreferredSize(new Dimension(730, 347));
+    Dimension dim;
+    if (fullscreen) {
+      dim = Toolkit.getDefaultToolkit().getScreenSize();
+    } else {
+      dim = new Dimension(730, 347);
+    }
+    chartPanel.setPreferredSize(dim);
     if (mouseEvent) {
       chartPanel.addChartMouseListener(new ChartMouseListener() {
         @Override
@@ -898,33 +900,33 @@ public class OMPanelResults extends JPanel {
                 .getSelectedItem();
             for (int i = 0; i < campaigns.length; i++) {
               switch (selectedType) {
-              case RoomArithmeticMeans:
-                comparable = campaigns[i].getRoomAvarage();
-                break;
-              case RoomGeometricMeans:
-                comparable = campaigns[i].getRoomLogAvarage();
-                break;
-              case RoomMedianQ50:
-                comparable = campaigns[i].getRoomMedian();
-                break;
-              case RoomMaxima:
-                comparable = campaigns[i].getRoomMaxima();
-                break;
-              case CellarArithmeticMeans:
-                comparable = campaigns[i].getCellarAvarage();
-                break;
-              case CellarGeometricMeans:
-                comparable = campaigns[i].getCellarLogAvarage();
-                break;
-              case CellarMedianQ50:
-                comparable = campaigns[i].getCellarMedian();
-                break;
-              case CellarMaxima:
-                comparable = campaigns[i].getCellarMaxima();
-                break;
-              default:
-                comparable = campaigns[i].getRoomAvarage();
-                break;
+                case RoomArithmeticMeans:
+                  comparable = campaigns[i].getRoomAvarage();
+                  break;
+                case RoomGeometricMeans:
+                  comparable = campaigns[i].getRoomLogAvarage();
+                  break;
+                case RoomMedianQ50:
+                  comparable = campaigns[i].getRoomMedian();
+                  break;
+                case RoomMaxima:
+                  comparable = campaigns[i].getRoomMaxima();
+                  break;
+                case CellarArithmeticMeans:
+                  comparable = campaigns[i].getCellarAvarage();
+                  break;
+                case CellarGeometricMeans:
+                  comparable = campaigns[i].getCellarLogAvarage();
+                  break;
+                case CellarMedianQ50:
+                  comparable = campaigns[i].getCellarMedian();
+                  break;
+                case CellarMaxima:
+                  comparable = campaigns[i].getCellarMaxima();
+                  break;
+                default:
+                  comparable = campaigns[i].getRoomAvarage();
+                  break;
               }
               if (comparable == x) {
                 result = campaigns[i];
@@ -932,7 +934,7 @@ public class OMPanelResults extends JPanel {
             }
             if (result != null) {
               try {
-                Thread.sleep(250);
+                Thread.sleep(100);
               } catch (InterruptedException ie) {
                 ie.printStackTrace();
               }

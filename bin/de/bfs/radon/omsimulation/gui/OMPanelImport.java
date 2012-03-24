@@ -83,18 +83,24 @@ public class OMPanelImport extends JPanel implements ActionListener {
    * Stores a custom name for the object which is set by the user creating the
    * building.
    */
-  private String projectName;
+  private String            projectName;
 
   /**
    * Stores the absolute path to the CSV file which will be imported.
    */
-  private String csvFile;
+  private String            csvFile;
 
   /**
    * Stores the absolute path to the OMB object which will be used for
    * simulations later.
    */
-  private String ombFile;
+  private String            ombFile;
+
+  /**
+   * Stores the imported building object which will be stored to file after
+   * import.
+   */
+  private OMBuilding        ombObject;
 
   /**
    * Stores a custom start date which is set by the user creating the building.
@@ -102,129 +108,129 @@ public class OMPanelImport extends JPanel implements ActionListener {
    * measurements or to identify the start date of the simulations. That's up to
    * the user and does not affect the simulations.
    */
-  private Date projectDate;
+  private Date              projectDate;
 
   /**
    * Stores the detection limit of the used instruments. If values occur which
    * are lower than the specified limit, half of the limit will be set as radon
    * concentration.
    */
-  private int detectionLimit;
+  private int               detectionLimit;
 
   /**
    * Stores the status of the import process. Used to update the progress bar.
    */
-  private int status;
+  private int               status;
 
   /**
    * Stores the current log message which will be both written to the log file
    * and displayed at the progress bar.
    */
-  private String logMsg;
+  private String            logMsg;
 
   /**
    * Stores the total number of measurements for the building.
    */
-  private int valueCount;
+  private int               valueCount;
 
   /**
    * Stores the total number of rooms for the building.
    */
-  private int roomCount;
+  private int               roomCount;
 
   /**
    * UI: Label "Project Name"
    */
-  private JLabel lblProjectName;
+  private JLabel            lblProjectName;
 
   /**
    * UI: Label "Project Date"
    */
-  private JLabel lblProjectDate;
+  private JLabel            lblProjectDate;
 
   /**
    * UI: Label "Read CSV-File"
    */
-  private JLabel lblCsvFile;
+  private JLabel            lblCsvFile;
 
   /**
    * UI: Label "Detection Limit"
    */
-  private JLabel lblDetectionLimit;
+  private JLabel            lblDetectionLimit;
 
   /**
    * UI: Label "Bq/m\0x00B3"
    */
-  private JLabel lblBqm;
+  private JLabel            lblBqm;
 
   /**
    * UI: Label for first orientation, content: "Import CSV-Files and convert
    * them to OMB-Project-Files which can be used by this tool to run
    * simulations."
    */
-  private JLabel lblHelp;
+  private JLabel            lblHelp;
 
   /**
    * UI: Label "Save OMB-File"
    */
-  private JLabel lblSaveOmbfile;
+  private JLabel            lblSaveOmbfile;
 
   /**
    * UI: Text field to enter the project name.
    */
-  private JTextField txtProjectName;
+  private JTextField        txtProjectName;
 
   /**
    * UI: Text field to enter the absolute path to the CSV file.
    */
-  private JTextField txtCsvFile;
+  private JTextField        txtCsvFile;
 
   /**
    * UI: Text field to enter the absolute path to the OMB object file.
    */
-  private JTextField txtOmbFile;
+  private JTextField        txtOmbFile;
 
   /**
    * UI: Button to open a file browser to select a CSV file.
    */
-  private JButton btnBrowseCsv;
+  private JButton           btnBrowseCsv;
 
   /**
    * UI: Button to start the import process.
    */
-  private JButton btnImport;
+  private JButton           btnImport;
 
   /**
    * UI: Button to open a file browser to save an OMB file.
    */
-  private JButton btnBrowseOmb;
+  private JButton           btnBrowseOmb;
 
   /**
    * UI: Spinner for integer values to set the detection limit of the used
    * instruments.
    */
-  private JSpinner spnrDetectionLimit;
+  private JSpinner          spnrDetectionLimit;
 
   /**
    * UI: Checkbox to select the current date as project date.
    */
-  private JCheckBox chckbxToday;
+  private JCheckBox         chckbxToday;
 
   /**
    * UI: Progress bar to display status of the import process.
    */
-  private JProgressBar progressBarImport;
+  private JProgressBar      progressBarImport;
 
   /**
    * UI: Date chooser to select the project date.
    */
-  private JDateChooser projectDateChooser;
+  private JDateChooser      projectDateChooser;
 
   /**
    * Stores the import process task which will be executed in a separate thread
    * to ensure the UI wont freeze.
    */
-  private ImportTask importTask;
+  private ImportTask        importTask;
 
   /**
    * Gets the total number of measurements for the building. The unit is [h].
@@ -366,6 +372,27 @@ public class OMPanelImport extends JPanel implements ActionListener {
   }
 
   /**
+   * Gets the imported building object which will be stored to file after
+   * import.
+   * 
+   * @return The imported building object.
+   */
+  public OMBuilding getOmbObject() {
+    return this.ombObject;
+  }
+
+  /**
+   * Sets the imported building object which will be stored to file after
+   * import.
+   * 
+   * @param ombObject
+   *          The imported building object.
+   */
+  public void setOmbObject(OMBuilding ombObject) {
+    this.ombObject = ombObject;
+  }
+
+  /**
    * Gets a custom start date which is set by the user creating the building.
    * The date can be choosen either to identify the start date of the
    * measurements or to identify the start date of the simulations. That's up to
@@ -490,6 +517,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
         double detectionLimit = (double) getDetectionLimit();
         OMBuilding building = createBuilding(csvFile, name, date,
             detectionLimit);
+        setOmbObject(building);
         if (building.getRoomCount() >= 4) {
           progressBarImport.setIndeterminate(true);
           db4o.store(building);
@@ -559,7 +587,8 @@ public class OMPanelImport extends JPanel implements ActionListener {
      *          simulations.
      * @param detectionLimit
      *          The detection limit is used to set empty or '0'-values as radon
-     *          concentrations of 0 Bq/m\0x00B3 are most likely below detection limit.
+     *          concentrations of 0 Bq/m\0x00B3 are most likely below detection
+     *          limit.
      * @return An building object which can be used to generate campaigns.
      * @throws IOException
      *           If creating log file or writing logs fails.
@@ -653,7 +682,8 @@ public class OMPanelImport extends JPanel implements ActionListener {
      *          previously parsed CSV-file.
      * @param detectionLimit
      *          The detection limit is used to set empty or '0'-values as radon
-     *          concentrations of 0 Bq/m\0x00B3 are most likely below detection limit.
+     *          concentrations of 0 Bq/m\0x00B3 are most likely below detection
+     *          limit.
      * @return An array consisting of all rooms of the building.
      * @throws IOException
      *           If creating log file or writing logs fails.
@@ -860,7 +890,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
       try {
         JTabbedPane tab = (JTabbedPane) getParent();
         tab.remove(tab.getComponentAt(1));
-        JPanel jpanelData = new OMPanelData(getOmbFile());
+        JPanel jpanelData = new OMPanelData(getOmbFile(), getOmbObject());
         tab.add(jpanelData, "Data", 1);
         tab.updateUI();
       } catch (Exception e) {
@@ -874,7 +904,8 @@ public class OMPanelImport extends JPanel implements ActionListener {
       try {
         JTabbedPane tab = (JTabbedPane) getParent();
         tab.remove(tab.getComponentAt(2));
-        JPanel jpanelSimulation = new OMPanelSimulation(getOmbFile());
+        JPanel jpanelSimulation = new OMPanelSimulation(getOmbFile(),
+            getOmbObject());
         tab.add(jpanelSimulation, "Simulation", 2);
         tab.updateUI();
       } catch (Exception e) {
@@ -888,7 +919,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
       try {
         JTabbedPane tab = (JTabbedPane) getParent();
         tab.remove(tab.getComponentAt(4));
-        JPanel jpanelTesting = new OMPanelTesting(getOmbFile());
+        JPanel jpanelTesting = new OMPanelTesting(getOmbFile(), getOmbObject());
         tab.add(jpanelTesting, "Analyse", 4);
         tab.updateUI();
       } catch (Exception e) {
@@ -987,7 +1018,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
       @Override
       public void focusLost(FocusEvent e) {
 
-        setDetectionLimit((int) spnrDetectionLimit.getValue());
+        setDetectionLimit((Integer) spnrDetectionLimit.getValue());
       }
     });
     spnrDetectionLimit.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
@@ -1076,7 +1107,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
    * An action event handler invoked when the user presses the start button.
    * Performs some validation checks on the input fields and starts the import
    * task. Displays warnings if malformed input is detected.
-   *
+   * 
    * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
    */
   public void actionPerformed(ActionEvent evt) {
@@ -1117,7 +1148,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
               }
               setProjectName(txtProjectName.getText());
               setCsvFile(txtCsvFile.getText());
-              setDetectionLimit((int) spnrDetectionLimit.getValue());
+              setDetectionLimit((Integer) spnrDetectionLimit.getValue());
               progressBarImport.setVisible(true);
               progressBarImport.setStringPainted(true);
               setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

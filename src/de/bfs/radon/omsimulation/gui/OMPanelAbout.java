@@ -38,11 +38,30 @@ import javax.swing.JTextPane;
  */
 public class OMPanelAbout extends JPanel {
 
-  private JLabel lblLogoBfs;
-  private JLabel lblLogoHtw;
-  private JLabel lblLogoGpl;
-  private JTextPane txtpnCredits;
-  private JTextPane txtpnLicense;
+  /**
+   * UI: Icon label: Bundesamt fuer Strahlenschutz.
+   */
+  private JLabel            lblLogoBfs;
+
+  /**
+   * UI: Icon label: Hochschule fuer Technik und Wirtschaft Berlin.
+   */
+  private JLabel            lblLogoHtw;
+
+  /**
+   * UI: Icon label: GNU General Public License 3.
+   */
+  private JLabel            lblLogoGpl;
+
+  /**
+   * UI: Text pane including software description and authors.
+   */
+  private JTextPane         txtpnCredits;
+
+  /**
+   * UI: Text pane including licensing terms and links to source code.
+   */
+  private JTextPane         txtpnLicense;
 
   /**
    * Unique serial version ID.

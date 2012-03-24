@@ -77,203 +77,213 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
   /**
    * Unique serial version ID.
    */
-  private static final long serialVersionUID = -2584829845531323801L;
+  private static final long     serialVersionUID = -2584829845531323801L;
 
   /**
    * Stores the status of the simulation process. Used to update the progress
    * bar.
    */
-  private int status;
+  private int                   status;
 
   /**
    * Stores the current log message which will be both written to the log file
    * and displayed at the progress bar.
    */
-  private String logMsg;
+  private String                logMsg;
 
   /**
    * Stores the selected building which is used to run simulations with.
    */
-  private OMBuilding selectedObject;
+  private OMBuilding            selectedObject;
 
   /**
    * Stores the absolute path to the OMB object which will be used for
    * simulations.
    */
-  private String ombFile;
+  private String                ombFile;
 
   /**
    * Stores the absolute path to the OMS object which will be used analysing the
    * results later on.
    */
-  private String omsFile;
+  private String                omsFile;
+
+  /**
+   * Stores the OMS simulation object which is used for analysing results later.
+   */
+  private OMSimulation          omsObject;
 
   /**
    * Stores a custom name for the object defined by the user.
    */
-  private String projectName;
+  private String                projectName;
 
   /**
    * Indicates whether the current simulation is systematic or random.
    */
-  private boolean isSystematic;
+  private boolean               isSystematic;
 
   /**
    * Stores the number of how many random campaigns will be simulated.
    */
-  private int randomCampaigns;
+  private int                   randomCampaigns;
 
   /**
    * Stores the ratio of 3-of-6-rooms simulations.
    */
-  private int ratio3;
+  private int                   ratio3;
 
   /**
    * Stores the ratio of 4-of-6-rooms simulations.
    */
-  private int ratio4;
+  private int                   ratio4;
 
   /**
    * Stores the ratio of 5-of-6-rooms simulations.
    */
-  private int ratio5;
+  private int                   ratio5;
 
   /**
    * Stores the ratio of 6-of-6-rooms simulations.
    */
-  private int ratio6;
+  private int                   ratio6;
 
   /**
    * Stores the random noise factor.
    */
-  private int randomNoise;
+  private int                   randomNoise;
+
+  /**
+   * UI: Label "This could take a while!"
+   */
+  private JLabel                lblWarning;
 
   /**
    * UI: Label "Select Project"
    */
-  private JLabel lblSelectProject;
+  private JLabel                lblSelectProject;
 
   /**
    * UI: Label "Simulation Type"
    */
-  private JLabel lblSimulationType;
+  private JLabel                lblSimulationType;
 
   /**
    * UI: Label "campaigns"
    */
-  private JLabel lblCampaigns;
+  private JLabel                lblCampaigns;
 
   /**
    * UI: Label "Ratio"
    */
-  private JLabel lblRatio;
+  private JLabel                lblRatio;
 
   /**
    * UI: Label "%"
    */
-  private JLabel lblPercent;
+  private JLabel                lblPercent;
 
   /**
    * UI: Label for first orientation, content: "Select an OMB-Object file to run
    * simulations. Limited random simulations can be saved as OMS-Simulation
    * files used for analysis."
    */
-  private JLabel lblHelp;
+  private JLabel                lblHelp;
 
   /**
    * UI: Label "Select OMB-File"
    */
-  private JLabel lblSelectOmbfile;
+  private JLabel                lblSelectOmbfile;
 
   /**
    * UI: Label "Save OMS-File"
    */
-  private JLabel lblOmsFile;
+  private JLabel                lblOmsFile;
 
   /**
    * UI: Text field to enter the absolute path to the OMB object file.
    */
-  private JTextField txtOmbFile;
+  private JTextField            txtOmbFile;
 
   /**
    * UI: Text field to enter the absolute path to the OMS object file.
    */
-  private JTextField txtOmsFile;
+  private JTextField            txtOmsFile;
 
   /**
    * UI: Button to load an OMB file to panel.
    */
-  private JButton btnRefresh;
+  private JButton               btnRefresh;
 
   /**
    * UI: Button to start the simulation process.
    */
-  private JButton btnStart;
+  private JButton               btnStart;
 
   /**
    * UI: Button to open a file browser to load an OMB file.
    */
-  private JButton btnBrowseOmb;
+  private JButton               btnBrowseOmb;
 
   /**
    * UI: Button to open a file browser to save an OMS file.
    */
-  private JButton btnBrowseOms;
+  private JButton               btnBrowseOms;
 
   /**
    * UI: Spinner for integer values to set the total number of random campaigns.
    */
-  private JSpinner spnrRandomCampaigns;
+  private JSpinner              spnrRandomCampaigns;
 
   /**
    * UI: Spinner for integer values to set the 3-of-6-rooms ratio.
    */
-  private JSpinner spnrRatio3;
+  private JSpinner              spnrRatio3;
 
   /**
    * UI: Spinner for integer values to set the 3-of-6-rooms ratio.
    */
-  private JSpinner spnrRatio4;
+  private JSpinner              spnrRatio4;
 
   /**
    * UI: Spinner for integer values to set the 3-of-6-rooms ratio.
    */
-  private JSpinner spnrRatio5;
+  private JSpinner              spnrRatio5;
 
   /**
    * UI: Spinner for integer values to set the 3-of-6-rooms ratio.
    */
-  private JSpinner spnrRatio6;
+  private JSpinner              spnrRatio6;
 
   /**
    * UI: Spinner for integer values to set the random noise.
    */
-  private JSpinner spnrRandomNoise;
+  private JSpinner              spnrRandomNoise;
 
   /**
    * UI: Checkbox for activating the ratio for 3-of-6-rooms simulations.
    */
-  private JCheckBox chckbxRatio3;
+  private JCheckBox             chckbxRatio3;
 
   /**
    * UI: Checkbox for activating the ratio for 4-of-6-rooms simulations.
    */
-  private JCheckBox chckbxRatio4;
+  private JCheckBox             chckbxRatio4;
 
   /**
    * UI: Checkbox for activating the ratio for 5-of-6-rooms simulations.
    */
-  private JCheckBox chckbxRatio5;
+  private JCheckBox             chckbxRatio5;
 
   /**
    * UI: Checkbox for activating the ratio for 6-of-6-rooms simulations.
    */
-  private JCheckBox chckbxRatio6;
+  private JCheckBox             chckbxRatio6;
 
   /**
    * UI: Checkbox for activating the random noise.
    */
-  private JCheckBox chckbxRandomNoise;
+  private JCheckBox             chckbxRandomNoise;
 
   /**
    * UI: Combobox to display all loaded buildings.
@@ -283,29 +293,29 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
   /**
    * UI: Radio button to select systematic simulations.
    */
-  private JRadioButton rdbtnSystematic;
+  private JRadioButton          rdbtnSystematic;
 
   /**
    * UI: Radio button to select random simulations.
    */
-  private JRadioButton rdbtnRandom;
+  private JRadioButton          rdbtnRandom;
 
   /**
    * UI: Progress bar to display the simulation status and messages.
    */
-  private JProgressBar progressBarSimulation;
+  private JProgressBar          progressBarSimulation;
 
   /**
    * Stores the refreshing process task which will be executed in a separate
    * thread to ensure the UI wont freeze.
    */
-  private Refresh refreshTask;
+  private Refresh               refreshTask;
 
   /**
    * Stores the simulation process task which will be executed in a separate
    * thread to ensure the UI wont freeze.
    */
-  private Simulation simulationTask;
+  private Simulation            simulationTask;
 
   /**
    * Gets the absolute path to the OMB object which will be used for
@@ -347,6 +357,25 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
    */
   public void setOmsFile(String omsFile) {
     this.omsFile = omsFile;
+  }
+
+  /**
+   * Gets the OMS simulation object which is used for analysing results later.
+   * 
+   * @return The OMS simulation object.
+   */
+  public OMSimulation getOmsObject() {
+    return this.omsObject;
+  }
+
+  /**
+   * Sets the OMS simulation object which is used for analysing results later.
+   * 
+   * @param omsObject
+   *          The OMS simulation object.
+   */
+  public void setOmsObject(OMSimulation omsObject) {
+    this.omsObject = omsObject;
   }
 
   /**
@@ -851,6 +880,15 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
             }
           }
         }
+        String totalCsvPath = getOmbFile() + "_simulation.campaigns.csv";
+        File totalCsvFile = new File(totalCsvPath);
+        FileWriter totalCsvWriter = new FileWriter(totalCsvFile);
+        BufferedWriter totalCsvOutput = new BufferedWriter(totalCsvWriter);
+        String strFormat = "#.#########";
+        DecimalFormat decFormat = new DecimalFormat(strFormat);
+        totalCsvOutput
+            .write("\"ID\";\"CAMPAIGN\";\"START\";\"R_AM\";\"R_GM\";\"R_MED\";\"R_MAX\";\"C_AM\";\"C_GM\";\"C_MED\";\"C_MAX\"");
+        totalCsvOutput.newLine();
         if (max <= 1000000) {
           isDescriptive = true;
           if (campaignLengthSix > 0) {
@@ -874,7 +912,18 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                 cellarMedDescriptiveStats.addValue(campaign.getCellarMedian());
                 roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
                 cellarMaxDescriptiveStats.addValue(campaign.getCellarMaxima());
-                logOnly(campaign.toString(), (int) perc);
+                // logOnly(campaign.toString(), (int) perc);
+                totalCsvOutput.write("\"" + x + "\";\""
+                    + campaign.getVariation() + "\";\"" + campaign.getStart()
+                    + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
+                    + (int) campaign.getRoomLogAvarage() + "\";\""
+                    + (int) campaign.getRoomMedian() + "\";\""
+                    + (int) campaign.getRoomMaxima() + "\";\""
+                    + (int) campaign.getCellarAvarage() + "\";\""
+                    + (int) campaign.getCellarLogAvarage() + "\";\""
+                    + (int) campaign.getCellarMedian() + "\";\""
+                    + (int) campaign.getCellarMaxima() + "\"");
+                totalCsvOutput.newLine();
                 x++;
               }
             }
@@ -910,7 +959,18 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                   roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
                   cellarMaxDescriptiveStats
                       .addValue(campaign.getCellarMaxima());
-                  logOnly(campaign.toString(), (int) perc);
+                  // logOnly(campaign.toString(), (int) perc);
+                  totalCsvOutput.write("\"" + x + "\";\""
+                      + campaign.getVariation() + "\";\"" + campaign.getStart()
+                      + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
+                      + (int) campaign.getRoomLogAvarage() + "\";\""
+                      + (int) campaign.getRoomMedian() + "\";\""
+                      + (int) campaign.getRoomMaxima() + "\";\""
+                      + (int) campaign.getCellarAvarage() + "\";\""
+                      + (int) campaign.getCellarLogAvarage() + "\";\""
+                      + (int) campaign.getCellarMedian() + "\";\""
+                      + (int) campaign.getCellarMaxima() + "\"");
+                  totalCsvOutput.newLine();
                   x++;
                 }
               }
@@ -946,7 +1006,19 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                     roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
                     cellarMaxDescriptiveStats.addValue(campaign
                         .getCellarMaxima());
-                    logOnly(campaign.toString(), (int) perc);
+                    // logOnly(campaign.toString(), (int) perc);
+                    totalCsvOutput.write("\"" + x + "\";\""
+                        + campaign.getVariation() + "\";\""
+                        + campaign.getStart() + "\";\""
+                        + (int) campaign.getRoomAvarage() + "\";\""
+                        + (int) campaign.getRoomLogAvarage() + "\";\""
+                        + (int) campaign.getRoomMedian() + "\";\""
+                        + (int) campaign.getRoomMaxima() + "\";\""
+                        + (int) campaign.getCellarAvarage() + "\";\""
+                        + (int) campaign.getCellarLogAvarage() + "\";\""
+                        + (int) campaign.getCellarMedian() + "\";\""
+                        + (int) campaign.getCellarMaxima() + "\"");
+                    totalCsvOutput.newLine();
                     x++;
                   }
                 }
@@ -985,7 +1057,19 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                           .addValue(campaign.getRoomMaxima());
                       cellarMaxDescriptiveStats.addValue(campaign
                           .getCellarMaxima());
-                      logOnly(campaign.toString(), (int) perc);
+                      // logOnly(campaign.toString(), (int) perc);
+                      totalCsvOutput.write("\"" + x + "\";\""
+                          + campaign.getVariation() + "\";\""
+                          + campaign.getStart() + "\";\""
+                          + (int) campaign.getRoomAvarage() + "\";\""
+                          + (int) campaign.getRoomLogAvarage() + "\";\""
+                          + (int) campaign.getRoomMedian() + "\";\""
+                          + (int) campaign.getRoomMaxima() + "\";\""
+                          + (int) campaign.getCellarAvarage() + "\";\""
+                          + (int) campaign.getCellarLogAvarage() + "\";\""
+                          + (int) campaign.getCellarMedian() + "\";\""
+                          + (int) campaign.getCellarMaxima() + "\"");
+                      totalCsvOutput.newLine();
                       x++;
                     }
                   }
@@ -1025,7 +1109,18 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                 cellarMedSummaryStats.addValue(campaign.getCellarMedian());
                 roomMaxSummaryStats.addValue(campaign.getRoomMaxima());
                 cellarMaxSummaryStats.addValue(campaign.getCellarMaxima());
-                logOnly(campaign.toString(), (int) perc);
+                // logOnly(campaign.toString(), (int) perc);
+                totalCsvOutput.write("\"" + x + "\";\""
+                    + campaign.getVariation() + "\";\"" + campaign.getStart()
+                    + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
+                    + (int) campaign.getRoomLogAvarage() + "\";\""
+                    + (int) campaign.getRoomMedian() + "\";\""
+                    + (int) campaign.getRoomMaxima() + "\";\""
+                    + (int) campaign.getCellarAvarage() + "\";\""
+                    + (int) campaign.getCellarLogAvarage() + "\";\""
+                    + (int) campaign.getCellarMedian() + "\";\""
+                    + (int) campaign.getCellarMaxima() + "\"");
+                totalCsvOutput.newLine();
                 x++;
               }
             }
@@ -1057,7 +1152,18 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                   cellarMedSummaryStats.addValue(campaign.getCellarMedian());
                   roomMaxSummaryStats.addValue(campaign.getRoomMaxima());
                   cellarMaxSummaryStats.addValue(campaign.getCellarMaxima());
-                  logOnly(campaign.toString(), (int) perc);
+                  // logOnly(campaign.toString(), (int) perc);
+                  totalCsvOutput.write("\"" + x + "\";\""
+                      + campaign.getVariation() + "\";\"" + campaign.getStart()
+                      + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
+                      + (int) campaign.getRoomLogAvarage() + "\";\""
+                      + (int) campaign.getRoomMedian() + "\";\""
+                      + (int) campaign.getRoomMaxima() + "\";\""
+                      + (int) campaign.getCellarAvarage() + "\";\""
+                      + (int) campaign.getCellarLogAvarage() + "\";\""
+                      + (int) campaign.getCellarMedian() + "\";\""
+                      + (int) campaign.getCellarMaxima() + "\"");
+                  totalCsvOutput.newLine();
                   x++;
                 }
               }
@@ -1089,7 +1195,19 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                     cellarMedSummaryStats.addValue(campaign.getCellarMedian());
                     roomMaxSummaryStats.addValue(campaign.getRoomMaxima());
                     cellarMaxSummaryStats.addValue(campaign.getCellarMaxima());
-                    logOnly(campaign.toString(), (int) perc);
+                    // logOnly(campaign.toString(), (int) perc);
+                    totalCsvOutput.write("\"" + x + "\";\""
+                        + campaign.getVariation() + "\";\""
+                        + campaign.getStart() + "\";\""
+                        + (int) campaign.getRoomAvarage() + "\";\""
+                        + (int) campaign.getRoomLogAvarage() + "\";\""
+                        + (int) campaign.getRoomMedian() + "\";\""
+                        + (int) campaign.getRoomMaxima() + "\";\""
+                        + (int) campaign.getCellarAvarage() + "\";\""
+                        + (int) campaign.getCellarLogAvarage() + "\";\""
+                        + (int) campaign.getCellarMedian() + "\";\""
+                        + (int) campaign.getCellarMaxima() + "\"");
+                    totalCsvOutput.newLine();
                     x++;
                   }
                 }
@@ -1124,7 +1242,19 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                       roomMaxSummaryStats.addValue(campaign.getRoomMaxima());
                       cellarMaxSummaryStats
                           .addValue(campaign.getCellarMaxima());
-                      logOnly(campaign.toString(), (int) perc);
+                      // logOnly(campaign.toString(), (int) perc);
+                      totalCsvOutput.write("\"" + x + "\";\""
+                          + campaign.getVariation() + "\";\""
+                          + campaign.getStart() + "\";\""
+                          + (int) campaign.getRoomAvarage() + "\";\""
+                          + (int) campaign.getRoomLogAvarage() + "\";\""
+                          + (int) campaign.getRoomMedian() + "\";\""
+                          + (int) campaign.getRoomMaxima() + "\";\""
+                          + (int) campaign.getCellarAvarage() + "\";\""
+                          + (int) campaign.getCellarLogAvarage() + "\";\""
+                          + (int) campaign.getCellarMedian() + "\";\""
+                          + (int) campaign.getCellarMaxima() + "\"");
+                      totalCsvOutput.newLine();
                       x++;
                     }
                   }
@@ -1143,8 +1273,10 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           }
         }
         tmpUpdate("Generated " + x + " campaigns.", (int) perc);
+        totalCsvOutput.close();
         String csvPath = "";
-        if (getOmsFile() != null && !getOmsFile().equals("") && !getOmsFile().equals(" ")) {
+        if (getOmsFile() != null && !getOmsFile().equals("")
+            && !getOmsFile().equals(" ")) {
           csvPath = getOmsFile();
         } else {
           csvPath = getOmbFile();
@@ -1153,8 +1285,6 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         File logFile = new File(logName);
         FileWriter logWriter = new FileWriter(logFile);
         BufferedWriter csvOutput = new BufferedWriter(logWriter);
-        String strFormat = "#.#########";
-        DecimalFormat decFormat = new DecimalFormat(strFormat);
         if (isDescriptive) {
           descriptiveStatistics(x, roomAmDescriptiveStats,
               cellarAmDescriptiveStats, roomGmDescriptiveStats,
@@ -1431,9 +1561,11 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                 mod = a % 100;
                 if (mod == 0) {
                   perc = (long) (((double) x / (double) absoluteTotal) * (double) 100.0);
-                  tmpUpdate("Status: " + perc + "% (Estimated time left: "
-                    + timeLeft(((double) x / (double) absoluteTotal) * (double) 100.0) + ")",
-                    (int) perc);
+                  tmpUpdate("Status: "
+                      + perc
+                      + "% (Estimated time left: "
+                      + timeLeft(((double) x / (double) absoluteTotal)
+                          * (double) 100.0) + ")", (int) perc);
                 }
                 if (total > 1) {
                   start = generator.nextInt(total);
@@ -1471,9 +1603,11 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                   mod = a % 100;
                   if (mod == 0) {
                     perc = (long) (((double) x / (double) absoluteTotal) * (double) 100.0);
-                    tmpUpdate("Status: " + perc + "% (Estimated time left: "
-                      + timeLeft(((double) x / (double) absoluteTotal) * (double) 100.0) + ")",
-                      (int) perc);
+                    tmpUpdate("Status: "
+                        + perc
+                        + "% (Estimated time left: "
+                        + timeLeft(((double) x / (double) absoluteTotal)
+                            * (double) 100.0) + ")", (int) perc);
                   }
                   if (total > 1) {
                     start = generator.nextInt(total);
@@ -1514,9 +1648,11 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                     mod = a % 100;
                     if (mod == 0) {
                       perc = (long) (((double) x / (double) absoluteTotal) * (double) 100.0);
-                      tmpUpdate("Status: " + perc + "% (Estimated time left: "
-                        + timeLeft(((double) x / (double) absoluteTotal) * (double) 100.0) + ")",
-                        (int) perc);
+                      tmpUpdate("Status: "
+                          + perc
+                          + "% (Estimated time left: "
+                          + timeLeft(((double) x / (double) absoluteTotal)
+                              * (double) 100.0) + ")", (int) perc);
                     }
                     if (total > 1) {
                       start = generator.nextInt(total);
@@ -1559,9 +1695,11 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                       mod = a % 100;
                       if (mod == 0) {
                         perc = (long) (((double) x / (double) absoluteTotal) * (double) 100.0);
-                        tmpUpdate("Status: " + perc + "% (Estimated time left: "
-                          + timeLeft(((double) x / (double) absoluteTotal) * (double) 100.0) + ")",
-                          (int) perc);
+                        tmpUpdate("Status: "
+                            + perc
+                            + "% (Estimated time left: "
+                            + timeLeft(((double) x / (double) absoluteTotal)
+                                * (double) 100.0) + ")", (int) perc);
                       }
                       if (total > 1) {
                         start = generator.nextInt(total);
@@ -1644,7 +1782,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           }
           tmpUpdate("Generated " + x + " campaigns.", (int) perc);
           String csvPath = "";
-          if (getOmsFile() != null && !getOmsFile().equals("") && !getOmsFile().equals(" ")) {
+          if (getOmsFile() != null && !getOmsFile().equals("")
+              && !getOmsFile().equals(" ")) {
             csvPath = getOmsFile();
           } else {
             csvPath = getOmbFile();
@@ -1673,6 +1812,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                 cellarGmDescriptiveStats, roomMedDescriptiveStats,
                 cellarMedDescriptiveStats, roomMaxDescriptiveStats,
                 cellarMaxDescriptiveStats);
+            setOmsObject(simulation);
             db4o.store(simulation);
             db4o.close();
             tmpUpdate(
@@ -1975,7 +2115,6 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           .write("\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \"");
       csvOutput.newLine();
 
-
       csvOutput.write("\" \";\" \";\" \";\"N\";\"" + x
           + "\";\" \";\" \";\" \";\" \";\" \"");
     }
@@ -2153,7 +2292,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           if (time > 48) {
             strFormat = "#.##";
             time = time / 24.0;
-            unit = " days.";     
+            unit = " days.";
             if (time > 50) {
               strFormat = "#.##";
               time = time / 28.0;
@@ -2195,7 +2334,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         try {
           JTabbedPane tab = (JTabbedPane) getParent();
           tab.remove(tab.getComponentAt(3));
-          JPanel jpanelResults = new OMPanelResults(getOmsFile());
+          JPanel jpanelResults = new OMPanelResults(getOmsFile(),
+              getOmsObject());
           tab.add(jpanelResults, "Results", 3);
           tab.updateUI();
         } catch (Exception e) {
@@ -2219,19 +2359,15 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
    * 
    * @param omb
    *          Absolute path to an OMB object file to load on init.
+   * @param building
+   *          The imported building object.
    */
-  public OMPanelSimulation(String omb) {
+  public OMPanelSimulation(String omb, OMBuilding building) {
     initialize();
     txtOmbFile.setText(omb);
     setOmbFile(omb);
-    btnRefresh.setEnabled(false);
-    comboBoxSelectProject.setEnabled(false);
-    setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-    progressBarSimulation.setVisible(true);
-    progressBarSimulation.setStringPainted(true);
-    progressBarSimulation.setIndeterminate(true);
-    refreshTask = new Refresh();
-    refreshTask.execute();
+    comboBoxSelectProject.addItem(building);
+    comboBoxSelectProject.setEnabled(true);
   }
 
   /**
@@ -2298,6 +2434,12 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
     btnBrowseOms.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(btnBrowseOms);
 
+    lblWarning = new JLabel("This could take a while, grab a coffee!");
+    lblWarning.setBounds(421, 94, 319, 15);
+    lblWarning.setForeground(new Color(255, 0, 0, 255));
+    lblWarning.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
+    add(lblWarning);
+
     lblSelectProject = new JLabel("Select Project");
     lblSelectProject.setBounds(10, 65, 132, 14);
     lblSelectProject.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
@@ -2327,7 +2469,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
     spnrRandomCampaigns.addFocusListener(new FocusAdapter() {
       @Override
       public void focusLost(FocusEvent e) {
-        setRandomCampaigns((int) spnrRandomCampaigns.getValue());
+        setRandomCampaigns((Integer) spnrRandomCampaigns.getValue());
       }
     });
     spnrRandomCampaigns.setModel(new SpinnerNumberModel(10000, 10, 100000, 1));
@@ -2340,7 +2482,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       @Override
       public void focusLost(FocusEvent e) {
         if (chckbxRatio3.isSelected()) {
-          setRatio3((int) spnrRatio3.getValue());
+          setRatio3((Integer) spnrRatio3.getValue());
         } else {
           setRatio3(0);
           spnrRatio3.setEnabled(false);
@@ -2357,7 +2499,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       @Override
       public void focusLost(FocusEvent e) {
         if (chckbxRatio4.isSelected()) {
-          setRatio4((int) spnrRatio4.getValue());
+          setRatio4((Integer) spnrRatio4.getValue());
         } else {
           setRatio4(0);
           spnrRatio4.setEnabled(false);
@@ -2374,7 +2516,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       @Override
       public void focusLost(FocusEvent e) {
         if (chckbxRatio5.isSelected()) {
-          setRatio5((int) spnrRatio5.getValue());
+          setRatio5((Integer) spnrRatio5.getValue());
         } else {
           setRatio5(0);
           spnrRatio5.setEnabled(false);
@@ -2391,7 +2533,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       @Override
       public void focusLost(FocusEvent e) {
         if (chckbxRatio6.isSelected()) {
-          setRatio6((int) spnrRatio6.getValue());
+          setRatio6((Integer) spnrRatio6.getValue());
         } else {
           setRatio6(0);
           spnrRatio6.setEnabled(false);
@@ -2408,7 +2550,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       @Override
       public void focusLost(FocusEvent e) {
         if (chckbxRandomNoise.isSelected()) {
-          setRandomNoise((int) spnrRandomNoise.getValue());
+          setRandomNoise((Integer) spnrRandomNoise.getValue());
         } else {
           setRandomNoise(0);
           spnrRandomNoise.setEnabled(false);
@@ -2593,7 +2735,6 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
     add(btnBrowseOmb);
 
     rdbtnSystematic = new JRadioButton("Systematic all campaigns");
-    rdbtnSystematic.setSelected(true);
     rdbtnSystematic.addChangeListener(new ChangeListener() {
       public void stateChanged(ChangeEvent arg0) {
         if (rdbtnSystematic.isSelected()) {
@@ -2611,6 +2752,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           lblRatio.setEnabled(false);
           lblCampaigns.setEnabled(false);
           lblOmsFile.setEnabled(false);
+          lblWarning.setVisible(true);
           txtOmsFile.setEnabled(false);
           btnBrowseOms.setEnabled(false);
         } else {
@@ -2619,11 +2761,12 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         }
       }
     });
-    rdbtnSystematic.setBounds(152, 90, 356, 23);
+    rdbtnSystematic.setBounds(152, 90, 259, 23);
     rdbtnSystematic.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     add(rdbtnSystematic);
 
     rdbtnRandom = new JRadioButton("Random");
+    rdbtnRandom.setSelected(true);
     rdbtnRandom.addChangeListener(new ChangeListener() {
       public void stateChanged(ChangeEvent e) {
         if (rdbtnRandom.isSelected()) {
@@ -2637,6 +2780,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           lblRatio.setEnabled(true);
           lblCampaigns.setEnabled(true);
           lblOmsFile.setEnabled(true);
+          lblWarning.setVisible(false);
           txtOmsFile.setEnabled(true);
           btnBrowseOms.setEnabled(true);
         } else {
@@ -2733,6 +2877,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
     spnrRatio4.setValue(5);
     spnrRatio3.setValue(2);
     spnrRandomNoise.setValue(5);
+    lblWarning.setVisible(false);
   }
 
   /**
@@ -2751,30 +2896,30 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       setRandomCampaigns(0);
     } else {
       setSystematic(false);
-      setRandomCampaigns((int) spnrRandomCampaigns.getValue());
+      setRandomCampaigns((Integer) spnrRandomCampaigns.getValue());
     }
     if (chckbxRatio3.isSelected()) {
-      setRatio3((int) spnrRatio3.getValue());
+      setRatio3((Integer) spnrRatio3.getValue());
     } else {
       setRatio3(0);
     }
     if (chckbxRatio4.isSelected()) {
-      setRatio4((int) spnrRatio4.getValue());
+      setRatio4((Integer) spnrRatio4.getValue());
     } else {
       setRatio4(0);
     }
     if (chckbxRatio5.isSelected()) {
-      setRatio5((int) spnrRatio5.getValue());
+      setRatio5((Integer) spnrRatio5.getValue());
     } else {
       setRatio5(0);
     }
     if (chckbxRatio6.isSelected()) {
-      setRatio6((int) spnrRatio6.getValue());
+      setRatio6((Integer) spnrRatio6.getValue());
     } else {
       setRatio6(0);
     }
     if (chckbxRandomNoise.isSelected()) {
-      setRandomNoise((int) spnrRandomNoise.getValue());
+      setRandomNoise((Integer) spnrRandomNoise.getValue());
     } else {
       setRandomNoise(0);
     }

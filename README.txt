@@ -1,5 +1,5 @@
 ------------------------------------
-* OM Simulation Tool v0.4.49-beta4 *
+*  OM Simulation Tool v0.4.50-rc1  *
 ------------------------------------
 
 Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -95,8 +95,24 @@ of this document (8. Notice).
 
 6. Changelog
 ----------------------------------
+0.4.50-rc1: (2012-03-24)
+    - first release canditate
+    - added warning message that systematic simulations could take a while
+    - systematic simulated campaigns now get stored to csv instead of log file
+    - campaign charts improved
+      - now able to display random noise effects correctly
+      - some minor changes to campaign source to simplify requests
+    - improved fullscreen view
+    - improved performance while loading/storing objects
+      - this also fixes that the simulation tab didn't load the object on init
+    - removed export limit (at >65k items) for csv files
+    - added vmargs to ant script
+    - added missing code documentation
+    - minor changes to code formatting
+    - updated documentation
+
 0.4.49-beta4: (2012-03-22)
-    - fixed some minor layout issues (mac)
+    - fixed some minor layout issues (mac os)
 
 0.4.48-beta4: (2012-03-12)
     - added MANUAL.html

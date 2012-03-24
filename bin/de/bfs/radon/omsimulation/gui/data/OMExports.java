@@ -29,6 +29,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 import javax.swing.JOptionPane;
 
 import org.jfree.chart.JFreeChart;
@@ -91,8 +92,7 @@ public abstract class OMExports {
       g2D.dispose();
       contentByte.addTemplate(template, 0, 0);
     } catch (DocumentException de) {
-      JOptionPane.showMessageDialog(null,
-          "Failed to write PDF document.\n"
+      JOptionPane.showMessageDialog(null, "Failed to write PDF document.\n"
           + de.getMessage(), "Failed", JOptionPane.ERROR_MESSAGE);
       de.printStackTrace();
     }

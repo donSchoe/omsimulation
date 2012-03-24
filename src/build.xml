@@ -5,7 +5,7 @@
 <project name="OMSimulation" default="run" basedir="..">
     <property name="name" value="omsimulation" />
     <property name="Name" value="OMSimulation" />
-    <property name="version" value="0.4.49-beta4" />
+    <property name="version" value="0.4.50-rc1" />
     <property name="author" value="Alexander Schoedon" />
     <property name="modified" value="2012-03-22" />
     <property name="year" value="2012" />
@@ -36,6 +36,7 @@ java -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*:${bin.dir}/${name}-$
         <chmod file="${run.cmd}" perm="ugo+rx"/>
         <echo>Running: ${bin.dir}/${name}-${version}.jar</echo>
         <java fork="true" classname="${main.class}">
+            <jvmarg line="-Xss1024k -Xmn256m -Xms512m -Xmx1024m"/>
             <classpath>
                 <path refid="classpath"/>
                 <path location="${bin.dir}/${name}-${version}.jar"/>

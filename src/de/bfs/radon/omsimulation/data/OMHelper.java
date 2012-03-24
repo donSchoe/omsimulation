@@ -45,7 +45,7 @@ public abstract class OMHelper {
   /**
    * Indicates whether a logoutput buffer is initialized or not.
    */
-  private static boolean isLogOutputEnabled = false;
+  private static boolean        isLogOutputEnabled = false;
 
   /**
    * Sets the log-writer, creates a filename based on the path and the project

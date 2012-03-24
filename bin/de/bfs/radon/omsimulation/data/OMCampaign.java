@@ -37,13 +37,13 @@ public class OMCampaign {
    * Stores the timestamp of the first measurement for the simulated campaign,
    * starting with 0 for the first hour of the real value-sets. The unit is [h].
    */
-  private int start;
+  private int            start;
 
   /**
    * Stores a simple string to identify the used rooms and their order in this
    * campaign.
    */
-  private String variation;
+  private String         variation;
 
   /**
    * Stores the campaign type. The campaign type identifies how many different
@@ -57,183 +57,189 @@ public class OMCampaign {
    * values. A random noise of 0 means the original values wont be modified. The
    * unit is [%].
    */
-  private int randomNoise;
+  private int            randomNoise;
 
   /**
    * Stores all rooms and the cellars keeping their order to simplify
    * reconstruction of the campaign later.
    */
-  private OMRoom[] roomPattern;
+  private OMRoom[]       roomPattern;
 
   /**
    * Stores an array of different rooms of the simulated survey campaign.
    */
-  private OMRoom[] rooms;
+  private OMRoom[]       rooms;
 
   /**
    * Stores the cellar for the campaign.
    */
-  private OMRoom cellar;
+  private OMRoom         cellar;
 
   /**
-   * Stores an array of selected values of all 6 normal rooms. The first values
+   * Stores an array of selected values of all 6 normal rooms. The first value
    * is determined by the start timestamp. The unit is [Bq/m^3].
    */
-  private double[] roomValues;
+  private double[]       roomValues;
 
   /**
    * Stores an array of selected values for the cellar room. The first value is
    * determined by the start timestamp. The unit is [Bq/m^3].
    */
-  private double[] cellarValues;
+  private double[]       cellarValues;
+
+  /**
+   * Stores an array of selected values for the whole campaign. The first value
+   * is determined by the start timestamp. The unit is [Bq/m^3].
+   */
+  private double[]       valueChain;
 
   /**
    * Stores an array of logarithmic values of the normal values. Used for
    * geometric mean later on.
    */
-  private double[] roomLogValues;
+  private double[]       roomLogValues;
 
   /**
    * Stores an array of logarithmic values for the cellar values. Used for
    * geometric mean later on.
    */
-  private double[] cellarLogValues;
+  private double[]       cellarLogValues;
 
   /**
    * Stores the arithmetic average of the selected values for normal rooms. The
    * unit is [Bq/m^3].
    */
-  private double roomAvarage;
+  private double         roomAvarage;
 
   /**
    * Stores the arithmetic avarage of the selected cellar. The unit is [Bq/m^3].
    */
-  private double cellarAvarage;
+  private double         cellarAvarage;
 
   /**
    * Stores the highest value out of the selected normal rooms. The unit is
    * [Bq/m^3].
    */
-  private double roomMaxima;
+  private double         roomMaxima;
 
   /**
    * Stores the highest value out of the selected cellar. The unit is [Bq/m^3].
    */
-  private double cellarMaxima;
+  private double         cellarMaxima;
 
   /**
    * Stores the lowest value out of the selected normal rooms. The unit is
    * [Bq/m^3].
    */
-  private double roomMinima;
+  private double         roomMinima;
 
   /**
    * Stores the lowest value out of the selected cellar. The unit is [Bq/m^3].
    */
-  private double cellarMinima;
+  private double         cellarMinima;
 
   /**
    * Stores the standard deviation of the selected values for normal rooms. The
    * unit is [Bq/m^3].
    */
-  private double roomDeviation;
+  private double         roomDeviation;
 
   /**
    * Stroes the standard deviation of the selected cellar. The unit is [Bq/m^3].
    */
-  private double cellarDeviation;
+  private double         cellarDeviation;
 
   /**
    * Stores the variation coefficient which determines the ratio between
    * arithmetic mean and standard deviation for normal rooms.
    */
-  private double roomVarCoefficient;
+  private double         roomVarCoefficient;
 
   /**
    * Stores the variation coefficient which determines the ratio between
    * arithmetic mean and standard deviation for cellars.
    */
-  private double cellarVarCoefficient;
+  private double         cellarVarCoefficient;
 
   /**
    * Stores the range of the values which is calculated by substracting the
    * minimum by the maximum value for normal rooms. The unit is [Bq/m^3].
    */
-  private double roomRange;
+  private double         roomRange;
 
   /**
    * Stores the range of the values which is calculated by substracting the
    * minimum by the maximum value for cellar rooms. The unit is [Bq/m^3].
    */
-  private double cellarRange;
+  private double         cellarRange;
 
   /**
    * Stores the quantile 5 for normal rooms, where only 5% of the values are
    * lower. The unit is [Bq/m^3].
    */
-  private double roomQuantile05;
+  private double         roomQuantile05;
 
   /**
    * Stores the quantile 5 for cellar rooms, where only 5% of values are lower.
    * The unit is [Bq/m^3].
    */
-  private double cellarQuantile05;
+  private double         cellarQuantile05;
 
   /**
    * Stores the quantile 95 for normal rooms, where 95% of the values are lower.
    * The unit is [Bq/m^3].
    */
-  private double roomQuantile95;
+  private double         roomQuantile95;
 
   /**
    * Stores the quantile 95 for cellar rooms, where 95% of the values are lower.
    * The unit is [Bq/m^3].
    */
-  private double cellarQuantile95;
+  private double         cellarQuantile95;
 
   /**
    * Stores the median (quantile 50) for normal rooms, where 50% of the values
    * are lower. The unit is [Bq/m^3].
    */
-  private double roomMedian;
+  private double         roomMedian;
 
   /**
    * Stores the median (quantile 50) for cellar rooms, where 50% of the values
    * are lower. The unit is [Bq/m^3].
    */
-  private double cellarMedian;
+  private double         cellarMedian;
 
   /**
    * Stores the quantile deviation for normal rooms which determines the ratio
    * of the quantiles.
    */
-  private double roomQuantileDeviation;
+  private double         roomQuantileDeviation;
 
   /**
    * Stores the quantile deviation for cellar rooms which determines the ratio
    * of the quantiles.
    */
-  private double cellarQuantileDeviation;
+  private double         cellarQuantileDeviation;
 
   /**
    * Stores the geometric mean for normal rooms. The unit is [Bq/m^3].
    */
-  private double roomLogAvarage;
+  private double         roomLogAvarage;
 
   /**
    * Stores the geometric mean for cellar rooms. The unit is [Bq/m^3].
    */
-  private double cellarLogAvarage;
+  private double         cellarLogAvarage;
 
   /**
    * Stores the geometric standard deviation for normal rooms.
    */
-  private double roomLogDeviation;
+  private double         roomLogDeviation;
 
   /**
    * Stores the geometric standard deviation for cellar rooms.
    */
-  private double cellarLogDeviation;
+  private double         cellarLogDeviation;
 
   /**
    * Gets the timestamp of the first measurement for the simulated campaign. The
@@ -667,7 +673,6 @@ public class OMCampaign {
       }
       x++;
     }
-    Arrays.sort(values);
     this.roomValues = values;
   }
 
@@ -713,8 +718,106 @@ public class OMCampaign {
       }
       x++;
     }
-    Arrays.sort(values);
     this.cellarValues = values;
+  }
+
+  /**
+   * Gets an array of selected values for the whole campaign. The first value is
+   * determined by the start timestamp. The unit is [Bq/m^3].
+   * 
+   * @return An array of selected values for the whole campaign.
+   */
+  public double[] getValueChain() {
+    return this.valueChain;
+  }
+
+  /**
+   * Sets an array of selected values for the whole campaign. The first value is
+   * determined by the start timestamp. The unit is [Bq/m^3].
+   * 
+   * @param valueChain
+   *          An array of selected values for the whole campaign.
+   */
+  private void setValueChain() {
+    OMRoom[] roomPattern = this.roomPattern;
+    double[] roomValues = this.roomValues;
+    double[] cellarValues = this.cellarValues;
+    double[] valueChain = new double[168];
+    int r = 0;
+    int c = 0;
+    int a = 0;
+    for (int i = a; i < a + 24; i++) {
+      if (roomPattern[0].getType() == OMRoomType.Room) {
+        valueChain[i] = roomValues[r];
+        r++;
+      } else {
+        valueChain[i] = cellarValues[c];
+        c++;
+      }
+    }
+    a = a + 24;
+    for (int i = a; i < a + 24; i++) {
+      if (roomPattern[1].getType() == OMRoomType.Room) {
+        valueChain[i] = roomValues[r];
+        r++;
+      } else {
+        valueChain[i] = cellarValues[c];
+        c++;
+      }
+    }
+    a = a + 24;
+    for (int i = a; i < a + 24; i++) {
+      if (roomPattern[2].getType() == OMRoomType.Room) {
+        valueChain[i] = roomValues[r];
+        r++;
+      } else {
+        valueChain[i] = cellarValues[c];
+        c++;
+      }
+    }
+    a = a + 24;
+    for (int i = a; i < a + 24; i++) {
+      if (roomPattern[3].getType() == OMRoomType.Room) {
+        valueChain[i] = roomValues[r];
+        r++;
+      } else {
+        valueChain[i] = cellarValues[c];
+        c++;
+      }
+    }
+    a = a + 24;
+    for (int i = a; i < a + 24; i++) {
+      if (roomPattern[4].getType() == OMRoomType.Room) {
+        valueChain[i] = roomValues[r];
+        r++;
+      } else {
+        valueChain[i] = cellarValues[c];
+        c++;
+      }
+    }
+    a = a + 24;
+    for (int i = a; i < a + 24; i++) {
+      if (roomPattern[5].getType() == OMRoomType.Room) {
+        valueChain[i] = roomValues[r];
+        r++;
+      } else {
+        valueChain[i] = cellarValues[c];
+        c++;
+      }
+    }
+    a = a + 24;
+    for (int i = a; i < a + 24; i++) {
+      if (roomPattern[6].getType() == OMRoomType.Room) {
+        valueChain[i] = roomValues[r];
+        r++;
+      } else {
+        valueChain[i] = cellarValues[c];
+        c++;
+      }
+    }
+    this.valueChain = valueChain;
+    Arrays.sort(this.roomValues);
+    Arrays.sort(this.cellarValues);
   }
 
   /**
@@ -1368,6 +1471,8 @@ public class OMCampaign {
   public void calculateAttributes() throws IOException {
     setType();
     setRoomValues();
+    setCellarValues();
+    setValueChain();
     setRoomLogValues();
     setRoomAvarage();
     setRoomMaxima();
@@ -1381,7 +1486,6 @@ public class OMCampaign {
     setRoomQuantileDeviation();
     setRoomLogAvarage();
     setRoomLogDeviation();
-    setCellarValues();
     setCellarLogValues();
     setCellarAvarage();
     setCellarMaxima();

@@ -26,6 +26,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
@@ -75,69 +76,69 @@ public class OMPanelData extends JPanel {
   /**
    * Unique serial version ID.
    */
-  private static final long serialVersionUID = -4415458628159499190L;
+  private static final long     serialVersionUID = -4415458628159499190L;
 
   /**
    * Stores the absolute path to the OMB object which will be used to analyse
    * the imported data.
    */
-  private String ombFile;
+  private String                ombFile;
 
   /**
    * UI: Label "Select Project"
    */
-  private JLabel lblSelectProject;
+  private JLabel                lblSelectProject;
 
   /**
    * UI: Label "Select Room"
    */
-  private JLabel lblSelectRoom;
+  private JLabel                lblSelectRoom;
 
   /**
    * UI: Label for first orientation, content: "Select an OMB-Object file to
    * analyse its data. You can inspect radon concentration for each room."
    */
-  private JLabel lblHelp;
+  private JLabel                lblHelp;
 
   /**
    * UI: Label "Select OMB-File"
    */
-  private JLabel lblSelectOmbfile;
+  private JLabel                lblSelectOmbfile;
 
   /**
    * UI: Label "Export charts to ..."
    */
-  private JLabel lblExportChartTo;
+  private JLabel                lblExportChartTo;
 
   /**
    * UI: Text field to enter the absolute path to the OMB object file.
    */
-  private JTextField txtOmbFile;
+  private JTextField            txtOmbFile;
 
   /**
    * UI: Button to load the selected OMB file to the panel.
    */
-  private JButton btnRefresh;
+  private JButton               btnRefresh;
 
   /**
    * UI: Button to display the chart in fullscreen mode.
    */
-  private JButton btnMaximize;
+  private JButton               btnMaximize;
 
   /**
    * UI: Button to open a file browser to save an OMB file.
    */
-  private JButton btnBrowse;
+  private JButton               btnBrowse;
 
   /**
    * UI: Button to export the chart to CSV.
    */
-  private JButton btnCsv;
+  private JButton               btnCsv;
 
   /**
    * UI: Button to export the chart to PDF.
    */
-  private JButton btnPdf;
+  private JButton               btnPdf;
 
   /**
    * UI: Combobox to select a project to analyse.
@@ -147,35 +148,35 @@ public class OMPanelData extends JPanel {
   /**
    * UI: Combobox to select a room.
    */
-  private JComboBox<OMRoom> comboBoxRooms;
+  private JComboBox<OMRoom>     comboBoxRooms;
 
   /**
    * UI: Progress bar to display the status of certain actions performed on this
    * panel.
    */
-  private JProgressBar progressBar;
+  private JProgressBar          progressBar;
 
   /**
    * UI: Panel which is used as a place holder for the chart.
    */
-  private JPanel panelData;
+  private JPanel                panelData;
 
   /**
    * UI: Panel where the room radon concentration chart is drawn to.
    */
-  private JPanel panelRoom;
+  private JPanel                panelRoom;
 
   /**
    * Stores the task to load OMB files to the panel which will be executed in a
    * separate thread to ensure the UI wont freeze.
    */
-  private RefreshProjects refreshProjectsTask;
+  private RefreshProjects       refreshProjectsTask;
 
   /**
    * Stores the task to update the charts which will be executed in a separate
    * thread to ensure the UI wont freeze.
    */
-  private RefreshCharts refreshChartsTask;
+  private RefreshCharts         refreshChartsTask;
 
   /**
    * Gets the absolute path to the OMB object which will be used to analyse the
@@ -216,7 +217,7 @@ public class OMPanelData extends JPanel {
       OMBuilding building = (OMBuilding) comboBoxProjects.getSelectedItem();
       String title = building.getName();
       OMRoom room = (OMRoom) comboBoxRooms.getSelectedItem();
-      panelRoom = createRoomPanel(title, room, false);
+      panelRoom = createRoomPanel(title, room, false, false);
       panelData = new JPanel();
       panelData.setBounds(10, 118, 730, 347);
       panelData.add(panelRoom);
@@ -326,19 +327,15 @@ public class OMPanelData extends JPanel {
    * 
    * @param ombFile
    *          Absolute path to an OMB object file to load on init.
+   * @param building
+   *          The imported building object.
    */
-  public OMPanelData(String ombFile) {
+  public OMPanelData(String ombFile, OMBuilding building) {
     initialize();
     txtOmbFile.setText(ombFile);
     setOmbFile(ombFile);
-    btnRefresh.setEnabled(false);
-    comboBoxProjects.setEnabled(false);
-    setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-    progressBar.setVisible(true);
-    progressBar.setStringPainted(true);
-    progressBar.setIndeterminate(true);
-    refreshProjectsTask = new RefreshProjects();
-    refreshProjectsTask.execute();
+    comboBoxProjects.addItem(building);
+    comboBoxProjects.setEnabled(true);
   }
 
   /**
@@ -522,12 +519,14 @@ public class OMPanelData extends JPanel {
                 .getSelectedItem();
             String title = building.getName();
             OMRoom room = (OMRoom) comboBoxRooms.getSelectedItem();
-            panelRoom = createRoomPanel(title, room, false);
+            panelRoom = createRoomPanel(title, room, false, false);
             JFrame chartFrame = new JFrame();
-            JPanel chartPanel = createRoomPanel(title, room, false);
+            JPanel chartPanel = createRoomPanel(title, room, false, true);
             chartFrame.getContentPane().add(chartPanel);
             chartFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            chartFrame.setBounds(10, 61, 730, 404);
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            chartFrame.setBounds(0, 0, (int) dim.getWidth(),
+                (int) dim.getHeight());
             chartFrame.setTitle("OM Simulation Tool: " + title + ", Room "
                 + room.getId());
             chartFrame.setResizable(true);
@@ -703,12 +702,22 @@ public class OMPanelData extends JPanel {
    *          The room object containing the radon data.
    * @param preview
    *          Will hide annotations, labels and headlines if true.
+   * @param fullscreen
+   *          Will correctly adjust the preferred size to screen resolution if
+   *          true.
    * @return A panel displaying the radon concentration of a single room.
    */
-  public JPanel createRoomPanel(String title, OMRoom room, boolean preview) {
+  public JPanel createRoomPanel(String title, OMRoom room, boolean preview,
+      boolean fullscreen) {
     JFreeChart chart = OMCharts.createRoomChart(title, room, preview);
     ChartPanel chartPanel = new ChartPanel(chart);
-    chartPanel.setPreferredSize(new Dimension(730, 347));
+    Dimension dim;
+    if (fullscreen) {
+      dim = Toolkit.getDefaultToolkit().getScreenSize();
+    } else {
+      dim = new Dimension(730, 347);
+    }
+    chartPanel.setPreferredSize(dim);
     JPanel roomPanel = (JPanel) chartPanel;
     return roomPanel;
   }

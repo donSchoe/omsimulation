@@ -26,6 +26,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
@@ -83,90 +84,95 @@ public class OMPanelTesting extends JPanel implements ActionListener {
   /**
    * Unique serial version ID.
    */
-  private static final long serialVersionUID = -5496779392128285570L;
+  private static final long     serialVersionUID = -5496779392128285570L;
 
   /**
    * Stores the absolute path to the OMB object which will be used to analyse
    * the imported data.
    */
-  private String ombFile;
+  private String                ombFile;
 
   /**
    * Indicates whether any virtual campaign is simulated or not.
    */
-  private boolean isSimulated;
+  private boolean               isSimulated;
 
   /**
    * Indicates whether the displayed campaign is a simulation result from
    * results panel or not.
    */
-  private boolean isResult;
+  private boolean               isResult;
+
+  /**
+   * Stores the selected campaign from the simulation results panel.
+   */
+  private OMCampaign            resultCampaign;
 
   /**
    * UI: Label "Select Project"
    */
-  private JLabel lblSelectProject;
+  private JLabel                lblSelectProject;
 
   /**
    * UI: Label "Select Rooms"
    */
-  private JLabel lblSelectRooms;
+  private JLabel                lblSelectRooms;
 
   /**
    * UI: Label "Start Time"
    */
-  private JLabel lblStartTime;
+  private JLabel                lblStartTime;
 
   /**
    * UI: Label "Select 6 rooms and 1 cellar!"
    */
-  private JLabel lblWarning;
+  private JLabel                lblWarning;
 
   /**
    * UI: Label "Open OMB-File"
    */
-  private JLabel lblOpenOmbfile;
+  private JLabel                lblOpenOmbfile;
 
   /**
    * UI: Label for first orientation, content: "Select an OMB-Object file to
    * manually simulate virtual campaigns."
    */
-  private JLabel lblHelp;
+  private JLabel                lblHelp;
 
   /**
    * UI: Label "Export chart to..."
    */
-  private JLabel lblExportChartTo;
+  private JLabel                lblExportChartTo;
 
   /**
    * UI: Text field to enter the absolute path to the OMB object file.
    */
-  private JTextField txtOmbFile;
+  private JTextField            txtOmbFile;
 
   /**
    * UI: Button to load the selected OMB file to the panel.
    */
-  private JButton btnRefresh;
+  private JButton               btnRefresh;
 
   /**
    * UI: Button to display the chart in fullscreen mode.
    */
-  private JButton btnMaximize;
+  private JButton               btnMaximize;
 
   /**
    * UI: Button to open a file browser to save an OMB file.
    */
-  private JButton btnBrowse;
+  private JButton               btnBrowse;
 
   /**
    * UI: Button to export the chart to CSV.
    */
-  private JButton btnCsv;
+  private JButton               btnCsv;
 
   /**
    * UI: Button to export the chart to PDF.
    */
-  private JButton btnPdf;
+  private JButton               btnPdf;
 
   /**
    * UI: Combobox to select a project to analyse.
@@ -176,66 +182,66 @@ public class OMPanelTesting extends JPanel implements ActionListener {
   /**
    * UI: Combobox to select the 1st room of the virtual campaign.
    */
-  private JComboBox<OMRoom> comboBoxRoom1;
+  private JComboBox<OMRoom>     comboBoxRoom1;
 
   /**
    * UI: Combobox to select the 2nd room of the virtual campaign.
    */
-  private JComboBox<OMRoom> comboBoxRoom2;
+  private JComboBox<OMRoom>     comboBoxRoom2;
 
   /**
    * UI: Combobox to select the 3rd room of the virtual campaign.
    */
-  private JComboBox<OMRoom> comboBoxRoom3;
+  private JComboBox<OMRoom>     comboBoxRoom3;
 
   /**
    * UI: Combobox to select the 4th room of the virtual campaign.
    */
-  private JComboBox<OMRoom> comboBoxRoom4;
+  private JComboBox<OMRoom>     comboBoxRoom4;
 
   /**
    * UI: Combobox to select the 5th room of the virtual campaign.
    */
-  private JComboBox<OMRoom> comboBoxRoom5;
+  private JComboBox<OMRoom>     comboBoxRoom5;
 
   /**
    * UI: Combobox to select the 6th room of the virtual campaign.
    */
-  private JComboBox<OMRoom> comboBoxRoom6;
+  private JComboBox<OMRoom>     comboBoxRoom6;
 
   /**
    * UI: Combobox to select the 7th room of the virtual campaign.
    */
-  private JComboBox<OMRoom> comboBoxRoom7;
+  private JComboBox<OMRoom>     comboBoxRoom7;
 
   /**
    * UI: Spinner with an integer value to adjust the start time of the virtual
    * campaign.
    */
-  private JSpinner spnrStartTime;
+  private JSpinner              spnrStartTime;
 
   /**
    * UI: Slider to adjust the start time of the virtual campaign.
    */
-  private JSlider sliderStartTime;
+  private JSlider               sliderStartTime;
 
   /**
    * UI: Progress bar to display the status of certain actions performed on this
    * panel.
    */
-  private JProgressBar progressBar;
+  private JProgressBar          progressBar;
 
   /**
    * UI: Panel where the virtual campaign's radon concentration chart is drawn
    * to.
    */
-  private JPanel panelCampaign;
+  private JPanel                panelCampaign;
 
   /**
    * Stores the task to load OMB files to the panel which will be executed in a
    * separate thread to ensure the UI wont freeze.
    */
-  private Refresh refreshTask;
+  private Refresh               refreshTask;
 
   /**
    * Gets the absolute path to the OMB object which will be used to analyse the
@@ -256,6 +262,25 @@ public class OMPanelTesting extends JPanel implements ActionListener {
    */
   public void setOmbFile(String ombFile) {
     this.ombFile = ombFile;
+  }
+
+  /**
+   * Gets the selected campaign from the simulation results panel.
+   * 
+   * @return The selected campaign from the simulation results panel.
+   */
+  public OMCampaign getResultCampaign() {
+    return this.resultCampaign;
+  }
+
+  /**
+   * Sets the selected campaign from the simulation results panel.
+   * 
+   * @param resultCampaign
+   *          The selected campaign from the simulation results panel.
+   */
+  public void setResultCampaign(OMCampaign resultCampaign) {
+    this.resultCampaign = resultCampaign;
   }
 
   /**
@@ -351,26 +376,18 @@ public class OMPanelTesting extends JPanel implements ActionListener {
    * 
    * @param omb
    *          Absolute path to an OMB object file to load on init.
+   * @param building
+   *          The imported building object.
    */
-  public OMPanelTesting(String omb) {
+  public OMPanelTesting(String omb, OMBuilding building) {
     isResult = false;
     initialize();
     removeEventListener();
     addEventListener();
     txtOmbFile.setText(omb);
     setOmbFile(omb);
-    btnRefresh.setEnabled(false);
-    comboBoxProjects.setEnabled(false);
-    setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-    progressBar.setVisible(true);
-    btnPdf.setVisible(false);
-    btnCsv.setVisible(false);
-    lblExportChartTo.setVisible(false);
-    btnMaximize.setVisible(false);
-    progressBar.setIndeterminate(true);
-    progressBar.setStringPainted(true);
-    refreshTask = new Refresh();
-    refreshTask.execute();
+    comboBoxProjects.addItem(building);
+    comboBoxProjects.setEnabled(true);
   }
 
   /**
@@ -385,6 +402,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
   public OMPanelTesting(OMSimulation simulation, OMCampaign campaign) {
     isResult = true;
     isSimulated = true;
+    setResultCampaign(campaign);
     initialize();
     comboBoxProjects.removeAllItems();
     removeEventListener();
@@ -423,6 +441,13 @@ public class OMPanelTesting extends JPanel implements ActionListener {
     btnPdf.setVisible(true);
     btnCsv.setVisible(true);
     lblExportChartTo.setVisible(true);
+    JPanel campaignChart = createCampaignPanel(campaign, false, false);
+    remove(panelCampaign);
+    panelCampaign = new JPanel();
+    panelCampaign.setBounds(10, 150, 730, 315);
+    panelCampaign.add(campaignChart);
+    add(panelCampaign);
+    updateUI();
   }
 
   /**
@@ -630,57 +655,65 @@ public class OMPanelTesting extends JPanel implements ActionListener {
           final int day = 24;
           File csvFile = new File(csvPath);
           try {
+            OMCampaign campaign;
+            if (isResult) {
+              campaign = getResultCampaign();
+            } else {
+              campaign = new OMCampaign(start, rooms, 0);
+            }
             FileWriter logWriter = new FileWriter(csvFile);
             BufferedWriter csvOutput = new BufferedWriter(logWriter);
             csvOutput.write("\"ID\";\"Room\";\"Radon\"");
             csvOutput.newLine();
-            selectedValues = rooms[0].getValues();
+            selectedValues = campaign.getValueChain();
+            int x = 0;
             for (int i = start; i < start + day; i++) {
               csvOutput.write("\"" + i + "\";\"" + rooms[0].getId() + "\";\""
-                  + (int) selectedValues[i] + "\"");
+                  + (int) selectedValues[x] + "\"");
               csvOutput.newLine();
+              x++;
             }
             start = start + day;
-            selectedValues = rooms[1].getValues();
             for (int i = start; i < start + day; i++) {
               csvOutput.write("\"" + i + "\";\"" + rooms[1].getId() + "\";\""
-                  + (int) selectedValues[i] + "\"");
+                  + (int) selectedValues[x] + "\"");
               csvOutput.newLine();
+              x++;
             }
             start = start + day;
-            selectedValues = rooms[2].getValues();
             for (int i = start; i < start + day; i++) {
               csvOutput.write("\"" + i + "\";\"" + rooms[2].getId() + "\";\""
-                  + (int) selectedValues[i] + "\"");
+                  + (int) selectedValues[x] + "\"");
               csvOutput.newLine();
+              x++;
             }
             start = start + day;
-            selectedValues = rooms[3].getValues();
             for (int i = start; i < start + day; i++) {
               csvOutput.write("\"" + i + "\";\"" + rooms[3].getId() + "\";\""
-                  + (int) selectedValues[i] + "\"");
+                  + (int) selectedValues[x] + "\"");
               csvOutput.newLine();
+              x++;
             }
             start = start + day;
-            selectedValues = rooms[4].getValues();
             for (int i = start; i < start + day; i++) {
               csvOutput.write("\"" + i + "\";\"" + rooms[4].getId() + "\";\""
-                  + (int) selectedValues[i] + "\"");
+                  + (int) selectedValues[x] + "\"");
               csvOutput.newLine();
+              x++;
             }
             start = start + day;
-            selectedValues = rooms[5].getValues();
             for (int i = start; i < start + day; i++) {
               csvOutput.write("\"" + i + "\";\"" + rooms[5].getId() + "\";\""
-                  + (int) selectedValues[i] + "\"");
+                  + (int) selectedValues[x] + "\"");
               csvOutput.newLine();
+              x++;
             }
             start = start + day;
-            selectedValues = rooms[6].getValues();
             for (int i = start; i < start + day; i++) {
               csvOutput.write("\"" + i + "\";\"" + rooms[6].getId() + "\";\""
-                  + (int) selectedValues[i] + "\"");
+                  + (int) selectedValues[x] + "\"");
               csvOutput.newLine();
+              x++;
             }
             JOptionPane.showMessageDialog(null, "CSV saved successfully!\n"
                 + csvPath, "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -731,7 +764,11 @@ public class OMPanelTesting extends JPanel implements ActionListener {
           int start = sliderStartTime.getValue();
           OMCampaign campaign;
           try {
-            campaign = new OMCampaign(start, rooms, 0);
+            if (isResult) {
+              campaign = getResultCampaign();
+            } else {
+              campaign = new OMCampaign(start, rooms, 0);
+            }
             JFreeChart chart = OMCharts.createCampaignChart(campaign, false);
             String title = "Campaign: " + rooms[0].getId() + rooms[1].getId()
                 + rooms[2].getId() + rooms[3].getId() + rooms[4].getId()
@@ -942,7 +979,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
       public void stateChanged(ChangeEvent arg0) {
         if (comboBoxProjects.isEnabled() || isResult) {
           if (comboBoxProjects.getSelectedItem() != null) {
-            sliderStartTime.setValue((int) spnrStartTime.getValue());
+            sliderStartTime.setValue((Integer) spnrStartTime.getValue());
             updateChart();
           }
         }
@@ -1006,12 +1043,19 @@ public class OMPanelTesting extends JPanel implements ActionListener {
           String title = "Campaign: " + rooms[0].getId() + rooms[1].getId()
               + rooms[2].getId() + rooms[3].getId() + rooms[4].getId()
               + rooms[5].getId() + rooms[6].getId() + ", Start: " + start;
-          OMCampaign campaign = new OMCampaign(start, rooms, 0);
-          JPanel campaignChart = createCampaignPanel(campaign, false);
+          OMCampaign campaign;
+          if (isResult) {
+            campaign = getResultCampaign();
+          } else {
+            campaign = new OMCampaign(start, rooms, 0);
+          }
+          JPanel campaignChart = createCampaignPanel(campaign, false, true);
           JFrame chartFrame = new JFrame();
           chartFrame.getContentPane().add(campaignChart);
           chartFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-          chartFrame.setBounds(10, 146, 730, 369);
+          Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+          chartFrame.setBounds(0, 0, (int) dim.getWidth(),
+              (int) dim.getHeight());
           chartFrame.setTitle(title);
           chartFrame.setResizable(true);
           chartFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -1056,13 +1100,23 @@ public class OMPanelTesting extends JPanel implements ActionListener {
    *          The campaign object containing all rooms and radon data.
    * @param preview
    *          Will hide annotations, labels and headlines if true.
+   * @param fullscreen
+   *          Will correctly adjust the preferred size to screen resolution if
+   *          true.
    * @return A panel displaying the radon concentration chart of a virtual
    *         campaign.
    */
-  protected JPanel createCampaignPanel(OMCampaign campaign, boolean preview) {
+  protected JPanel createCampaignPanel(OMCampaign campaign, boolean preview,
+      boolean fullscreen) {
     JFreeChart chart = OMCharts.createCampaignChart(campaign, preview);
     ChartPanel chartPanel = new ChartPanel(chart);
-    chartPanel.setPreferredSize(new Dimension(730, 315));
+    Dimension dim;
+    if (fullscreen) {
+      dim = Toolkit.getDefaultToolkit().getScreenSize();
+    } else {
+      dim = new Dimension(730, 315);
+    }
+    chartPanel.setPreferredSize(dim);
     JPanel campaignPanel = (JPanel) chartPanel;
     return campaignPanel;
   }
@@ -1173,7 +1227,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
         rooms[6] = (OMRoom) comboBoxRoom7.getSelectedItem();
         int start = sliderStartTime.getValue();
         OMCampaign campaign = new OMCampaign(start, rooms, 0);
-        JPanel campaignChart = createCampaignPanel(campaign, false);
+        JPanel campaignChart = createCampaignPanel(campaign, false, false);
         remove(panelCampaign);
         panelCampaign = new JPanel();
         panelCampaign.setBounds(10, 150, 730, 315);

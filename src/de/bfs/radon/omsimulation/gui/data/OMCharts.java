@@ -96,7 +96,8 @@ public abstract class OMCharts {
     dataSet.addSeries(series);
     title = title + ": " + room.getType().toString() + " " + room.getId();
     JFreeChart chart = ChartFactory.createXYLineChart(title, "T [h]",
-        "Rn [Bq/m\u00B3]", dataSet, PlotOrientation.VERTICAL, false, true, false);
+        "Rn [Bq/m\u00B3]", dataSet, PlotOrientation.VERTICAL, false, true,
+        false);
     XYPlot plot = (XYPlot) chart.getPlot();
     double positiveDeviation = room.getAvarage() + room.getDeviation();
     double negativeDeviation = room.getAvarage() - room.getDeviation();
@@ -175,50 +176,7 @@ public abstract class OMCharts {
         + rooms[2].getId() + rooms[3].getId() + rooms[4].getId()
         + rooms[5].getId() + rooms[6].getId() + ", Start: " + finalStart;
     int count = 168;
-    final int day = 24;
-    int x = 0;
-    double[] values = new double[count];
-    double[] tmpValues = rooms[0].getValues();
-    for (int i = start; i < start + day; i++) {
-      values[x] = tmpValues[i];
-      x++;
-    }
-    start = start + day;
-    tmpValues = rooms[1].getValues();
-    for (int i = start; i < start + day; i++) {
-      values[x] = tmpValues[i];
-      x++;
-    }
-    start = start + day;
-    tmpValues = rooms[2].getValues();
-    for (int i = start; i < start + day; i++) {
-      values[x] = tmpValues[i];
-      x++;
-    }
-    start = start + day;
-    tmpValues = rooms[3].getValues();
-    for (int i = start; i < start + day; i++) {
-      values[x] = tmpValues[i];
-      x++;
-    }
-    start = start + day;
-    tmpValues = rooms[4].getValues();
-    for (int i = start; i < start + day; i++) {
-      values[x] = tmpValues[i];
-      x++;
-    }
-    start = start + day;
-    tmpValues = rooms[5].getValues();
-    for (int i = start; i < start + day; i++) {
-      values[x] = tmpValues[i];
-      x++;
-    }
-    start = start + day;
-    tmpValues = rooms[6].getValues();
-    for (int i = start; i < start + day; i++) {
-      values[x] = tmpValues[i];
-      x++;
-    }
+    double[] values = campaign.getValueChain();
     XYSeriesCollection dataSet = new XYSeriesCollection();
     XYSeries roomSeries1 = new XYSeries(" Radon Rooms");
     XYSeries cellarSeries = new XYSeries("Radon Cellar");
@@ -257,7 +215,8 @@ public abstract class OMCharts {
     dataSet.addSeries(cellarSeries);
     dataSet.addSeries(roomSeries2);
     JFreeChart chart = ChartFactory.createXYLineChart(title, "T [h]",
-        "Rn [Bq/m\u00B3]", dataSet, PlotOrientation.VERTICAL, false, true, false);
+        "Rn [Bq/m\u00B3]", dataSet, PlotOrientation.VERTICAL, false, true,
+        false);
     XYPlot plot = (XYPlot) chart.getPlot();
     ValueMarker sepMarker;
     Color sepColor = Color.BLACK;

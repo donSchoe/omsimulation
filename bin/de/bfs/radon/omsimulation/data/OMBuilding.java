@@ -40,7 +40,7 @@ public class OMBuilding {
    * Stores a custom name for the object which is set by the user creating the
    * building.
    */
-  private String name;
+  private String     name;
 
   /**
    * Stores a custom start date which is set by the user creating the building.
@@ -48,32 +48,32 @@ public class OMBuilding {
    * measurements or to identify the start date of the simulations. That's up to
    * the user and does not affect the simulations.
    */
-  private Date start;
+  private Date       start;
 
   /**
    * Stores the total number of measurements for the building.
    */
-  private int valueCount;
+  private int        valueCount;
 
   /**
    * Stores the total number of rooms for the building.
    */
-  private int roomCount;
+  private int        roomCount;
 
   /**
    * Stores an array of all normal rooms of the building.
    */
-  private OMRoom[] rooms;
+  private OMRoom[]   rooms;
 
   /**
    * Stores an array of all cellar rooms of the building.
    */
-  private OMRoom[] cellars;
+  private OMRoom[]   cellars;
 
   /**
    * Stores an array of all misc rooms of the building.
    */
-  private OMRoom[] miscs;
+  private OMRoom[]   miscs;
 
   /**
    * Stores an array of rooms-arrays representing all available variations using

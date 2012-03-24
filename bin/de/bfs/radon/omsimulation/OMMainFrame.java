@@ -48,27 +48,27 @@ public class OMMainFrame extends JFrame {
   /**
    * Unique serial version ID.
    */
-  private static final long serialVersionUID = 639348294183394699L;
+  private static final long   serialVersionUID = 639348294183394699L;
 
   /**
    * Stores the tool's version string.
    */
-  private static final String version = "v0.4.49-beta4";
+  private static final String version          = "v0.4.50-rc1";
 
   /**
    * Stores the tabbed pane used for navigating throught the panels.
    */
-  protected JTabbedPane tabbedPane;
+  protected JTabbedPane       tabbedPane;
 
   /**
    * Stores the panel for importing CSV data.
    */
-  protected OMPanelImport jpanelImport;
+  protected OMPanelImport     jpanelImport;
 
   /**
    * Stores the panel for inspecting the imported data.
    */
-  protected OMPanelData jpanelData;
+  protected OMPanelData       jpanelData;
 
   /**
    * Stores the panel for running simulations.
@@ -78,17 +78,17 @@ public class OMMainFrame extends JFrame {
   /**
    * Stores the panel for viewing the simulation results.
    */
-  protected OMPanelResults jpanelResults;
+  protected OMPanelResults    jpanelResults;
 
   /**
    * Stores the panel for analyzing the simulation results.
    */
-  protected OMPanelTesting jpanelTesting;
+  protected OMPanelTesting    jpanelTesting;
 
   /**
    * Stores the panel for the credits.
    */
-  protected OMPanelAbout jpanelAbout;
+  protected OMPanelAbout      jpanelAbout;
 
   /**
    * Gets the tool's version string.

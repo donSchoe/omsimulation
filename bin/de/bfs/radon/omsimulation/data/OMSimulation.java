@@ -41,28 +41,28 @@ public class OMSimulation {
   /**
    * Stores a custom name for the simulation.
    */
-  private String name;
+  private String                name;
 
   /**
    * Stores a date string marking the day when the simulation was run.
    * (YYYY-MM-dd)
    */
-  private String date;
+  private String                date;
 
   /**
    * Stores an array of campaigns after simulation.
    */
-  private OMCampaign[] campaigns;
+  private OMCampaign[]          campaigns;
 
   /**
    * Stores the used building of the simulation.
    */
-  private OMBuilding building;
+  private OMBuilding            building;
 
   /**
    * Stores the total number of generated campaigns.
    */
-  private int count;
+  private int                   count;
 
   /**
    * Stores all room's arithmetic means and connected statistics.
