@@ -880,7 +880,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
             }
           }
         }
-        String totalCsvPath = getOmbFile() + "_simulation.campaigns.csv";
+        String totalCsvPath = getOmbFile()
+            + "_systematic_simulation.campaigns.csv";
         File totalCsvFile = new File(totalCsvPath);
         FileWriter totalCsvWriter = new FileWriter(totalCsvFile);
         BufferedWriter totalCsvOutput = new BufferedWriter(totalCsvWriter);
@@ -912,7 +913,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                 cellarMedDescriptiveStats.addValue(campaign.getCellarMedian());
                 roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
                 cellarMaxDescriptiveStats.addValue(campaign.getCellarMaxima());
-                // logOnly(campaign.toString(), (int) perc);
+                logOnly("Campaign: T=" + campaign.getStart() + ", R="
+                    + campaign.getVariation(), (int) perc);
                 totalCsvOutput.write("\"" + x + "\";\""
                     + campaign.getVariation() + "\";\"" + campaign.getStart()
                     + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
@@ -959,7 +961,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                   roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
                   cellarMaxDescriptiveStats
                       .addValue(campaign.getCellarMaxima());
-                  // logOnly(campaign.toString(), (int) perc);
+                  logOnly("Campaign: T=" + campaign.getStart() + ", R="
+                      + campaign.getVariation(), (int) perc);
                   totalCsvOutput.write("\"" + x + "\";\""
                       + campaign.getVariation() + "\";\"" + campaign.getStart()
                       + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
@@ -1006,7 +1009,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                     roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
                     cellarMaxDescriptiveStats.addValue(campaign
                         .getCellarMaxima());
-                    // logOnly(campaign.toString(), (int) perc);
+                    logOnly("Campaign: T=" + campaign.getStart() + ", R="
+                        + campaign.getVariation(), (int) perc);
                     totalCsvOutput.write("\"" + x + "\";\""
                         + campaign.getVariation() + "\";\""
                         + campaign.getStart() + "\";\""
@@ -1057,7 +1061,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                           .addValue(campaign.getRoomMaxima());
                       cellarMaxDescriptiveStats.addValue(campaign
                           .getCellarMaxima());
-                      // logOnly(campaign.toString(), (int) perc);
+                      logOnly("Campaign: T=" + campaign.getStart() + ", R="
+                          + campaign.getVariation(), (int) perc);
                       totalCsvOutput.write("\"" + x + "\";\""
                           + campaign.getVariation() + "\";\""
                           + campaign.getStart() + "\";\""
@@ -1109,7 +1114,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                 cellarMedSummaryStats.addValue(campaign.getCellarMedian());
                 roomMaxSummaryStats.addValue(campaign.getRoomMaxima());
                 cellarMaxSummaryStats.addValue(campaign.getCellarMaxima());
-                // logOnly(campaign.toString(), (int) perc);
+                logOnly("Campaign: T=" + campaign.getStart() + ", R="
+                    + campaign.getVariation(), (int) perc);
                 totalCsvOutput.write("\"" + x + "\";\""
                     + campaign.getVariation() + "\";\"" + campaign.getStart()
                     + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
@@ -1152,7 +1158,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                   cellarMedSummaryStats.addValue(campaign.getCellarMedian());
                   roomMaxSummaryStats.addValue(campaign.getRoomMaxima());
                   cellarMaxSummaryStats.addValue(campaign.getCellarMaxima());
-                  // logOnly(campaign.toString(), (int) perc);
+                  logOnly("Campaign: T=" + campaign.getStart() + ", R="
+                      + campaign.getVariation(), (int) perc);
                   totalCsvOutput.write("\"" + x + "\";\""
                       + campaign.getVariation() + "\";\"" + campaign.getStart()
                       + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
@@ -1195,7 +1202,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                     cellarMedSummaryStats.addValue(campaign.getCellarMedian());
                     roomMaxSummaryStats.addValue(campaign.getRoomMaxima());
                     cellarMaxSummaryStats.addValue(campaign.getCellarMaxima());
-                    // logOnly(campaign.toString(), (int) perc);
+                    logOnly("Campaign: T=" + campaign.getStart() + ", R="
+                        + campaign.getVariation(), (int) perc);
                     totalCsvOutput.write("\"" + x + "\";\""
                         + campaign.getVariation() + "\";\""
                         + campaign.getStart() + "\";\""
@@ -1242,7 +1250,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                       roomMaxSummaryStats.addValue(campaign.getRoomMaxima());
                       cellarMaxSummaryStats
                           .addValue(campaign.getCellarMaxima());
-                      // logOnly(campaign.toString(), (int) perc);
+                      logOnly("Campaign: T=" + campaign.getStart() + ", R="
+                          + campaign.getVariation(), (int) perc);
                       totalCsvOutput.write("\"" + x + "\";\""
                           + campaign.getVariation() + "\";\""
                           + campaign.getStart() + "\";\""
@@ -1281,7 +1290,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
         } else {
           csvPath = getOmbFile();
         }
-        String logName = csvPath + "_simulation.result.csv";
+        String logName = csvPath + "_systematic_simulation.result.csv";
         File logFile = new File(logName);
         FileWriter logWriter = new FileWriter(logFile);
         BufferedWriter csvOutput = new BufferedWriter(logWriter);
@@ -1381,7 +1390,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           tmpUpdate("Warning: Splitting the simulation in equal parts of 25%.",
               1);
           absoluteThree = (int) ((double) maxCampaigns / tmpDiv);
-          if (campaignLengthFour >= 0 && tmpDiv >= 2) { // WTF?
+          if (campaignLengthFour >= 0 && tmpDiv >= 2) {
             absoluteFour = (int) ((double) maxCampaigns / tmpDiv);
             if (campaignLengthFive >= 0 && tmpDiv >= 3) {
               absoluteFive = (int) ((double) maxCampaigns / tmpDiv);
@@ -1545,6 +1554,16 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           DescriptiveStatistics cellarMaxDescriptiveStats = new DescriptiveStatistics();
           boolean isDescriptive = false;
           OMCampaign[] campaigns = new OMCampaign[(int) absoluteTotal];
+          String totalCsvPath = getOmsFile()
+              + "_random_simulation.campaigns.csv";
+          File totalCsvFile = new File(totalCsvPath);
+          FileWriter totalCsvWriter = new FileWriter(totalCsvFile);
+          BufferedWriter totalCsvOutput = new BufferedWriter(totalCsvWriter);
+          String strFormat = "#.#########";
+          DecimalFormat decFormat = new DecimalFormat(strFormat);
+          totalCsvOutput
+              .write("\"ID\";\"CAMPAIGN\";\"START\";\"R_AM\";\"R_GM\";\"R_MED\";\"R_MAX\";\"C_AM\";\"C_GM\";\"C_MED\";\"C_MAX\"");
+          totalCsvOutput.newLine();
           if (absoluteTotal <= 1000000) {
             isDescriptive = true;
             if (campaignLengthThree > 0) {
@@ -1583,7 +1602,19 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                 cellarMedDescriptiveStats.addValue(campaign.getCellarMedian());
                 roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
                 cellarMaxDescriptiveStats.addValue(campaign.getCellarMaxima());
-                logOnly(campaign.toString(), (int) perc);
+                logOnly("Campaign: T=" + campaign.getStart() + ", R="
+                    + campaign.getVariation(), (int) perc);
+                totalCsvOutput.write("\"" + x + "\";\""
+                    + campaign.getVariation() + "\";\"" + campaign.getStart()
+                    + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
+                    + (int) campaign.getRoomLogAvarage() + "\";\""
+                    + (int) campaign.getRoomMedian() + "\";\""
+                    + (int) campaign.getRoomMaxima() + "\";\""
+                    + (int) campaign.getCellarAvarage() + "\";\""
+                    + (int) campaign.getCellarLogAvarage() + "\";\""
+                    + (int) campaign.getCellarMedian() + "\";\""
+                    + (int) campaign.getCellarMaxima() + "\"");
+                totalCsvOutput.newLine();
                 campaigns[(int) x] = campaign;
                 x++;
               }
@@ -1628,7 +1659,19 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                   roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
                   cellarMaxDescriptiveStats
                       .addValue(campaign.getCellarMaxima());
-                  logOnly(campaign.toString(), (int) perc);
+                  logOnly("Campaign: T=" + campaign.getStart() + ", R="
+                      + campaign.getVariation(), (int) perc);
+                  totalCsvOutput.write("\"" + x + "\";\""
+                      + campaign.getVariation() + "\";\"" + campaign.getStart()
+                      + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
+                      + (int) campaign.getRoomLogAvarage() + "\";\""
+                      + (int) campaign.getRoomMedian() + "\";\""
+                      + (int) campaign.getRoomMaxima() + "\";\""
+                      + (int) campaign.getCellarAvarage() + "\";\""
+                      + (int) campaign.getCellarLogAvarage() + "\";\""
+                      + (int) campaign.getCellarMedian() + "\";\""
+                      + (int) campaign.getCellarMaxima() + "\"");
+                  totalCsvOutput.newLine();
                   campaigns[(int) x] = campaign;
                   x++;
                 }
@@ -1674,7 +1717,20 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                     roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
                     cellarMaxDescriptiveStats.addValue(campaign
                         .getCellarMaxima());
-                    logOnly(campaign.toString(), (int) perc);
+                    logOnly("Campaign: T=" + campaign.getStart() + ", R="
+                        + campaign.getVariation(), (int) perc);
+                    totalCsvOutput.write("\"" + x + "\";\""
+                        + campaign.getVariation() + "\";\""
+                        + campaign.getStart() + "\";\""
+                        + (int) campaign.getRoomAvarage() + "\";\""
+                        + (int) campaign.getRoomLogAvarage() + "\";\""
+                        + (int) campaign.getRoomMedian() + "\";\""
+                        + (int) campaign.getRoomMaxima() + "\";\""
+                        + (int) campaign.getCellarAvarage() + "\";\""
+                        + (int) campaign.getCellarLogAvarage() + "\";\""
+                        + (int) campaign.getCellarMedian() + "\";\""
+                        + (int) campaign.getCellarMaxima() + "\"");
+                    totalCsvOutput.newLine();
                     campaigns[(int) x] = campaign;
                     x++;
                   }
@@ -1724,7 +1780,20 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                           .addValue(campaign.getRoomMaxima());
                       cellarMaxDescriptiveStats.addValue(campaign
                           .getCellarMaxima());
-                      logOnly(campaign.toString(), (int) perc);
+                      logOnly("Campaign: T=" + campaign.getStart() + ", R="
+                          + campaign.getVariation(), (int) perc);
+                      totalCsvOutput.write("\"" + x + "\";\""
+                          + campaign.getVariation() + "\";\""
+                          + campaign.getStart() + "\";\""
+                          + (int) campaign.getRoomAvarage() + "\";\""
+                          + (int) campaign.getRoomLogAvarage() + "\";\""
+                          + (int) campaign.getRoomMedian() + "\";\""
+                          + (int) campaign.getRoomMaxima() + "\";\""
+                          + (int) campaign.getCellarAvarage() + "\";\""
+                          + (int) campaign.getCellarLogAvarage() + "\";\""
+                          + (int) campaign.getCellarMedian() + "\";\""
+                          + (int) campaign.getCellarMaxima() + "\"");
+                      totalCsvOutput.newLine();
                       campaigns[(int) x] = campaign;
                       x++;
                     }
@@ -1780,6 +1849,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                 "Strange exception occured, no campaigns simulated.", "Error",
                 JOptionPane.ERROR_MESSAGE);
           }
+          totalCsvOutput.close();
           tmpUpdate("Generated " + x + " campaigns.", (int) perc);
           String csvPath = "";
           if (getOmsFile() != null && !getOmsFile().equals("")
@@ -1788,12 +1858,10 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           } else {
             csvPath = getOmbFile();
           }
-          String logName = csvPath + "_simulation.result.csv";
+          String logName = csvPath + "_random_simulation.result.csv";
           File logFile = new File(logName);
           FileWriter logWriter = new FileWriter(logFile);
           BufferedWriter csvOutput = new BufferedWriter(logWriter);
-          String strFormat = "#.#########";
-          DecimalFormat decFormat = new DecimalFormat(strFormat);
           if (isDescriptive) {
             descriptiveStatistics(x, roomAmDescriptiveStats,
                 cellarAmDescriptiveStats, roomGmDescriptiveStats,

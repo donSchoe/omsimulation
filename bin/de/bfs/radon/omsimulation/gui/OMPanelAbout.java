@@ -84,7 +84,7 @@ public class OMPanelAbout extends JPanel {
     txtpnCredits.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     txtpnCredits.setEditable(false);
     txtpnCredits.setText("OM Simulation Tool " + version
-        + ", March 2012.\r\n\r\nThis tool intends to test and evaluate the"
+        + ", March/2012.\r\n\r\nThis tool intends to test and evaluate the"
         + " scientific robustness of the protocol \"6+1\". Therefore, it"
         + " generates a huge amount of virtual measurement campaigns based"
         + " on real radon concentration data following the mentioned protocol."
@@ -103,19 +103,19 @@ public class OMPanelAbout extends JPanel {
     lblLogoBfs = new JLabel(
         createImageIcon("/de/bfs/radon/omsimulation/gui/img/bfs.png"));
     lblLogoBfs.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    lblLogoBfs.setBounds(613, 159, 127, 50);
+    lblLogoBfs.setBounds(613, 10, 127, 50);
     add(lblLogoBfs);
 
     lblLogoHtw = new JLabel(
         createImageIcon("/de/bfs/radon/omsimulation/gui/img/htw.png"));
     lblLogoHtw.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    lblLogoHtw.setBounds(613, 74, 127, 74);
+    lblLogoHtw.setBounds(613, 72, 127, 74);
     add(lblLogoHtw);
 
     lblLogoGpl = new JLabel(
         createImageIcon("/de/bfs/radon/omsimulation/gui/img/gpl.png"));
     lblLogoGpl.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-    lblLogoGpl.setBounds(613, 429, 127, 51);
+    lblLogoGpl.setBounds(613, 444, 127, 51);
     add(lblLogoGpl);
 
     txtpnLicense = new JTextPane();

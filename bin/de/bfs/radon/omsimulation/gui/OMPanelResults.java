@@ -516,20 +516,73 @@ public class OMPanelResults extends JPanel {
           try {
             FileWriter logWriter = new FileWriter(csvFile);
             BufferedWriter csvOutput = new BufferedWriter(logWriter);
-            csvOutput
-                .write("\"ID\";\"CAMPAIGN\";\"START\";\"R_AM\";\"R_GM\";\"R_MED\";\"R_MAX\";\"C_AM\";\"C_GM\";\"C_MED\";\"C_MAX\"");
+            OMStatistics statisticsType = (OMStatistics) comboBoxStatistics
+                .getSelectedItem();
+            String head = "";
+            switch (statisticsType) {
+              case RoomArithmeticMeans:
+                head = "R_AM";
+                break;
+              case RoomGeometricMeans:
+                head = "R_GM";
+                break;
+              case RoomMedianQ50:
+                head = "R_MED";
+                break;
+              case RoomMaxima:
+                head = "R_MAX";
+                break;
+              case CellarArithmeticMeans:
+                head = "C_AM";
+                break;
+              case CellarGeometricMeans:
+                head = "C_GM";
+                break;
+              case CellarMedianQ50:
+                head = "C_MED";
+                break;
+              case CellarMaxima:
+                head = "C_MAX";
+                break;
+              default:
+                head = "R_AM";
+                break;
+            }
+            csvOutput.write("\"ID\";\"CAMPAIGN\";\"START\";\"" + head + "\"");
             csvOutput.newLine();
+            int value = 0;
             for (int i = 0; i < campaigns.length; i++) {
+              switch (statisticsType) {
+                case RoomArithmeticMeans:
+                  value = (int) campaigns[i].getRoomAvarage();
+                  break;
+                case RoomGeometricMeans:
+                  value = (int) campaigns[i].getRoomLogAvarage();
+                  break;
+                case RoomMedianQ50:
+                  value = (int) campaigns[i].getRoomMedian();
+                  break;
+                case RoomMaxima:
+                  value = (int) campaigns[i].getRoomMaxima();
+                  break;
+                case CellarArithmeticMeans:
+                  value = (int) campaigns[i].getCellarAvarage();
+                  break;
+                case CellarGeometricMeans:
+                  value = (int) campaigns[i].getCellarLogAvarage();
+                  break;
+                case CellarMedianQ50:
+                  value = (int) campaigns[i].getCellarMedian();
+                  break;
+                case CellarMaxima:
+                  value = (int) campaigns[i].getCellarMaxima();
+                  break;
+                default:
+                  value = (int) campaigns[i].getRoomAvarage();
+                  break;
+              }
               csvOutput.write("\"" + i + "\";\"" + campaigns[i].getVariation()
-                  + "\";\"" + campaigns[i].getStart() + "\";\""
-                  + (int) campaigns[i].getRoomAvarage() + "\";\""
-                  + (int) campaigns[i].getRoomLogAvarage() + "\";\""
-                  + (int) campaigns[i].getRoomMedian() + "\";\""
-                  + (int) campaigns[i].getRoomMaxima() + "\";\""
-                  + (int) campaigns[i].getCellarAvarage() + "\";\""
-                  + (int) campaigns[i].getCellarLogAvarage() + "\";\""
-                  + (int) campaigns[i].getCellarMedian() + "\";\""
-                  + (int) campaigns[i].getCellarMaxima() + "\"");
+                  + "\";\"" + campaigns[i].getStart() + "\";\"" + value + "\"");
               csvOutput.newLine();
             }
             JOptionPane.showMessageDialog(null, "CSV saved successfully!\n"

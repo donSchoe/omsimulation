@@ -1,5 +1,5 @@
 ------------------------------------
-*  OM Simulation Tool v0.4.50-rc1  *
+*  OM Simulation Tool v0.4.51-rc1  *
 ------------------------------------
 
 Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -95,6 +95,18 @@ of this document (8. Notice).
 
 6. Changelog
 ----------------------------------
+0.4.51-rc1: (2012-03-26)
+    - simplified file name patterns of automatically saved logs and csv files
+      - ${abs-path}${omb-file}_import.log
+      - ${abs-path}${omb-file}_systematic_simulation.log
+      - ${abs-path}${omb-file}_systematic_simulation.campaigns.csv
+      - ${abs-path}${omb-file}_systematic_simulation.result.csv
+      - ${abs-path}${oms-file}_random_simulation.log
+      - ${abs-path}${oms-file}_random_simulation.campaigns.csv
+      - ${abs-path}${oms-file}_random_simulation.result.csv
+    - results tab: modified csv export to save displayed chart only
+    - cleaned up code
+
 0.4.50-rc1: (2012-03-24)
     - first release canditate
     - added warning message that systematic simulations could take a while

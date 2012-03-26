@@ -897,7 +897,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
         e.printStackTrace();
       }
       try {
-        Thread.sleep(950);
+        Thread.sleep(100);
       } catch (InterruptedException ie) {
         ie.printStackTrace();
       }
@@ -912,7 +912,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
         e.printStackTrace();
       }
       try {
-        Thread.sleep(950);
+        Thread.sleep(100);
       } catch (InterruptedException ie) {
         ie.printStackTrace();
       }
