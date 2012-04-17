@@ -1065,7 +1065,7 @@ public class OMCampaign {
   private void setRoomVarCoefficient() {
     double avg = this.roomAvarage;
     double dev = this.roomDeviation;
-    double vc = dev / avg;
+    double vc = OMHelper.calculateCV(avg, dev);
     this.roomVarCoefficient = vc;
   }
 
@@ -1086,7 +1086,7 @@ public class OMCampaign {
   private void setCellarVarCoefficient() {
     double avg = this.cellarAvarage;
     double dev = this.cellarDeviation;
-    double vc = dev / avg;
+    double vc = OMHelper.calculateCV(avg, dev);
     this.cellarVarCoefficient = vc;
   }
 
@@ -1284,9 +1284,8 @@ public class OMCampaign {
    */
   private void setRoomQuantileDeviation() {
     double q05 = this.roomQuantile05;
-    double q50 = this.roomMedian;
     double q95 = this.roomQuantile95;
-    double qDev = (q95 - q05) / q50;
+    double qDev = OMHelper.calculateQD(q05, q95);
     this.roomQuantileDeviation = qDev;
   }
 
@@ -1306,9 +1305,8 @@ public class OMCampaign {
    */
   private void setCellarQuantileDeviation() {
     double q05 = this.cellarQuantile05;
-    double q50 = this.cellarMedian;
     double q95 = this.cellarQuantile95;
-    double qDev = (q95 - q05) / q50;
+    double qDev = OMHelper.calculateQD(q05, q95);
     this.cellarQuantileDeviation = qDev;
   }
 
@@ -1369,17 +1367,11 @@ public class OMCampaign {
    * Sets the geometric standard deviation for normal rooms.
    */
   private void setRoomLogDeviation() {
-    double[] logValues = this.roomLogValues;
-    double logAvarage = this.roomLogAvarage;
-    double tmp = 0.0;
-    for (int i = 0; i < logValues.length; i++) {
-      if (logValues[i] > 0) {
-        tmp = tmp + Math.log(logValues[i] / logAvarage)
-            * Math.log(logValues[i] / logAvarage);
-      }
-    }
-    double logDeviation = Math.exp(tmp / logValues.length);
-    this.roomLogDeviation = logDeviation;
+    double geoMean = this.roomLogAvarage;
+    double[] values = this.roomValues;
+    int n = values.length;
+    double gsd = OMHelper.calculateGSD(n, values, geoMean);
+    this.roomLogDeviation = gsd;
   }
 
   /**
@@ -1395,17 +1387,11 @@ public class OMCampaign {
    * Sets the geometric standard deviation for cellar rooms.
    */
   private void setCellarLogDeviation() {
-    double[] logValues = this.cellarLogValues;
-    double logAvarage = this.cellarLogAvarage;
-    double tmp = 0.0;
-    for (int i = 0; i < logValues.length; i++) {
-      if (logValues[i] > 0) {
-        tmp = tmp + Math.log(logValues[i] / logAvarage)
-            * Math.log(logValues[i] / logAvarage);
-      }
-    }
-    double logDeviation = Math.exp(tmp / logValues.length);
-    this.cellarLogDeviation = logDeviation;
+    double geoMean = this.cellarLogAvarage;
+    double[] values = this.cellarValues;
+    int n = values.length;
+    double gsd = OMHelper.calculateGSD(n, values, geoMean);
+    this.cellarLogDeviation = gsd;
   }
 
   /**

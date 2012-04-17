@@ -84,7 +84,7 @@ public class OMPanelAbout extends JPanel {
     txtpnCredits.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     txtpnCredits.setEditable(false);
     txtpnCredits.setText("OM Simulation Tool " + version
-        + ", March/2012.\r\n\r\nThis tool intends to test and evaluate the"
+        + ", April/2012.\r\n\r\nThis tool intends to test and evaluate the"
         + " scientific robustness of the protocol \"6+1\". Therefore, it"
         + " generates a huge amount of virtual measurement campaigns based"
         + " on real radon concentration data following the mentioned protocol."
@@ -124,7 +124,7 @@ public class OMPanelAbout extends JPanel {
             + "and/or modify it under the terms of the GNU General Public License "
             + "as published by the Free Software Foundation, either version 3 "
             + "of the License, or (at your option) any later version.\r\n\r\n"
-            + "The source is available at: http://github.com/donschoe/omsimulation");
+            + "The source code is available at: http://github.com/donschoe/omsimulation");
     txtpnLicense.setForeground(Color.GRAY);
     txtpnLicense.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     txtpnLicense.setEditable(false);

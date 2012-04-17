@@ -1,5 +1,5 @@
 ------------------------------------
-*  OM Simulation Tool v0.4.51-rc1  *
+*  OM Simulation Tool v0.4.53-rc2  *
 ------------------------------------
 
 Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -95,6 +95,9 @@ of this document (8. Notice).
 
 6. Changelog
 ----------------------------------
+0.4.53-rc2: (2012-04-17)
+    - fixed some calculations
+
 0.4.51-rc1: (2012-03-26)
     - simplified file name patterns of automatically saved logs and csv files
       - ${abs-path}${omb-file}_import.log

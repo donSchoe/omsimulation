@@ -121,18 +121,16 @@ public abstract class OMHelper {
   }
 
   /**
-   * Calculates the quantile deviations using the quantiles 5, 50 and 95.
+   * Calculates the quantile deviations using the quantiles 5 and 95.
    * 
    * @param q5
    *          The quantile 5.
-   * @param q50
-   *          The quantile 50 (median).
    * @param q95
    *          The quantile 95).
    * @return The quantile deviation.
    */
-  public static double calculateQD(double q5, double q50, double q95) {
-    double qd = (q95 - q5) / q50;
+  public static double calculateQD(double q5, double q95) {
+    double qd = (q95 - q5) / 2.0;
     return qd;
   }
 
@@ -149,14 +147,11 @@ public abstract class OMHelper {
    */
   public static double calculateGSD(long n, double[] values, double geoMean) {
     double gsd = 0.0;
-    double[] logValues = new double[(int) n];
     for (int i = 0; i < n; i++) {
-      if (values[i] != 0) {
-        logValues[i] = Math.log(values[i]);
-      } else {
-        logValues[i] = 0;
+      if (values[i] > 0) {
+        gsd = gsd + Math.log(values[i] / geoMean)
+            * Math.log(values[i] / geoMean);
       }
-      gsd = gsd + (logValues[i] / geoMean) * (logValues[i] / geoMean);
     }
     gsd = gsd / n;
     gsd = Math.sqrt(gsd);

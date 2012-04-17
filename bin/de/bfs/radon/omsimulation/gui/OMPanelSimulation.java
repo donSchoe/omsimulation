@@ -1960,7 +1960,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double roomArithMeans_Q50 = roomAmDescriptiveStats.getPercentile(50);
       double roomArithMeans_Q95 = roomAmDescriptiveStats.getPercentile(95);
       double roomArithMeans_QD = OMHelper.calculateQD(roomArithMeans_Q05,
-          roomArithMeans_Q50, roomArithMeans_Q95);
+          roomArithMeans_Q95);
       double roomArithMeans_GM = roomAmDescriptiveStats.getGeometricMean();
       double roomArithMeans_GSD = OMHelper.calculateGSD(x,
           roomAmDescriptiveStats.getValues(), roomArithMeans_GM);
@@ -1973,7 +1973,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double cellarArithMeans_Q50 = cellarAmDescriptiveStats.getPercentile(50);
       double cellarArithMeans_Q95 = cellarAmDescriptiveStats.getPercentile(95);
       double cellarArithMeans_QD = OMHelper.calculateQD(cellarArithMeans_Q05,
-          cellarArithMeans_Q50, cellarArithMeans_Q95);
+          cellarArithMeans_Q95);
       double cellarArithMeans_GM = cellarAmDescriptiveStats.getGeometricMean();
       double cellarArithMeans_GSD = OMHelper.calculateGSD(x,
           cellarAmDescriptiveStats.getValues(), cellarArithMeans_GM);
@@ -1985,7 +1985,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double roomLogMeans_Q50 = roomGmDescriptiveStats.getPercentile(50);
       double roomLogMeans_Q95 = roomGmDescriptiveStats.getPercentile(95);
       double roomLogMeans_QD = OMHelper.calculateQD(roomLogMeans_Q05,
-          roomLogMeans_Q50, roomLogMeans_Q95);
+          roomLogMeans_Q95);
       double roomLogMeans_GM = roomGmDescriptiveStats.getGeometricMean();
       double roomLogMeans_GSD = OMHelper.calculateGSD(x,
           roomGmDescriptiveStats.getValues(), roomLogMeans_GM);
@@ -1998,7 +1998,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double cellarLogMeans_Q50 = cellarGmDescriptiveStats.getPercentile(50);
       double cellarLogMeans_Q95 = cellarGmDescriptiveStats.getPercentile(95);
       double cellarLogMeans_QD = OMHelper.calculateQD(cellarLogMeans_Q05,
-          cellarLogMeans_Q50, cellarLogMeans_Q95);
+          cellarLogMeans_Q95);
       double cellarLogMeans_GM = cellarGmDescriptiveStats.getGeometricMean();
       double cellarLogMeans_GSD = OMHelper.calculateGSD(x,
           cellarGmDescriptiveStats.getValues(), cellarLogMeans_GM);
@@ -2010,7 +2010,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double roomMedians_Q50 = roomMedDescriptiveStats.getPercentile(50);
       double roomMedians_Q95 = roomMedDescriptiveStats.getPercentile(95);
       double roomMedians_QD = OMHelper.calculateQD(roomMedians_Q05,
-          roomMedians_Q50, roomMedians_Q95);
+          roomMedians_Q95);
       double roomMedians_GM = roomMedDescriptiveStats.getGeometricMean();
       double roomMedians_GSD = OMHelper.calculateGSD(x,
           roomMedDescriptiveStats.getValues(), roomMedians_GM);
@@ -2023,7 +2023,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double cellarMedians_Q50 = cellarMedDescriptiveStats.getPercentile(50);
       double cellarMedians_Q95 = cellarMedDescriptiveStats.getPercentile(95);
       double cellarMedians_QD = OMHelper.calculateQD(cellarMedians_Q05,
-          cellarMedians_Q50, cellarMedians_Q95);
+          cellarMedians_Q95);
       double cellarMedians_GM = cellarMedDescriptiveStats.getGeometricMean();
       double cellarMedians_GSD = OMHelper.calculateGSD(x,
           cellarMedDescriptiveStats.getValues(), cellarMedians_GM);
@@ -2034,7 +2034,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double roomMaxima_Q50 = roomMaxDescriptiveStats.getPercentile(50);
       double roomMaxima_Q95 = roomMaxDescriptiveStats.getPercentile(95);
       double roomMaxima_QD = OMHelper.calculateQD(roomMaxima_Q05,
-          roomMaxima_Q50, roomMaxima_Q95);
+          roomMaxima_Q95);
       double roomMaxima_GM = roomMaxDescriptiveStats.getGeometricMean();
       double roomMaxima_GSD = OMHelper.calculateGSD(x,
           roomMaxDescriptiveStats.getValues(), roomMaxima_GM);
@@ -2046,7 +2046,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double cellarMaxima_Q50 = cellarMaxDescriptiveStats.getPercentile(50);
       double cellarMaxima_Q95 = cellarMaxDescriptiveStats.getPercentile(95);
       double cellarMaxima_QD = OMHelper.calculateQD(cellarMaxima_Q05,
-          cellarMaxima_Q50, cellarMaxima_Q95);
+          cellarMaxima_Q95);
       double cellarMaxima_GM = cellarMaxDescriptiveStats.getGeometricMean();
       double cellarMaxima_GSD = OMHelper.calculateGSD(x,
           cellarMaxDescriptiveStats.getValues(), cellarMaxima_GM);
