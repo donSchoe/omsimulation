@@ -1,7 +1,7 @@
 /*
  * OM Simulation Tool: This tool intends to test and evaluate the scientific
  * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
- * virtual measurement campaigns based on real radon concentration data 
+ * virtual measurement campaigns based on real radon concentration data
  * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -53,10 +53,10 @@ public class OMMainFrame extends JFrame {
   /**
    * Stores the tool's version string.
    */
-  private static final String version          = "v0.4.53-rc2";
+  private static final String version          = "v0.4.54-rc2";
 
   /**
-   * Stores the tabbed pane used for navigating throught the panels.
+   * Stores the tabbed pane used for navigating through the panels.
    */
   protected JTabbedPane       tabbedPane;
 
@@ -81,7 +81,7 @@ public class OMMainFrame extends JFrame {
   protected OMPanelResults    jpanelResults;
 
   /**
-   * Stores the panel for analyzing the simulation results.
+   * Stores the panel for analysing the simulation results.
    */
   protected OMPanelTesting    jpanelTesting;
 

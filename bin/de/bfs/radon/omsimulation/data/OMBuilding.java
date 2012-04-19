@@ -1,7 +1,7 @@
 /*
  * OM Simulation Tool: This tool intends to test and evaluate the scientific
  * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
- * virtual measurement campaigns based on real radon concentration data 
+ * virtual measurement campaigns based on real radon concentration data
  * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -44,7 +44,7 @@ public class OMBuilding {
 
   /**
    * Stores a custom start date which is set by the user creating the building.
-   * The date can be choosen either to identify the start date of the
+   * The date can be chosen either to identify the start date of the
    * measurements or to identify the start date of the simulations. That's up to
    * the user and does not affect the simulations.
    */
@@ -121,7 +121,7 @@ public class OMBuilding {
 
   /**
    * Gets a custom start date which was set by the user creating the building.
-   * The date can be choosen either to identify the start date of the
+   * The date can be chosen either to identify the start date of the
    * measurements or to identify the start date of the simulations. That's up to
    * the user and does not affect the simulations.
    * 
@@ -132,9 +132,9 @@ public class OMBuilding {
   }
 
   /**
-   * Sets a custom start date for the building. The date can be choosen either
-   * to identify the start date of the measurements or to identify the start
-   * date of the simulations. That's up to the user and does not affect the
+   * Sets a custom start date for the building. The date can be chosen either to
+   * identify the start date of the measurements or to identify the start date
+   * of the simulations. That's up to the user and does not affect the
    * simulations.
    * 
    * @param start
@@ -344,7 +344,7 @@ public class OMBuilding {
   /**
    * Empty constructor for creating building objects without any attributes.
    * Only use this to avoid exceptions while running into errors or if you are
-   * forced to initialize the object first without the ability to set rooms or
+   * forced to initialise the object first without the ability to set rooms or
    * other attributes. Empty building objects can not be used for simulations.
    */
   public OMBuilding() {
@@ -369,7 +369,7 @@ public class OMBuilding {
    *          A custom name for the object which is set by the user creating the
    *          building.
    * @param start
-   *          A custom start date for the building. The date can be choosen
+   *          A custom start date for the building. The date can be chosen
    *          either to identify the start date of the measurements or to
    *          identify the start date of the simulations. That's up to the user
    *          and does not affect the simulations.
@@ -407,7 +407,7 @@ public class OMBuilding {
 
   /**
    * Method to generate all possible variations of any room and cellar, always
-   * following the protocoll "6+1", using only one cellar at any position and
+   * following the protocol "6+1", using only one cellar at any position and
    * three, four five or six normal rooms at any other possible position. Those
    * "patterns" are used to generate campaigns later on. Read more about how
    * these patterns are generated at the handbook.

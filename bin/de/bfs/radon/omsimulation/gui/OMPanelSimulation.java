@@ -1,7 +1,7 @@
 /*
  * OM Simulation Tool: This tool intends to test and evaluate the scientific
  * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
- * virtual measurement campaigns based on real radon concentration data 
+ * virtual measurement campaigns based on real radon concentration data
  * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -904,27 +904,27 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
               for (int start = 0; start < total; start++) {
                 campaign = new OMCampaign(start, variationSchemeSix[a],
                     randomNoise);
-                roomAmDescriptiveStats.addValue(campaign.getRoomAvarage());
-                cellarAmDescriptiveStats.addValue(campaign.getCellarAvarage());
-                roomGmDescriptiveStats.addValue(campaign.getRoomLogAvarage());
+                roomAmDescriptiveStats.addValue(campaign.getRoomAverage());
+                cellarAmDescriptiveStats.addValue(campaign.getCellarAverage());
+                roomGmDescriptiveStats.addValue(campaign.getRoomLogAverage());
                 cellarGmDescriptiveStats.addValue(campaign
-                    .getCellarLogAvarage());
+                    .getCellarLogAverage());
                 roomMedDescriptiveStats.addValue(campaign.getRoomMedian());
                 cellarMedDescriptiveStats.addValue(campaign.getCellarMedian());
-                roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
-                cellarMaxDescriptiveStats.addValue(campaign.getCellarMaxima());
+                roomMaxDescriptiveStats.addValue(campaign.getRoomMaximum());
+                cellarMaxDescriptiveStats.addValue(campaign.getCellarMaximum());
                 logOnly("Campaign: T=" + campaign.getStart() + ", R="
                     + campaign.getVariation(), (int) perc);
                 totalCsvOutput.write("\"" + x + "\";\""
                     + campaign.getVariation() + "\";\"" + campaign.getStart()
-                    + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
-                    + (int) campaign.getRoomLogAvarage() + "\";\""
+                    + "\";\"" + (int) campaign.getRoomAverage() + "\";\""
+                    + (int) campaign.getRoomLogAverage() + "\";\""
                     + (int) campaign.getRoomMedian() + "\";\""
-                    + (int) campaign.getRoomMaxima() + "\";\""
-                    + (int) campaign.getCellarAvarage() + "\";\""
-                    + (int) campaign.getCellarLogAvarage() + "\";\""
+                    + (int) campaign.getRoomMaximum() + "\";\""
+                    + (int) campaign.getCellarAverage() + "\";\""
+                    + (int) campaign.getCellarLogAverage() + "\";\""
                     + (int) campaign.getCellarMedian() + "\";\""
-                    + (int) campaign.getCellarMaxima() + "\"");
+                    + (int) campaign.getCellarMaximum() + "\"");
                 totalCsvOutput.newLine();
                 x++;
               }
@@ -949,30 +949,30 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                 for (int start = 0; start < total; start++) {
                   campaign = new OMCampaign(start, variationSchemeFive[a],
                       randomNoise);
-                  roomAmDescriptiveStats.addValue(campaign.getRoomAvarage());
+                  roomAmDescriptiveStats.addValue(campaign.getRoomAverage());
                   cellarAmDescriptiveStats
-                      .addValue(campaign.getCellarAvarage());
-                  roomGmDescriptiveStats.addValue(campaign.getRoomLogAvarage());
+                      .addValue(campaign.getCellarAverage());
+                  roomGmDescriptiveStats.addValue(campaign.getRoomLogAverage());
                   cellarGmDescriptiveStats.addValue(campaign
-                      .getCellarLogAvarage());
+                      .getCellarLogAverage());
                   roomMedDescriptiveStats.addValue(campaign.getRoomMedian());
                   cellarMedDescriptiveStats
                       .addValue(campaign.getCellarMedian());
-                  roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
-                  cellarMaxDescriptiveStats
-                      .addValue(campaign.getCellarMaxima());
+                  roomMaxDescriptiveStats.addValue(campaign.getRoomMaximum());
+                  cellarMaxDescriptiveStats.addValue(campaign
+                      .getCellarMaximum());
                   logOnly("Campaign: T=" + campaign.getStart() + ", R="
                       + campaign.getVariation(), (int) perc);
                   totalCsvOutput.write("\"" + x + "\";\""
                       + campaign.getVariation() + "\";\"" + campaign.getStart()
-                      + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
-                      + (int) campaign.getRoomLogAvarage() + "\";\""
+                      + "\";\"" + (int) campaign.getRoomAverage() + "\";\""
+                      + (int) campaign.getRoomLogAverage() + "\";\""
                       + (int) campaign.getRoomMedian() + "\";\""
-                      + (int) campaign.getRoomMaxima() + "\";\""
-                      + (int) campaign.getCellarAvarage() + "\";\""
-                      + (int) campaign.getCellarLogAvarage() + "\";\""
+                      + (int) campaign.getRoomMaximum() + "\";\""
+                      + (int) campaign.getCellarAverage() + "\";\""
+                      + (int) campaign.getCellarLogAverage() + "\";\""
                       + (int) campaign.getCellarMedian() + "\";\""
-                      + (int) campaign.getCellarMaxima() + "\"");
+                      + (int) campaign.getCellarMaximum() + "\"");
                   totalCsvOutput.newLine();
                   x++;
                 }
@@ -996,32 +996,32 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                   for (int start = 0; start < total; start++) {
                     campaign = new OMCampaign(start, variationSchemeFour[a],
                         randomNoise);
-                    roomAmDescriptiveStats.addValue(campaign.getRoomAvarage());
+                    roomAmDescriptiveStats.addValue(campaign.getRoomAverage());
                     cellarAmDescriptiveStats.addValue(campaign
-                        .getCellarAvarage());
+                        .getCellarAverage());
                     roomGmDescriptiveStats.addValue(campaign
-                        .getRoomLogAvarage());
+                        .getRoomLogAverage());
                     cellarGmDescriptiveStats.addValue(campaign
-                        .getCellarLogAvarage());
+                        .getCellarLogAverage());
                     roomMedDescriptiveStats.addValue(campaign.getRoomMedian());
                     cellarMedDescriptiveStats.addValue(campaign
                         .getCellarMedian());
-                    roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
+                    roomMaxDescriptiveStats.addValue(campaign.getRoomMaximum());
                     cellarMaxDescriptiveStats.addValue(campaign
-                        .getCellarMaxima());
+                        .getCellarMaximum());
                     logOnly("Campaign: T=" + campaign.getStart() + ", R="
                         + campaign.getVariation(), (int) perc);
                     totalCsvOutput.write("\"" + x + "\";\""
                         + campaign.getVariation() + "\";\""
                         + campaign.getStart() + "\";\""
-                        + (int) campaign.getRoomAvarage() + "\";\""
-                        + (int) campaign.getRoomLogAvarage() + "\";\""
+                        + (int) campaign.getRoomAverage() + "\";\""
+                        + (int) campaign.getRoomLogAverage() + "\";\""
                         + (int) campaign.getRoomMedian() + "\";\""
-                        + (int) campaign.getRoomMaxima() + "\";\""
-                        + (int) campaign.getCellarAvarage() + "\";\""
-                        + (int) campaign.getCellarLogAvarage() + "\";\""
+                        + (int) campaign.getRoomMaximum() + "\";\""
+                        + (int) campaign.getCellarAverage() + "\";\""
+                        + (int) campaign.getCellarLogAverage() + "\";\""
                         + (int) campaign.getCellarMedian() + "\";\""
-                        + (int) campaign.getCellarMaxima() + "\"");
+                        + (int) campaign.getCellarMaximum() + "\"");
                     totalCsvOutput.newLine();
                     x++;
                   }
@@ -1046,34 +1046,34 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                       campaign = new OMCampaign(start, variationSchemeThree[a],
                           randomNoise);
                       roomAmDescriptiveStats
-                          .addValue(campaign.getRoomAvarage());
+                          .addValue(campaign.getRoomAverage());
                       cellarAmDescriptiveStats.addValue(campaign
-                          .getCellarAvarage());
+                          .getCellarAverage());
                       roomGmDescriptiveStats.addValue(campaign
-                          .getRoomLogAvarage());
+                          .getRoomLogAverage());
                       cellarGmDescriptiveStats.addValue(campaign
-                          .getCellarLogAvarage());
+                          .getCellarLogAverage());
                       roomMedDescriptiveStats
                           .addValue(campaign.getRoomMedian());
                       cellarMedDescriptiveStats.addValue(campaign
                           .getCellarMedian());
-                      roomMaxDescriptiveStats
-                          .addValue(campaign.getRoomMaxima());
+                      roomMaxDescriptiveStats.addValue(campaign
+                          .getRoomMaximum());
                       cellarMaxDescriptiveStats.addValue(campaign
-                          .getCellarMaxima());
+                          .getCellarMaximum());
                       logOnly("Campaign: T=" + campaign.getStart() + ", R="
                           + campaign.getVariation(), (int) perc);
                       totalCsvOutput.write("\"" + x + "\";\""
                           + campaign.getVariation() + "\";\""
                           + campaign.getStart() + "\";\""
-                          + (int) campaign.getRoomAvarage() + "\";\""
-                          + (int) campaign.getRoomLogAvarage() + "\";\""
+                          + (int) campaign.getRoomAverage() + "\";\""
+                          + (int) campaign.getRoomLogAverage() + "\";\""
                           + (int) campaign.getRoomMedian() + "\";\""
-                          + (int) campaign.getRoomMaxima() + "\";\""
-                          + (int) campaign.getCellarAvarage() + "\";\""
-                          + (int) campaign.getCellarLogAvarage() + "\";\""
+                          + (int) campaign.getRoomMaximum() + "\";\""
+                          + (int) campaign.getCellarAverage() + "\";\""
+                          + (int) campaign.getCellarLogAverage() + "\";\""
                           + (int) campaign.getCellarMedian() + "\";\""
-                          + (int) campaign.getCellarMaxima() + "\"");
+                          + (int) campaign.getCellarMaximum() + "\"");
                       totalCsvOutput.newLine();
                       x++;
                     }
@@ -1106,26 +1106,26 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
               for (int start = 0; start < total; start++) {
                 campaign = new OMCampaign(start, variationSchemeSix[a],
                     randomNoise);
-                roomAmSummaryStats.addValue(campaign.getRoomAvarage());
-                cellarAmSummaryStats.addValue(campaign.getCellarAvarage());
-                roomGmSummaryStats.addValue(campaign.getRoomLogAvarage());
-                cellarGmSummaryStats.addValue(campaign.getCellarLogAvarage());
+                roomAmSummaryStats.addValue(campaign.getRoomAverage());
+                cellarAmSummaryStats.addValue(campaign.getCellarAverage());
+                roomGmSummaryStats.addValue(campaign.getRoomLogAverage());
+                cellarGmSummaryStats.addValue(campaign.getCellarLogAverage());
                 roomMedSummaryStats.addValue(campaign.getRoomMedian());
                 cellarMedSummaryStats.addValue(campaign.getCellarMedian());
-                roomMaxSummaryStats.addValue(campaign.getRoomMaxima());
-                cellarMaxSummaryStats.addValue(campaign.getCellarMaxima());
+                roomMaxSummaryStats.addValue(campaign.getRoomMaximum());
+                cellarMaxSummaryStats.addValue(campaign.getCellarMaximum());
                 logOnly("Campaign: T=" + campaign.getStart() + ", R="
                     + campaign.getVariation(), (int) perc);
                 totalCsvOutput.write("\"" + x + "\";\""
                     + campaign.getVariation() + "\";\"" + campaign.getStart()
-                    + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
-                    + (int) campaign.getRoomLogAvarage() + "\";\""
+                    + "\";\"" + (int) campaign.getRoomAverage() + "\";\""
+                    + (int) campaign.getRoomLogAverage() + "\";\""
                     + (int) campaign.getRoomMedian() + "\";\""
-                    + (int) campaign.getRoomMaxima() + "\";\""
-                    + (int) campaign.getCellarAvarage() + "\";\""
-                    + (int) campaign.getCellarLogAvarage() + "\";\""
+                    + (int) campaign.getRoomMaximum() + "\";\""
+                    + (int) campaign.getCellarAverage() + "\";\""
+                    + (int) campaign.getCellarLogAverage() + "\";\""
                     + (int) campaign.getCellarMedian() + "\";\""
-                    + (int) campaign.getCellarMaxima() + "\"");
+                    + (int) campaign.getCellarMaximum() + "\"");
                 totalCsvOutput.newLine();
                 x++;
               }
@@ -1150,26 +1150,26 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                 for (int start = 0; start < total; start++) {
                   campaign = new OMCampaign(start, variationSchemeFive[a],
                       randomNoise);
-                  roomAmSummaryStats.addValue(campaign.getRoomAvarage());
-                  cellarAmSummaryStats.addValue(campaign.getCellarAvarage());
-                  roomGmSummaryStats.addValue(campaign.getRoomLogAvarage());
-                  cellarGmSummaryStats.addValue(campaign.getCellarLogAvarage());
+                  roomAmSummaryStats.addValue(campaign.getRoomAverage());
+                  cellarAmSummaryStats.addValue(campaign.getCellarAverage());
+                  roomGmSummaryStats.addValue(campaign.getRoomLogAverage());
+                  cellarGmSummaryStats.addValue(campaign.getCellarLogAverage());
                   roomMedSummaryStats.addValue(campaign.getRoomMedian());
                   cellarMedSummaryStats.addValue(campaign.getCellarMedian());
-                  roomMaxSummaryStats.addValue(campaign.getRoomMaxima());
-                  cellarMaxSummaryStats.addValue(campaign.getCellarMaxima());
+                  roomMaxSummaryStats.addValue(campaign.getRoomMaximum());
+                  cellarMaxSummaryStats.addValue(campaign.getCellarMaximum());
                   logOnly("Campaign: T=" + campaign.getStart() + ", R="
                       + campaign.getVariation(), (int) perc);
                   totalCsvOutput.write("\"" + x + "\";\""
                       + campaign.getVariation() + "\";\"" + campaign.getStart()
-                      + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
-                      + (int) campaign.getRoomLogAvarage() + "\";\""
+                      + "\";\"" + (int) campaign.getRoomAverage() + "\";\""
+                      + (int) campaign.getRoomLogAverage() + "\";\""
                       + (int) campaign.getRoomMedian() + "\";\""
-                      + (int) campaign.getRoomMaxima() + "\";\""
-                      + (int) campaign.getCellarAvarage() + "\";\""
-                      + (int) campaign.getCellarLogAvarage() + "\";\""
+                      + (int) campaign.getRoomMaximum() + "\";\""
+                      + (int) campaign.getCellarAverage() + "\";\""
+                      + (int) campaign.getCellarLogAverage() + "\";\""
                       + (int) campaign.getCellarMedian() + "\";\""
-                      + (int) campaign.getCellarMaxima() + "\"");
+                      + (int) campaign.getCellarMaximum() + "\"");
                   totalCsvOutput.newLine();
                   x++;
                 }
@@ -1193,28 +1193,28 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                   for (int start = 0; start < total; start++) {
                     campaign = new OMCampaign(start, variationSchemeFour[a],
                         randomNoise);
-                    roomAmSummaryStats.addValue(campaign.getRoomAvarage());
-                    cellarAmSummaryStats.addValue(campaign.getCellarAvarage());
-                    roomGmSummaryStats.addValue(campaign.getRoomLogAvarage());
+                    roomAmSummaryStats.addValue(campaign.getRoomAverage());
+                    cellarAmSummaryStats.addValue(campaign.getCellarAverage());
+                    roomGmSummaryStats.addValue(campaign.getRoomLogAverage());
                     cellarGmSummaryStats.addValue(campaign
-                        .getCellarLogAvarage());
+                        .getCellarLogAverage());
                     roomMedSummaryStats.addValue(campaign.getRoomMedian());
                     cellarMedSummaryStats.addValue(campaign.getCellarMedian());
-                    roomMaxSummaryStats.addValue(campaign.getRoomMaxima());
-                    cellarMaxSummaryStats.addValue(campaign.getCellarMaxima());
+                    roomMaxSummaryStats.addValue(campaign.getRoomMaximum());
+                    cellarMaxSummaryStats.addValue(campaign.getCellarMaximum());
                     logOnly("Campaign: T=" + campaign.getStart() + ", R="
                         + campaign.getVariation(), (int) perc);
                     totalCsvOutput.write("\"" + x + "\";\""
                         + campaign.getVariation() + "\";\""
                         + campaign.getStart() + "\";\""
-                        + (int) campaign.getRoomAvarage() + "\";\""
-                        + (int) campaign.getRoomLogAvarage() + "\";\""
+                        + (int) campaign.getRoomAverage() + "\";\""
+                        + (int) campaign.getRoomLogAverage() + "\";\""
                         + (int) campaign.getRoomMedian() + "\";\""
-                        + (int) campaign.getRoomMaxima() + "\";\""
-                        + (int) campaign.getCellarAvarage() + "\";\""
-                        + (int) campaign.getCellarLogAvarage() + "\";\""
+                        + (int) campaign.getRoomMaximum() + "\";\""
+                        + (int) campaign.getCellarAverage() + "\";\""
+                        + (int) campaign.getCellarLogAverage() + "\";\""
                         + (int) campaign.getCellarMedian() + "\";\""
-                        + (int) campaign.getCellarMaxima() + "\"");
+                        + (int) campaign.getCellarMaximum() + "\"");
                     totalCsvOutput.newLine();
                     x++;
                   }
@@ -1238,31 +1238,31 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                     for (int start = 0; start < total; start++) {
                       campaign = new OMCampaign(start, variationSchemeThree[a],
                           randomNoise);
-                      roomAmSummaryStats.addValue(campaign.getRoomAvarage());
+                      roomAmSummaryStats.addValue(campaign.getRoomAverage());
                       cellarAmSummaryStats
-                          .addValue(campaign.getCellarAvarage());
-                      roomGmSummaryStats.addValue(campaign.getRoomLogAvarage());
+                          .addValue(campaign.getCellarAverage());
+                      roomGmSummaryStats.addValue(campaign.getRoomLogAverage());
                       cellarGmSummaryStats.addValue(campaign
-                          .getCellarLogAvarage());
+                          .getCellarLogAverage());
                       roomMedSummaryStats.addValue(campaign.getRoomMedian());
                       cellarMedSummaryStats
                           .addValue(campaign.getCellarMedian());
-                      roomMaxSummaryStats.addValue(campaign.getRoomMaxima());
-                      cellarMaxSummaryStats
-                          .addValue(campaign.getCellarMaxima());
+                      roomMaxSummaryStats.addValue(campaign.getRoomMaximum());
+                      cellarMaxSummaryStats.addValue(campaign
+                          .getCellarMaximum());
                       logOnly("Campaign: T=" + campaign.getStart() + ", R="
                           + campaign.getVariation(), (int) perc);
                       totalCsvOutput.write("\"" + x + "\";\""
                           + campaign.getVariation() + "\";\""
                           + campaign.getStart() + "\";\""
-                          + (int) campaign.getRoomAvarage() + "\";\""
-                          + (int) campaign.getRoomLogAvarage() + "\";\""
+                          + (int) campaign.getRoomAverage() + "\";\""
+                          + (int) campaign.getRoomLogAverage() + "\";\""
                           + (int) campaign.getRoomMedian() + "\";\""
-                          + (int) campaign.getRoomMaxima() + "\";\""
-                          + (int) campaign.getCellarAvarage() + "\";\""
-                          + (int) campaign.getCellarLogAvarage() + "\";\""
+                          + (int) campaign.getRoomMaximum() + "\";\""
+                          + (int) campaign.getCellarAverage() + "\";\""
+                          + (int) campaign.getCellarLogAverage() + "\";\""
                           + (int) campaign.getCellarMedian() + "\";\""
-                          + (int) campaign.getCellarMaxima() + "\"");
+                          + (int) campaign.getCellarMaximum() + "\"");
                       totalCsvOutput.newLine();
                       x++;
                     }
@@ -1593,27 +1593,27 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                 }
                 campaign = new OMCampaign(start,
                     variationSchemeThree[random[a]], randomNoise);
-                roomAmDescriptiveStats.addValue(campaign.getRoomAvarage());
-                cellarAmDescriptiveStats.addValue(campaign.getCellarAvarage());
-                roomGmDescriptiveStats.addValue(campaign.getRoomLogAvarage());
+                roomAmDescriptiveStats.addValue(campaign.getRoomAverage());
+                cellarAmDescriptiveStats.addValue(campaign.getCellarAverage());
+                roomGmDescriptiveStats.addValue(campaign.getRoomLogAverage());
                 cellarGmDescriptiveStats.addValue(campaign
-                    .getCellarLogAvarage());
+                    .getCellarLogAverage());
                 roomMedDescriptiveStats.addValue(campaign.getRoomMedian());
                 cellarMedDescriptiveStats.addValue(campaign.getCellarMedian());
-                roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
-                cellarMaxDescriptiveStats.addValue(campaign.getCellarMaxima());
+                roomMaxDescriptiveStats.addValue(campaign.getRoomMaximum());
+                cellarMaxDescriptiveStats.addValue(campaign.getCellarMaximum());
                 logOnly("Campaign: T=" + campaign.getStart() + ", R="
                     + campaign.getVariation(), (int) perc);
                 totalCsvOutput.write("\"" + x + "\";\""
                     + campaign.getVariation() + "\";\"" + campaign.getStart()
-                    + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
-                    + (int) campaign.getRoomLogAvarage() + "\";\""
+                    + "\";\"" + (int) campaign.getRoomAverage() + "\";\""
+                    + (int) campaign.getRoomLogAverage() + "\";\""
                     + (int) campaign.getRoomMedian() + "\";\""
-                    + (int) campaign.getRoomMaxima() + "\";\""
-                    + (int) campaign.getCellarAvarage() + "\";\""
-                    + (int) campaign.getCellarLogAvarage() + "\";\""
+                    + (int) campaign.getRoomMaximum() + "\";\""
+                    + (int) campaign.getCellarAverage() + "\";\""
+                    + (int) campaign.getCellarLogAverage() + "\";\""
                     + (int) campaign.getCellarMedian() + "\";\""
-                    + (int) campaign.getCellarMaxima() + "\"");
+                    + (int) campaign.getCellarMaximum() + "\"");
                 totalCsvOutput.newLine();
                 campaigns[(int) x] = campaign;
                 x++;
@@ -1647,30 +1647,30 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                   }
                   campaign = new OMCampaign(start,
                       variationSchemeFour[random[a]], randomNoise);
-                  roomAmDescriptiveStats.addValue(campaign.getRoomAvarage());
+                  roomAmDescriptiveStats.addValue(campaign.getRoomAverage());
                   cellarAmDescriptiveStats
-                      .addValue(campaign.getCellarAvarage());
-                  roomGmDescriptiveStats.addValue(campaign.getRoomLogAvarage());
+                      .addValue(campaign.getCellarAverage());
+                  roomGmDescriptiveStats.addValue(campaign.getRoomLogAverage());
                   cellarGmDescriptiveStats.addValue(campaign
-                      .getCellarLogAvarage());
+                      .getCellarLogAverage());
                   roomMedDescriptiveStats.addValue(campaign.getRoomMedian());
                   cellarMedDescriptiveStats
                       .addValue(campaign.getCellarMedian());
-                  roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
-                  cellarMaxDescriptiveStats
-                      .addValue(campaign.getCellarMaxima());
+                  roomMaxDescriptiveStats.addValue(campaign.getRoomMaximum());
+                  cellarMaxDescriptiveStats.addValue(campaign
+                      .getCellarMaximum());
                   logOnly("Campaign: T=" + campaign.getStart() + ", R="
                       + campaign.getVariation(), (int) perc);
                   totalCsvOutput.write("\"" + x + "\";\""
                       + campaign.getVariation() + "\";\"" + campaign.getStart()
-                      + "\";\"" + (int) campaign.getRoomAvarage() + "\";\""
-                      + (int) campaign.getRoomLogAvarage() + "\";\""
+                      + "\";\"" + (int) campaign.getRoomAverage() + "\";\""
+                      + (int) campaign.getRoomLogAverage() + "\";\""
                       + (int) campaign.getRoomMedian() + "\";\""
-                      + (int) campaign.getRoomMaxima() + "\";\""
-                      + (int) campaign.getCellarAvarage() + "\";\""
-                      + (int) campaign.getCellarLogAvarage() + "\";\""
+                      + (int) campaign.getRoomMaximum() + "\";\""
+                      + (int) campaign.getCellarAverage() + "\";\""
+                      + (int) campaign.getCellarLogAverage() + "\";\""
                       + (int) campaign.getCellarMedian() + "\";\""
-                      + (int) campaign.getCellarMaxima() + "\"");
+                      + (int) campaign.getCellarMaximum() + "\"");
                   totalCsvOutput.newLine();
                   campaigns[(int) x] = campaign;
                   x++;
@@ -1704,32 +1704,32 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                     }
                     campaign = new OMCampaign(start,
                         variationSchemeFive[random[a]], randomNoise);
-                    roomAmDescriptiveStats.addValue(campaign.getRoomAvarage());
+                    roomAmDescriptiveStats.addValue(campaign.getRoomAverage());
                     cellarAmDescriptiveStats.addValue(campaign
-                        .getCellarAvarage());
+                        .getCellarAverage());
                     roomGmDescriptiveStats.addValue(campaign
-                        .getRoomLogAvarage());
+                        .getRoomLogAverage());
                     cellarGmDescriptiveStats.addValue(campaign
-                        .getCellarLogAvarage());
+                        .getCellarLogAverage());
                     roomMedDescriptiveStats.addValue(campaign.getRoomMedian());
                     cellarMedDescriptiveStats.addValue(campaign
                         .getCellarMedian());
-                    roomMaxDescriptiveStats.addValue(campaign.getRoomMaxima());
+                    roomMaxDescriptiveStats.addValue(campaign.getRoomMaximum());
                     cellarMaxDescriptiveStats.addValue(campaign
-                        .getCellarMaxima());
+                        .getCellarMaximum());
                     logOnly("Campaign: T=" + campaign.getStart() + ", R="
                         + campaign.getVariation(), (int) perc);
                     totalCsvOutput.write("\"" + x + "\";\""
                         + campaign.getVariation() + "\";\""
                         + campaign.getStart() + "\";\""
-                        + (int) campaign.getRoomAvarage() + "\";\""
-                        + (int) campaign.getRoomLogAvarage() + "\";\""
+                        + (int) campaign.getRoomAverage() + "\";\""
+                        + (int) campaign.getRoomLogAverage() + "\";\""
                         + (int) campaign.getRoomMedian() + "\";\""
-                        + (int) campaign.getRoomMaxima() + "\";\""
-                        + (int) campaign.getCellarAvarage() + "\";\""
-                        + (int) campaign.getCellarLogAvarage() + "\";\""
+                        + (int) campaign.getRoomMaximum() + "\";\""
+                        + (int) campaign.getCellarAverage() + "\";\""
+                        + (int) campaign.getCellarLogAverage() + "\";\""
                         + (int) campaign.getCellarMedian() + "\";\""
-                        + (int) campaign.getCellarMaxima() + "\"");
+                        + (int) campaign.getCellarMaximum() + "\"");
                     totalCsvOutput.newLine();
                     campaigns[(int) x] = campaign;
                     x++;
@@ -1765,34 +1765,34 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
                       campaign = new OMCampaign(start,
                           variationSchemeSix[random[a]], randomNoise);
                       roomAmDescriptiveStats
-                          .addValue(campaign.getRoomAvarage());
+                          .addValue(campaign.getRoomAverage());
                       cellarAmDescriptiveStats.addValue(campaign
-                          .getCellarAvarage());
+                          .getCellarAverage());
                       roomGmDescriptiveStats.addValue(campaign
-                          .getRoomLogAvarage());
+                          .getRoomLogAverage());
                       cellarGmDescriptiveStats.addValue(campaign
-                          .getCellarLogAvarage());
+                          .getCellarLogAverage());
                       roomMedDescriptiveStats
                           .addValue(campaign.getRoomMedian());
                       cellarMedDescriptiveStats.addValue(campaign
                           .getCellarMedian());
-                      roomMaxDescriptiveStats
-                          .addValue(campaign.getRoomMaxima());
+                      roomMaxDescriptiveStats.addValue(campaign
+                          .getRoomMaximum());
                       cellarMaxDescriptiveStats.addValue(campaign
-                          .getCellarMaxima());
+                          .getCellarMaximum());
                       logOnly("Campaign: T=" + campaign.getStart() + ", R="
                           + campaign.getVariation(), (int) perc);
                       totalCsvOutput.write("\"" + x + "\";\""
                           + campaign.getVariation() + "\";\""
                           + campaign.getStart() + "\";\""
-                          + (int) campaign.getRoomAvarage() + "\";\""
-                          + (int) campaign.getRoomLogAvarage() + "\";\""
+                          + (int) campaign.getRoomAverage() + "\";\""
+                          + (int) campaign.getRoomLogAverage() + "\";\""
                           + (int) campaign.getRoomMedian() + "\";\""
-                          + (int) campaign.getRoomMaxima() + "\";\""
-                          + (int) campaign.getCellarAvarage() + "\";\""
-                          + (int) campaign.getCellarLogAvarage() + "\";\""
+                          + (int) campaign.getRoomMaximum() + "\";\""
+                          + (int) campaign.getCellarAverage() + "\";\""
+                          + (int) campaign.getCellarLogAverage() + "\";\""
                           + (int) campaign.getCellarMedian() + "\";\""
-                          + (int) campaign.getCellarMaxima() + "\"");
+                          + (int) campaign.getCellarMaximum() + "\"");
                       totalCsvOutput.newLine();
                       campaigns[(int) x] = campaign;
                       x++;
@@ -1919,9 +1919,9 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
      * @param x
      *          The total number of simulations.
      * @param roomAmDescriptiveStats
-     *          Statistics for room arithmetric means.
+     *          Statistics for room arithmetic means.
      * @param cellarAmDescriptiveStats
-     *          Statistics for cellar arithmetric means.
+     *          Statistics for cellar arithmetic means.
      * @param roomGmDescriptiveStats
      *          Statistics for room geometric means.
      * @param cellarGmDescriptiveStats
@@ -1931,9 +1931,9 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
      * @param cellarMedDescriptiveStats
      *          Statistics for cellar medians.
      * @param roomMaxDescriptiveStats
-     *          Statistics for room maxima.
+     *          Statistics for room maximum.
      * @param cellarMaxDescriptiveStats
-     *          Statistics for cellar maxima.
+     *          Statistics for cellar maximum.
      * @param csvOutput
      *          A a file buffer writer used to write the results to CSV.
      * @param decFormat
@@ -1961,8 +1961,10 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double roomArithMeans_Q95 = roomAmDescriptiveStats.getPercentile(95);
       double roomArithMeans_QD = OMHelper.calculateQD(roomArithMeans_Q05,
           roomArithMeans_Q95);
+      double roomArithMeans_RQD = OMHelper.calculateRQD(roomArithMeans_Q05,
+          roomArithMeans_Q50, roomArithMeans_Q95);
       double roomArithMeans_GM = roomAmDescriptiveStats.getGeometricMean();
-      double roomArithMeans_GSD = OMHelper.calculateGSD(x,
+      double roomArithMeans_GSD = OMHelper.calculateGSD(
           roomAmDescriptiveStats.getValues(), roomArithMeans_GM);
       double cellarArithMeans_AM = cellarAmDescriptiveStats.getMean();
       double cellarArithMeans_SD = cellarAmDescriptiveStats
@@ -1974,8 +1976,10 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double cellarArithMeans_Q95 = cellarAmDescriptiveStats.getPercentile(95);
       double cellarArithMeans_QD = OMHelper.calculateQD(cellarArithMeans_Q05,
           cellarArithMeans_Q95);
+      double cellarArithMeans_RQD = OMHelper.calculateRQD(cellarArithMeans_Q05,
+          cellarArithMeans_Q50, cellarArithMeans_Q95);
       double cellarArithMeans_GM = cellarAmDescriptiveStats.getGeometricMean();
-      double cellarArithMeans_GSD = OMHelper.calculateGSD(x,
+      double cellarArithMeans_GSD = OMHelper.calculateGSD(
           cellarAmDescriptiveStats.getValues(), cellarArithMeans_GM);
       double roomLogMeans_AM = roomGmDescriptiveStats.getMean();
       double roomLogMeans_SD = roomGmDescriptiveStats.getStandardDeviation();
@@ -1986,8 +1990,10 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double roomLogMeans_Q95 = roomGmDescriptiveStats.getPercentile(95);
       double roomLogMeans_QD = OMHelper.calculateQD(roomLogMeans_Q05,
           roomLogMeans_Q95);
+      double roomLogMeans_RQD = OMHelper.calculateRQD(roomLogMeans_Q05,
+          roomLogMeans_Q50, roomLogMeans_Q95);
       double roomLogMeans_GM = roomGmDescriptiveStats.getGeometricMean();
-      double roomLogMeans_GSD = OMHelper.calculateGSD(x,
+      double roomLogMeans_GSD = OMHelper.calculateGSD(
           roomGmDescriptiveStats.getValues(), roomLogMeans_GM);
       double cellarLogMeans_AM = cellarGmDescriptiveStats.getMean();
       double cellarLogMeans_SD = cellarGmDescriptiveStats
@@ -1999,8 +2005,10 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double cellarLogMeans_Q95 = cellarGmDescriptiveStats.getPercentile(95);
       double cellarLogMeans_QD = OMHelper.calculateQD(cellarLogMeans_Q05,
           cellarLogMeans_Q95);
+      double cellarLogMeans_RQD = OMHelper.calculateRQD(cellarLogMeans_Q05,
+          cellarLogMeans_Q50, cellarLogMeans_Q95);
       double cellarLogMeans_GM = cellarGmDescriptiveStats.getGeometricMean();
-      double cellarLogMeans_GSD = OMHelper.calculateGSD(x,
+      double cellarLogMeans_GSD = OMHelper.calculateGSD(
           cellarGmDescriptiveStats.getValues(), cellarLogMeans_GM);
       double roomMedians_AM = roomMedDescriptiveStats.getMean();
       double roomMedians_SD = roomMedDescriptiveStats.getStandardDeviation();
@@ -2011,8 +2019,10 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double roomMedians_Q95 = roomMedDescriptiveStats.getPercentile(95);
       double roomMedians_QD = OMHelper.calculateQD(roomMedians_Q05,
           roomMedians_Q95);
+      double roomMedians_RQD = OMHelper.calculateRQD(roomMedians_Q05,
+          roomMedians_Q50, roomMedians_Q95);
       double roomMedians_GM = roomMedDescriptiveStats.getGeometricMean();
-      double roomMedians_GSD = OMHelper.calculateGSD(x,
+      double roomMedians_GSD = OMHelper.calculateGSD(
           roomMedDescriptiveStats.getValues(), roomMedians_GM);
       double cellarMedians_AM = cellarMedDescriptiveStats.getMean();
       double cellarMedians_SD = cellarMedDescriptiveStats
@@ -2024,8 +2034,10 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double cellarMedians_Q95 = cellarMedDescriptiveStats.getPercentile(95);
       double cellarMedians_QD = OMHelper.calculateQD(cellarMedians_Q05,
           cellarMedians_Q95);
+      double cellarMedians_RQD = OMHelper.calculateRQD(cellarMedians_Q05,
+          cellarMedians_Q50, cellarMedians_Q95);
       double cellarMedians_GM = cellarMedDescriptiveStats.getGeometricMean();
-      double cellarMedians_GSD = OMHelper.calculateGSD(x,
+      double cellarMedians_GSD = OMHelper.calculateGSD(
           cellarMedDescriptiveStats.getValues(), cellarMedians_GM);
       double roomMaxima_AM = roomMaxDescriptiveStats.getMean();
       double roomMaxima_SD = roomMaxDescriptiveStats.getStandardDeviation();
@@ -2035,8 +2047,10 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double roomMaxima_Q95 = roomMaxDescriptiveStats.getPercentile(95);
       double roomMaxima_QD = OMHelper.calculateQD(roomMaxima_Q05,
           roomMaxima_Q95);
+      double roomMaxima_RQD = OMHelper.calculateRQD(roomMaxima_Q05,
+          roomMaxima_Q50, roomMaxima_Q95);
       double roomMaxima_GM = roomMaxDescriptiveStats.getGeometricMean();
-      double roomMaxima_GSD = OMHelper.calculateGSD(x,
+      double roomMaxima_GSD = OMHelper.calculateGSD(
           roomMaxDescriptiveStats.getValues(), roomMaxima_GM);
       double cellarMaxima_AM = cellarMaxDescriptiveStats.getMean();
       double cellarMaxima_SD = cellarMaxDescriptiveStats.getStandardDeviation();
@@ -2047,57 +2061,61 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       double cellarMaxima_Q95 = cellarMaxDescriptiveStats.getPercentile(95);
       double cellarMaxima_QD = OMHelper.calculateQD(cellarMaxima_Q05,
           cellarMaxima_Q95);
+      double cellarMaxima_RQD = OMHelper.calculateRQD(cellarMaxima_Q05,
+          cellarMaxima_Q50, cellarMaxima_Q95);
       double cellarMaxima_GM = cellarMaxDescriptiveStats.getGeometricMean();
-      double cellarMaxima_GSD = OMHelper.calculateGSD(x,
+      double cellarMaxima_GSD = OMHelper.calculateGSD(
           cellarMaxDescriptiveStats.getValues(), cellarMaxima_GM);
       tmpUpdate("Calculated statistics for room arithmetic means:", 99);
       logOnly("AM=" + roomArithMeans_AM + ", SD=" + roomArithMeans_SD + ", CV="
           + roomArithMeans_CV + ", GM=" + roomArithMeans_GM + ", GSD="
           + roomArithMeans_GSD + ", Q5=" + roomArithMeans_Q05 + ", Q50="
           + roomArithMeans_Q50 + ", Q95=" + roomArithMeans_Q95 + ", QD="
-          + roomArithMeans_QD, 99);
+          + roomArithMeans_QD + ", RQD=" + roomArithMeans_RQD, 99);
       tmpUpdate("Calculated statistics for cellar arithmetic means:", 99);
       logOnly("AM=" + cellarArithMeans_AM + ", SD=" + cellarArithMeans_SD
           + ", CV=" + cellarArithMeans_CV + ", GM=" + cellarArithMeans_GM
           + ", GSD=" + cellarArithMeans_GSD + ", Q5=" + cellarArithMeans_Q05
           + ", Q50=" + cellarArithMeans_Q50 + ", Q95=" + cellarArithMeans_Q95
-          + ", QD=" + cellarArithMeans_QD, 99);
+          + ", QD=" + cellarArithMeans_QD + ", RQD=" + cellarArithMeans_RQD, 99);
       tmpUpdate("Calculated statistics for room geometric means:", 99);
       logOnly("AM=" + roomLogMeans_AM + ", SD=" + roomLogMeans_SD + ", CV="
           + roomLogMeans_CV + ", GM=" + roomLogMeans_GM + ", GSD="
           + roomLogMeans_GSD + ", Q5=" + roomLogMeans_Q05 + ", Q50="
           + roomLogMeans_Q50 + ", Q95=" + roomLogMeans_Q95 + ", QD="
-          + roomLogMeans_QD, 99);
+          + roomLogMeans_QD + ", RQD=" + roomLogMeans_RQD, 99);
       tmpUpdate("Calculated statistics for cellar geometric means:", 99);
       logOnly("AM=" + cellarLogMeans_AM + ", SD=" + cellarLogMeans_SD + ", CV="
           + cellarLogMeans_CV + ", GM=" + cellarLogMeans_GM + ", GSD="
           + cellarLogMeans_GSD + ", Q5=" + cellarLogMeans_Q05 + ", Q50="
           + cellarLogMeans_Q50 + ", Q95=" + cellarLogMeans_Q95 + ", QD="
-          + cellarLogMeans_QD, 99);
+          + cellarLogMeans_QD + ", RQD=" + cellarLogMeans_RQD, 99);
       tmpUpdate("Calculated statistics for room medians:", 99);
       logOnly("AM=" + roomMedians_AM + ", SD=" + roomMedians_SD + ", CV="
           + roomMedians_CV + ", GM=" + roomMedians_GM + ", GSD="
           + roomMedians_GSD + ", Q5=" + roomMedians_Q05 + ", Q50="
           + roomMedians_Q50 + ", Q95=" + roomMedians_Q95 + ", QD="
-          + roomMedians_QD, 99);
+          + roomMedians_QD + ", RQD=" + roomMedians_RQD, 99);
       tmpUpdate("Calculated statistics for cellar medians:", 99);
       logOnly("AM=" + cellarMedians_AM + ", SD=" + cellarMedians_SD + ", CV="
           + cellarMedians_CV + ", GM=" + cellarMedians_GM + ", GSD="
           + cellarMedians_GSD + ", Q5=" + cellarMedians_Q05 + ", Q50="
           + cellarMedians_Q50 + ", Q95=" + cellarMedians_Q95 + ", QD="
-          + cellarMedians_QD, 99);
+          + cellarMedians_QD + ", RQD=" + cellarMedians_RQD, 99);
       tmpUpdate("Calculated statistics for room maxima:", 99);
       logOnly("AM=" + roomMaxima_AM + ", SD=" + roomMaxima_SD + ", CV="
           + roomMaxima_CV + ", GM=" + roomMaxima_GM + ", GSD=" + roomMaxima_GSD
           + ", Q5=" + roomMaxima_Q05 + ", Q50=" + roomMaxima_Q50 + ", Q95="
-          + roomMaxima_Q95 + ", QD=" + roomMaxima_QD, 99);
+          + roomMaxima_Q95 + ", QD=" + roomMaxima_QD + ", RQD="
+          + roomMaxima_RQD, 99);
       tmpUpdate("Calculated statistics for cellar maxima:", 99);
       logOnly("AM=" + cellarMaxima_AM + ", SD=" + cellarMaxima_SD + ", CV="
-          + cellarMaxima_CV + ", GM=" + cellarMaxima_GM + ", Q5="
-          + cellarMaxima_Q05 + ", Q50=" + cellarMaxima_Q50 + ", Q95="
-          + cellarMaxima_Q95 + ", QD=" + cellarMaxima_QD, 99);
-      csvOutput
-          .write("\"ID\";\"AM\";\"SD\";\"CV\";\"GM\";\"GSD\";\"Q5\";\"Q50\";\"Q95\";\"QD\"");
+          + cellarMaxima_CV + ", GM=" + cellarMaxima_GM + ", GSD="
+          + cellarMaxima_GSD + ", Q5=" + cellarMaxima_Q05 + ", Q50="
+          + cellarMaxima_Q50 + ", Q95=" + cellarMaxima_Q95 + ", QD="
+          + cellarMaxima_QD + ", RQD=" + cellarMaxima_RQD, 99);
+      csvOutput.write("\"ID\";\"AM\";\"SD\";\"CV\";\"GM\";\"GSD\";"
+          + "\"Q5\";\"Q50\";\"Q95\";\"QD\";\"RQD\"");
       csvOutput.newLine();
       csvOutput.write("\"R_AM\";\"" + decFormat.format(roomArithMeans_AM)
           + "\";\"" + decFormat.format(roomArithMeans_SD) + "\";\""
@@ -2107,7 +2125,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           + decFormat.format(roomArithMeans_Q05) + "\";\""
           + decFormat.format(roomArithMeans_Q50) + "\";\""
           + decFormat.format(roomArithMeans_Q95) + "\";\""
-          + decFormat.format(roomArithMeans_QD) + "\"");
+          + decFormat.format(roomArithMeans_QD) + "\";\""
+          + decFormat.format(roomArithMeans_RQD) + "\"");
       csvOutput.newLine();
       csvOutput.write("\"R_GM\";\"" + decFormat.format(roomLogMeans_AM)
           + "\";\"" + decFormat.format(roomLogMeans_SD) + "\";\""
@@ -2117,7 +2136,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           + decFormat.format(roomLogMeans_Q05) + "\";\""
           + decFormat.format(roomLogMeans_Q50) + "\";\""
           + decFormat.format(roomLogMeans_Q95) + "\";\""
-          + decFormat.format(roomLogMeans_QD) + "\"");
+          + decFormat.format(roomLogMeans_QD) + "\";\""
+          + decFormat.format(roomLogMeans_RQD) + "\"");
       csvOutput.newLine();
       csvOutput.write("\"R_Q50\";\"" + decFormat.format(roomMedians_AM)
           + "\";\"" + decFormat.format(roomMedians_SD) + "\";\""
@@ -2127,7 +2147,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           + decFormat.format(roomMedians_Q05) + "\";\""
           + decFormat.format(roomMedians_Q50) + "\";\""
           + decFormat.format(roomMedians_Q95) + "\";\""
-          + decFormat.format(roomMedians_QD) + "\"");
+          + decFormat.format(roomMedians_QD) + "\";\""
+          + decFormat.format(roomMedians_RQD) + "\"");
       csvOutput.newLine();
       csvOutput.write("\"R_MAX\";\"" + decFormat.format(roomMaxima_AM)
           + "\";\"" + decFormat.format(roomMaxima_SD) + "\";\""
@@ -2137,7 +2158,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           + decFormat.format(roomMaxima_Q05) + "\";\""
           + decFormat.format(roomMaxima_Q50) + "\";\""
           + decFormat.format(roomMaxima_Q95) + "\";\""
-          + decFormat.format(roomMaxima_QD) + "\"");
+          + decFormat.format(roomMaxima_QD) + "\";\""
+          + decFormat.format(roomMaxima_RQD) + "\"");
       csvOutput.newLine();
       csvOutput.write("\"C_AM\";\"" + decFormat.format(cellarArithMeans_AM)
           + "\";\"" + decFormat.format(cellarArithMeans_SD) + "\";\""
@@ -2147,7 +2169,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           + decFormat.format(cellarArithMeans_Q05) + "\";\""
           + decFormat.format(cellarArithMeans_Q50) + "\";\""
           + decFormat.format(cellarArithMeans_Q95) + "\";\""
-          + decFormat.format(cellarArithMeans_QD) + "\"");
+          + decFormat.format(cellarArithMeans_QD) + "\";\""
+          + decFormat.format(cellarArithMeans_RQD) + "\"");
       csvOutput.newLine();
       csvOutput.write("\"C_GM\";\"" + decFormat.format(cellarLogMeans_AM)
           + "\";\"" + decFormat.format(cellarLogMeans_SD) + "\";\""
@@ -2157,7 +2180,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           + decFormat.format(cellarLogMeans_Q05) + "\";\""
           + decFormat.format(cellarLogMeans_Q50) + "\";\""
           + decFormat.format(cellarLogMeans_Q95) + "\";\""
-          + decFormat.format(cellarLogMeans_QD) + "\"");
+          + decFormat.format(cellarLogMeans_QD) + "\";\""
+          + decFormat.format(cellarLogMeans_RQD) + "\"");
       csvOutput.newLine();
       csvOutput.write("\"C_Q50\";\"" + decFormat.format(cellarMedians_AM)
           + "\";\"" + decFormat.format(cellarMedians_SD) + "\";\""
@@ -2167,7 +2191,8 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           + decFormat.format(cellarMedians_Q05) + "\";\""
           + decFormat.format(cellarMedians_Q50) + "\";\""
           + decFormat.format(cellarMedians_Q95) + "\";\""
-          + decFormat.format(cellarMedians_QD) + "\"");
+          + decFormat.format(cellarMedians_QD) + "\";\""
+          + decFormat.format(cellarMedians_RQD) + "\"");
       csvOutput.newLine();
       csvOutput.write("\"C_MAX\";\"" + decFormat.format(cellarMaxima_AM)
           + "\";\"" + decFormat.format(cellarMaxima_SD) + "\";\""
@@ -2177,14 +2202,14 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
           + decFormat.format(cellarMaxima_Q05) + "\";\""
           + decFormat.format(cellarMaxima_Q50) + "\";\""
           + decFormat.format(cellarMaxima_Q95) + "\";\""
-          + decFormat.format(cellarMaxima_QD) + "\"");
+          + decFormat.format(cellarMaxima_QD) + "\";\""
+          + decFormat.format(cellarMaxima_RQD) + "\"");
       csvOutput.newLine();
       csvOutput
-          .write("\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \"");
+          .write("\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \"");
       csvOutput.newLine();
-
-      csvOutput.write("\" \";\" \";\" \";\"N\";\"" + x
-          + "\";\" \";\" \";\" \";\" \";\" \"");
+      csvOutput.write("\"N\";\"" + x
+          + "\";\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \";\" \"");
     }
 
     /**
@@ -2192,9 +2217,9 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
      * memory. Writes results of the calculations to a separate CSV file.
      * 
      * @param roomAmSummaryStats
-     *          Statistics for room arithmetric means.
+     *          Statistics for room arithmetic means.
      * @param cellarAmSummaryStats
-     *          Statistics for cellar arithmetric means.
+     *          Statistics for cellar arithmetic means.
      * @param roomGmSummaryStats
      *          Statistics for room geometric means.
      * @param cellarGmSummaryStats
@@ -2204,9 +2229,9 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
      * @param cellarMedSummaryStats
      *          Statistics for cellar medians.
      * @param roomMaxSummaryStats
-     *          Statistics for room maxima.
+     *          Statistics for room maximum.
      * @param cellarMaxSummaryStats
-     *          Statistics for cellar maxima.
+     *          Statistics for cellar maximum.
      * @param csvOutput
      *          A a file buffer writer used to write the results to CSV.
      * @param decFormat
@@ -2332,7 +2357,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
       csvOutput.newLine();
       csvOutput.write("\" \";\" \";\" \";\" \";\" \"");
       csvOutput.newLine();
-      csvOutput.write("\" \";\" \";\" \";\"N\";\"" + x + "\"");
+      csvOutput.write("\"N\";\"" + x + "\";\" \";\" \";\" \"");
     }
 
     /**
@@ -2414,7 +2439,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
   }
 
   /**
-   * Initializes the interface of the simulation panel without any preloaded
+   * Initialises the interface of the simulation panel without any preloaded
    * objects.
    */
   public OMPanelSimulation() {
@@ -2422,7 +2447,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
   }
 
   /**
-   * Initializes the interface of the simulation panel with a preloaded object
+   * Initialises the interface of the simulation panel with a preloaded object
    * from import panel. Launching a refresh task in background.
    * 
    * @param omb
@@ -2439,7 +2464,7 @@ public class OMPanelSimulation extends JPanel implements ActionListener {
   }
 
   /**
-   * Initializes the interface of the simulation panel.
+   * Initialises the interface of the simulation panel.
    */
   protected void initialize() {
     setLayout(null);

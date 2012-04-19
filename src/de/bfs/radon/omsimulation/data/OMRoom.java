@@ -1,7 +1,7 @@
 /*
  * OM Simulation Tool: This tool intends to test and evaluate the scientific
  * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
- * virtual measurement campaigns based on real radon concentration data 
+ * virtual measurement campaigns based on real radon concentration data
  * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -43,7 +43,7 @@ public class OMRoom {
 
   /**
    * Stores an array of radon values for the certain room. Each value[i] equals
-   * the avarage of one hour. The unit is [Bq/m^3].
+   * the average of one hour. The unit is [Bq/m^3].
    */
   private double[]   values;
 
@@ -55,12 +55,12 @@ public class OMRoom {
   /**
    * Stores the arithmetic average of all values. The unit is [Bq/m^3].
    */
-  private double     avarage;
+  private double     average;
 
   /**
    * Stores the highest value out of all measurements. The unit is [Bq/m^3].
    */
-  private double     maxima;
+  private double     maximum;
 
   /**
    * Stores the standard deviation of all values. The unit is [Bq/m^3].
@@ -131,7 +131,7 @@ public class OMRoom {
 
   /**
    * Gets an array of radon values for the certain room. Each value[i] equals
-   * the avarage of one hour. The unit is [Bq/m^3].
+   * the average of one hour. The unit is [Bq/m^3].
    * 
    * @return An array of radon values for the certain room.
    */
@@ -141,7 +141,7 @@ public class OMRoom {
 
   /**
    * Sets an array of radon values for the certain room. Each value[i] equals
-   * the avarage of one hour. After setting new values, all attributes of the
+   * the average of one hour. After setting new values, all attributes of the
    * room object will be re-calculated and updated again.
    * 
    * @param values
@@ -175,22 +175,18 @@ public class OMRoom {
    * 
    * @return The arithmetic average of all values.
    */
-  public double getAvarage() {
-    return this.avarage;
+  public double getAverage() {
+    return this.average;
   }
 
   /**
    * Sets the arithmetic average of all values by calculating the sum of all
    * values divided by total count.
    */
-  private void setAvarage() {
-    int count = this.count;
+  private void setAverage() {
     double[] values = this.values;
-    double sum = 0.0;
-    for (int i = 0; i < count; i++) {
-      sum = sum + values[i];
-    }
-    this.avarage = sum / (double) count;
+    double average = OMHelper.calculateAM(values);
+    this.average = average;
   }
 
   /**
@@ -198,24 +194,24 @@ public class OMRoom {
    * 
    * @return The highest value out of all measurements.
    */
-  public double getMaxima() {
-    return this.maxima;
+  public double getMaximum() {
+    return this.maximum;
   }
 
   /**
    * Sets the highest value out of all measurements by comparing all values[i]
    * to find out which one is the highest. The unit is [Bq/m^3].
    */
-  private void setMaxima() {
-    double maxima = 0;
+  private void setMaximum() {
+    double maximum = 0;
     int count = this.count;
     double[] values = this.values;
     for (int i = 0; i < count; i++) {
-      if (values[i] > maxima) {
-        maxima = values[i];
+      if (values[i] > maximum) {
+        maximum = values[i];
       }
     }
-    this.maxima = maxima;
+    this.maximum = maximum;
   }
 
   /**
@@ -228,21 +224,12 @@ public class OMRoom {
   }
 
   /**
-   * Sets the standard deviation of all values by calculating it via the forumla
-   * of the avarage square deviation: deviation = sqrt((sum(value[i] -
-   * avg)^2)/count)). The unit is [Bq/m^3].
+   * Sets the standard deviation of all values. The unit is [Bq/m^3].
    */
   private void setDeviation() {
-    double deviation = 0;
-    int count = this.count;
     double[] values = this.values;
-    double avg = this.avarage;
-    double tmpSum = 0;
-    for (int i = 0; i < count; i++) {
-      tmpSum = tmpSum + (values[i] - avg) * (values[i] - avg);
-    }
-    tmpSum = tmpSum / count;
-    deviation = Math.sqrt(tmpSum);
+    double avg = this.average;
+    double deviation = OMHelper.calculateSD(values, avg);
     this.deviation = deviation;
   }
 
@@ -253,10 +240,10 @@ public class OMRoom {
    * @param id
    *          The unique ID of the room which is used to parse the type. For
    *          example: R1 for normal rooms, C1 for cellars or M1 for
-   *          miscellanous rooms.
+   *          miscellaneous rooms.
    * @param values
    *          An array of radon values for the certain room. Each value[i]
-   *          equals the avarage of one hour. The unit is [Bq/m^3].
+   *          equals the average of one hour. The unit is [Bq/m^3].
    */
   public OMRoom(String id, double[] values) {
     super();
@@ -267,16 +254,16 @@ public class OMRoom {
   }
 
   /**
-   * Calls the setters for the attributes Count, Median, Maxima and Deviation to
-   * re-calculate and update them. Call this method always after changes to the
-   * radon values. Note: It's not needed to call this after using the
+   * Calls the setters for the attributes Count, Median, Maximum and Deviation
+   * to re-calculate and update them. Call this method always after changes to
+   * the radon values. Note: It's not needed to call this after using the
    * OMRoom.setValues() method as modifying values using the setter always
    * triggers the re-calculation of attributes on its own.
    */
   public void calculateAttributes() {
     setCount();
-    setAvarage();
-    setMaxima();
+    setAverage();
+    setMaximum();
     setDeviation();
   }
 

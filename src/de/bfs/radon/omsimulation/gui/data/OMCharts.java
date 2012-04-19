@@ -1,7 +1,7 @@
 /*
  * OM Simulation Tool: This tool intends to test and evaluate the scientific
  * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
- * virtual measurement campaigns based on real radon concentration data 
+ * virtual measurement campaigns based on real radon concentration data
  * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -89,7 +89,7 @@ public abstract class OMCharts {
     double maxPointerKey = 0;
     for (int i = 0; i < count; i++) {
       series.add(i, values[i]);
-      if (values[i] == room.getMaxima()) {
+      if (values[i] == room.getMaximum()) {
         maxPointerKey = i;
       }
     }
@@ -99,8 +99,8 @@ public abstract class OMCharts {
         "Rn [Bq/m\u00B3]", dataSet, PlotOrientation.VERTICAL, false, true,
         false);
     XYPlot plot = (XYPlot) chart.getPlot();
-    double positiveDeviation = room.getAvarage() + room.getDeviation();
-    double negativeDeviation = room.getAvarage() - room.getDeviation();
+    double positiveDeviation = room.getAverage() + room.getDeviation();
+    double negativeDeviation = room.getAverage() - room.getDeviation();
     IntervalMarker deviation = new IntervalMarker(negativeDeviation,
         positiveDeviation);
     float[] dash = { 5, 3 };
@@ -108,26 +108,26 @@ public abstract class OMCharts {
     deviation.setStroke(new BasicStroke(2, BasicStroke.CAP_BUTT,
         BasicStroke.JOIN_MITER, 1, dash, 0));
     plot.addRangeMarker(deviation, Layer.BACKGROUND);
-    ValueMarker arithMarker = new ValueMarker(room.getAvarage(), lineColor,
+    ValueMarker arithMarker = new ValueMarker(room.getAverage(), lineColor,
         new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 1,
             dash, 0));
     plot.addRangeMarker(arithMarker);
-    ValueMarker maxiMarker = new ValueMarker(room.getMaxima(), lineColor,
+    ValueMarker maxiMarker = new ValueMarker(room.getMaximum(), lineColor,
         new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 1,
             dash, 0));
     plot.addRangeMarker(maxiMarker);
     XYTextAnnotation amLabel = new XYTextAnnotation("AM="
-        + (int) room.getAvarage(), count, room.getAvarage() * 1.01);
+        + (int) room.getAverage(), count, room.getAverage() * 1.01);
     plot.addAnnotation(amLabel);
     XYTextAnnotation sdLabel = new XYTextAnnotation("SD="
         + (int) room.getDeviation(), count,
-        (room.getAvarage() + room.getDeviation()) * 1.01);
+        (room.getAverage() + room.getDeviation()) * 1.01);
     plot.addAnnotation(sdLabel);
     XYTextAnnotation maxLabel = new XYTextAnnotation("MAX="
-        + (int) room.getMaxima(), count, room.getMaxima() * 1.01);
+        + (int) room.getMaximum(), count, room.getMaximum() * 1.01);
     plot.addAnnotation(maxLabel);
     XYPointerAnnotation maxPointer = new XYPointerAnnotation("", maxPointerKey,
-        room.getMaxima(), Math.PI * 1.1);
+        room.getMaximum(), Math.PI * 1.1);
     plot.addAnnotation(maxPointer);
     XYItemRenderer renderer = plot.getRenderer();
     renderer.setSeriesPaint(0, lineColor);
@@ -183,9 +183,9 @@ public abstract class OMCharts {
     XYSeries roomSeries2 = new XYSeries("Radon Rooms");
     int cellarSeriesStart = cellarPosition * 24;
     int cellarSeriesEnd = cellarSeriesStart + 24;
-    double cellarMaximum = campaign.getCellarMaxima();
+    double cellarMaximum = campaign.getCellarMaximum();
     double cellarMaximumKey = 0;
-    double roomMaximum = campaign.getRoomMaxima();
+    double roomMaximum = campaign.getRoomMaximum();
     double roomMaximumKey = 0;
     if (cellarSeriesStart > 0) {
       for (int i = 0; i < cellarSeriesStart; i++) {
@@ -272,9 +272,9 @@ public abstract class OMCharts {
       sepMarker.setLabelFont(sepLabelFont);
       plot.addDomainMarker(sepMarker);
     }
-    double positiveCellarDeviation = campaign.getCellarAvarage()
+    double positiveCellarDeviation = campaign.getCellarAverage()
         + campaign.getCellarDeviation();
-    double negativeCellarDeviation = campaign.getCellarAvarage()
+    double negativeCellarDeviation = campaign.getCellarAverage()
         - campaign.getCellarDeviation();
     IntervalMarker cellarDeviation = new IntervalMarker(
         negativeCellarDeviation, positiveCellarDeviation);
@@ -284,17 +284,17 @@ public abstract class OMCharts {
         BasicStroke.JOIN_MITER, 1, dash, 0));
     plot.addRangeMarker(cellarDeviation, Layer.BACKGROUND);
     ValueMarker arithCellarMarker = new ValueMarker(
-        campaign.getCellarAvarage(), new Color(0, 0, 255, 128),
+        campaign.getCellarAverage(), new Color(0, 0, 255, 128),
         new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 1,
             dash, 0));
     plot.addRangeMarker(arithCellarMarker);
     XYTextAnnotation amCellarLabel = new XYTextAnnotation("C_AM="
-        + (int) campaign.getCellarAvarage(), finalStart + count,
-        campaign.getCellarAvarage() * 1.01);
+        + (int) campaign.getCellarAverage(), finalStart + count,
+        campaign.getCellarAverage() * 1.01);
     plot.addAnnotation(amCellarLabel);
     XYTextAnnotation sdCellarLabel = new XYTextAnnotation("C_SD="
         + (int) campaign.getCellarDeviation(), finalStart + count,
-        (campaign.getCellarAvarage() + campaign.getCellarDeviation()) * 1.01);
+        (campaign.getCellarAverage() + campaign.getCellarDeviation()) * 1.01);
     plot.addAnnotation(sdCellarLabel);
     ValueMarker maxiCellarMarker = new ValueMarker(cellarMaximum, new Color(0,
         0, 255, 128), new BasicStroke(1, BasicStroke.CAP_BUTT,
@@ -306,9 +306,9 @@ public abstract class OMCharts {
     XYPointerAnnotation maxCellarPointer = new XYPointerAnnotation("",
         finalStart + cellarMaximumKey, cellarMaximum, Math.PI * 1.1);
     plot.addAnnotation(maxCellarPointer);
-    double positiveRoomDeviation = campaign.getRoomAvarage()
+    double positiveRoomDeviation = campaign.getRoomAverage()
         + campaign.getRoomDeviation();
-    double negativeRoomDeviation = campaign.getRoomAvarage()
+    double negativeRoomDeviation = campaign.getRoomAverage()
         - campaign.getRoomDeviation();
     IntervalMarker roomDeviation = new IntervalMarker(negativeRoomDeviation,
         positiveRoomDeviation);
@@ -316,17 +316,17 @@ public abstract class OMCharts {
     roomDeviation.setStroke(new BasicStroke(2, BasicStroke.CAP_BUTT,
         BasicStroke.JOIN_MITER, 1, dash, 0));
     plot.addRangeMarker(roomDeviation, Layer.BACKGROUND);
-    ValueMarker arithRoomMarker = new ValueMarker(campaign.getRoomAvarage(),
+    ValueMarker arithRoomMarker = new ValueMarker(campaign.getRoomAverage(),
         new Color(255, 0, 0, 128), new BasicStroke(1, BasicStroke.CAP_BUTT,
             BasicStroke.JOIN_MITER, 1, dash, 0));
     plot.addRangeMarker(arithRoomMarker);
     XYTextAnnotation amRoomLabel = new XYTextAnnotation("R_AM="
-        + (int) campaign.getRoomAvarage(), finalStart + count,
-        campaign.getRoomAvarage() * 1.01);
+        + (int) campaign.getRoomAverage(), finalStart + count,
+        campaign.getRoomAverage() * 1.01);
     plot.addAnnotation(amRoomLabel);
     XYTextAnnotation sdRoomLabel = new XYTextAnnotation("R_SD="
         + (int) campaign.getRoomDeviation(), finalStart + count,
-        (campaign.getRoomAvarage() + campaign.getRoomDeviation()) * 1.01);
+        (campaign.getRoomAverage() + campaign.getRoomDeviation()) * 1.01);
     plot.addAnnotation(sdRoomLabel);
     ValueMarker maxiRoomMarker = new ValueMarker(roomMaximum, new Color(255, 0,
         0, 128), new BasicStroke(1, BasicStroke.CAP_BUTT,
@@ -359,7 +359,7 @@ public abstract class OMCharts {
    *          The selected statistics of a campaign containing all needed
    *          values.
    * @param roomType
-   *          The room type to determine the color of the chart.
+   *          The room type to determine the colour of the chart.
    * @param preview
    *          Will hide annotations, labels and headlines if true.
    * @return A chart displaying the distribution of certain selected statistical

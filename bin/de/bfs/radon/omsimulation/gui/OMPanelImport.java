@@ -1,7 +1,7 @@
 /*
  * OM Simulation Tool: This tool intends to test and evaluate the scientific
  * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
- * virtual measurement campaigns based on real radon concentration data 
+ * virtual measurement campaigns based on real radon concentration data
  * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -66,7 +66,7 @@ import de.bfs.radon.omsimulation.data.OMRoomType;
 
 /**
  * Creates and shows the data import panel for this software tool. Allows the
- * user to convert perpared CSV files to OMB object files used for simulations
+ * user to convert prepared CSV files to OMB object files used for simulations
  * later on.
  * 
  * @author A. Schoedon
@@ -104,7 +104,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
 
   /**
    * Stores a custom start date which is set by the user creating the building.
-   * The date can be choosen either to identify the start date of the
+   * The date can be chosen either to identify the start date of the
    * measurements or to identify the start date of the simulations. That's up to
    * the user and does not affect the simulations.
    */
@@ -394,7 +394,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
 
   /**
    * Gets a custom start date which is set by the user creating the building.
-   * The date can be choosen either to identify the start date of the
+   * The date can be chosen either to identify the start date of the
    * measurements or to identify the start date of the simulations. That's up to
    * the user and does not affect the simulations.
    * 
@@ -405,7 +405,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
   }
 
   /**
-   * Sets a custom start date. The date can be choosen either to identify the
+   * Sets a custom start date. The date can be chosen either to identify the
    * start date of the measurements or to identify the start date of the
    * simulations. That's up to the user and does not affect the simulations.
    * 
@@ -581,7 +581,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
      *          creating the building.
      * @param date
      *          A custom start date which can be set by the user creating the
-     *          building. The date can be choosen either to identify the start
+     *          building. The date can be chosen either to identify the start
      *          date of the measurements or to identify the start date of the
      *          simulations. That's up to the user and does not affect the
      *          simulations.
@@ -787,7 +787,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
      *          creating the building.
      * @param date
      *          A custom start date which can be set by the user creating the
-     *          building. The date can be choosen either to identify the start
+     *          building. The date can be chosen either to identify the start
      *          date of the measurements or to identify the start date of the
      *          simulations. That's up to the user and does not affect the
      *          simulations.
@@ -929,7 +929,7 @@ public class OMPanelImport extends JPanel implements ActionListener {
   }
 
   /**
-   * Initializes the interface of the import panel.
+   * Initialises the interface of the import panel.
    */
   public OMPanelImport() {
     setLayout(null);

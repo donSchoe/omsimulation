@@ -1,7 +1,7 @@
 /*
  * OM Simulation Tool: This tool intends to test and evaluate the scientific
  * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
- * virtual measurement campaigns based on real radon concentration data 
+ * virtual measurement campaigns based on real radon concentration data
  * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -360,7 +360,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
   }
 
   /**
-   * Initializes the interface of the testing panel without any preloaded
+   * Initialises the interface of the testing panel without any preloaded
    * objects.
    */
   public OMPanelTesting() {
@@ -371,7 +371,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
   }
 
   /**
-   * Initializes the interface of the testing panel with a preloaded object from
+   * Initialises the interface of the testing panel with a preloaded object from
    * import panel. Launching a refresh task in background.
    * 
    * @param omb
@@ -391,7 +391,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
   }
 
   /**
-   * Initializes the interface of the data panel with a preloaded object from
+   * Initialises the interface of the data panel with a preloaded object from
    * results panel. Displaying the selected campaign only.
    * 
    * @param simulation
@@ -451,8 +451,9 @@ public class OMPanelTesting extends JPanel implements ActionListener {
   }
 
   /**
-   * Removes eventlistener from the projects combobox to avoid strange behaviour
-   * of the panel while loading a selected campaign from results panel.
+   * Removes event-listener from the project's combobox to avoid strange
+   * behaviour of the panel while loading a selected campaign from results
+   * panel.
    */
   protected void removeEventListener() {
     try {
@@ -475,7 +476,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
   }
 
   /**
-   * Adds eventlisteners to the projects combobox.
+   * Adds event-listeners to the project's combobox.
    */
   protected void addEventListener() {
     comboBoxProjects.addActionListener(new ActionListener() {
@@ -613,7 +614,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
   }
 
   /**
-   * Initializes the interface of the results panel.
+   * Initialises the interface of the results panel.
    */
   protected void initialize() {
 
@@ -1212,7 +1213,7 @@ public class OMPanelTesting extends JPanel implements ActionListener {
   }
 
   /**
-   * Updates the campaign chart in realtime if selected campaign is valid.
+   * Updates the campaign chart in real-time if selected campaign is valid.
    */
   public void updateChart() {
     try {

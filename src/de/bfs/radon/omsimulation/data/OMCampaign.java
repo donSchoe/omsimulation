@@ -1,7 +1,7 @@
 /*
  * OM Simulation Tool: This tool intends to test and evaluate the scientific
  * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
- * virtual measurement campaigns based on real radon concentration data 
+ * virtual measurement campaigns based on real radon concentration data
  * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -109,34 +109,34 @@ public class OMCampaign {
    * Stores the arithmetic average of the selected values for normal rooms. The
    * unit is [Bq/m^3].
    */
-  private double         roomAvarage;
+  private double         roomAverage;
 
   /**
-   * Stores the arithmetic avarage of the selected cellar. The unit is [Bq/m^3].
+   * Stores the arithmetic average of the selected cellar. The unit is [Bq/m^3].
    */
-  private double         cellarAvarage;
+  private double         cellarAverage;
 
   /**
    * Stores the highest value out of the selected normal rooms. The unit is
    * [Bq/m^3].
    */
-  private double         roomMaxima;
+  private double         roomMaximum;
 
   /**
    * Stores the highest value out of the selected cellar. The unit is [Bq/m^3].
    */
-  private double         cellarMaxima;
+  private double         cellarMaximum;
 
   /**
    * Stores the lowest value out of the selected normal rooms. The unit is
    * [Bq/m^3].
    */
-  private double         roomMinima;
+  private double         roomMinimum;
 
   /**
    * Stores the lowest value out of the selected cellar. The unit is [Bq/m^3].
    */
-  private double         cellarMinima;
+  private double         cellarMinimum;
 
   /**
    * Stores the standard deviation of the selected values for normal rooms. The
@@ -145,7 +145,7 @@ public class OMCampaign {
   private double         roomDeviation;
 
   /**
-   * Stroes the standard deviation of the selected cellar. The unit is [Bq/m^3].
+   * Stores the standard deviation of the selected cellar. The unit is [Bq/m^3].
    */
   private double         cellarDeviation;
 
@@ -162,13 +162,13 @@ public class OMCampaign {
   private double         cellarVarCoefficient;
 
   /**
-   * Stores the range of the values which is calculated by substracting the
+   * Stores the range of the values which is calculated by subtracting the
    * minimum by the maximum value for normal rooms. The unit is [Bq/m^3].
    */
   private double         roomRange;
 
   /**
-   * Stores the range of the values which is calculated by substracting the
+   * Stores the range of the values which is calculated by subtracting the
    * minimum by the maximum value for cellar rooms. The unit is [Bq/m^3].
    */
   private double         cellarRange;
@@ -210,26 +210,38 @@ public class OMCampaign {
   private double         cellarMedian;
 
   /**
-   * Stores the quantile deviation for normal rooms which determines the ratio
-   * of the quantiles.
+   * Stores the quantile deviation for normal rooms which determines the
+   * deviation of the quantiles.
    */
   private double         roomQuantileDeviation;
 
   /**
-   * Stores the quantile deviation for cellar rooms which determines the ratio
-   * of the quantiles.
+   * Stores the quantile deviation for cellar rooms which determines the
+   * deviation of the quantiles.
    */
   private double         cellarQuantileDeviation;
 
   /**
+   * Stores the relative quantile deviation for normal rooms which determines
+   * the ratio of the quantiles.
+   */
+  private double         roomRelativeQuantileDeviation;
+
+  /**
+   * Stores the relative quantile deviation for cellar rooms which determines
+   * the ratio of the quantiles.
+   */
+  private double         cellarRelativeQuantileDeviation;
+
+  /**
    * Stores the geometric mean for normal rooms. The unit is [Bq/m^3].
    */
-  private double         roomLogAvarage;
+  private double         roomLogAverage;
 
   /**
    * Stores the geometric mean for cellar rooms. The unit is [Bq/m^3].
    */
-  private double         cellarLogAvarage;
+  private double         cellarLogAverage;
 
   /**
    * Stores the geometric standard deviation for normal rooms.
@@ -880,44 +892,36 @@ public class OMCampaign {
    * 
    * @return The arithmetic mean of the selected values.
    */
-  public double getRoomAvarage() {
-    return this.roomAvarage;
+  public double getRoomAverage() {
+    return this.roomAverage;
   }
 
   /**
    * Sets the arithmetic mean of the selected values for normal rooms. The unit
    * is [Bq/m^3].
    */
-  private void setRoomAvarage() {
+  private void setRoomAverage() {
     double[] values = this.roomValues;
-    double sum = 0.0;
-    for (int i = 0; i < values.length; i++) {
-      sum = sum + values[i];
-    }
-    double avg = sum / values.length;
-    this.roomAvarage = avg;
+    double avg = OMHelper.calculateAM(values);
+    this.roomAverage = avg;
   }
 
   /**
-   * Gets the arithmetic avarage of the selected cellar. The unit is [Bq/m^3].
+   * Gets the arithmetic average of the selected cellar. The unit is [Bq/m^3].
    * 
-   * @return The arithmetic avarage of the selected cellar.
+   * @return The arithmetic average of the selected cellar.
    */
-  public double getCellarAvarage() {
-    return this.cellarAvarage;
+  public double getCellarAverage() {
+    return this.cellarAverage;
   }
 
   /**
-   * Sets the arithmetic avarage of the selected cellar. The unit is [Bq/m^3].
+   * Sets the arithmetic average of the selected cellar. The unit is [Bq/m^3].
    */
-  private void setCellarAvarage() {
+  private void setCellarAverage() {
     double[] values = this.cellarValues;
-    double sum = 0.0;
-    for (int i = 0; i < values.length; i++) {
-      sum = sum + values[i];
-    }
-    double avg = sum / values.length;
-    this.cellarAvarage = avg;
+    double avg = OMHelper.calculateAM(values);
+    this.cellarAverage = avg;
   }
 
   /**
@@ -926,18 +930,18 @@ public class OMCampaign {
    * 
    * @return The highest value out of the selected normal rooms.
    */
-  public double getRoomMaxima() {
-    return this.roomMaxima;
+  public double getRoomMaximum() {
+    return this.roomMaximum;
   }
 
   /**
    * Sets the highest value out of the selected normal rooms. The unit is
    * [Bq/m^3].
    */
-  private void setRoomMaxima() {
+  private void setRoomMaximum() {
     double[] values = this.roomValues;
-    double maxima = values[values.length - 1];
-    this.roomMaxima = maxima;
+    double maximum = values[values.length - 1];
+    this.roomMaximum = maximum;
   }
 
   /**
@@ -945,17 +949,17 @@ public class OMCampaign {
    * 
    * @return The highest value out of the selected cellar.
    */
-  public double getCellarMaxima() {
-    return this.cellarMaxima;
+  public double getCellarMaximum() {
+    return this.cellarMaximum;
   }
 
   /**
    * Sets the highest value out of the selected cellar. The unit is [Bq/m^3].
    */
-  private void setCellarMaxima() {
+  private void setCellarMaximum() {
     double[] values = this.cellarValues;
-    double maxima = values[values.length - 1];
-    this.cellarMaxima = maxima;
+    double maximum = values[values.length - 1];
+    this.cellarMaximum = maximum;
   }
 
   /**
@@ -964,18 +968,18 @@ public class OMCampaign {
    * 
    * @return The lowest value out of the selected normal rooms.
    */
-  public double getRoomMinima() {
-    return this.roomMinima;
+  public double getRoomMinimum() {
+    return this.roomMinimum;
   }
 
   /**
    * Sets the lowest value out of the selected normal rooms. The unit is
    * [Bq/m^3].
    */
-  private void setRoomMinima() {
+  private void setRoomMinimum() {
     double[] values = this.roomValues;
-    double minima = values[0];
-    this.roomMinima = minima;
+    double minimum = values[0];
+    this.roomMinimum = minimum;
   }
 
   /**
@@ -983,17 +987,17 @@ public class OMCampaign {
    * 
    * @return The lowest value out of the selected cellar.
    */
-  public double getCellarMinima() {
-    return this.cellarMinima;
+  public double getCellarMinimum() {
+    return this.cellarMinimum;
   }
 
   /**
    * Sets the lowest value out of the selected cellar. The unit is [Bq/m^3].
    */
-  private void setCellarMinima() {
+  private void setCellarMinimum() {
     double[] values = this.cellarValues;
-    double minima = values[0];
-    this.cellarMinima = minima;
+    double minimum = values[0];
+    this.cellarMinimum = minimum;
   }
 
   /**
@@ -1011,15 +1015,9 @@ public class OMCampaign {
    * unit is [Bq/m^3].
    */
   private void setRoomDeviation() {
-    double dev = 0;
     double[] values = this.roomValues;
-    double avg = this.roomAvarage;
-    double tmpSum = 0;
-    for (int i = 0; i < values.length; i++) {
-      tmpSum = tmpSum + (values[i] - avg) * (values[i] - avg);
-    }
-    tmpSum = tmpSum / values.length;
-    dev = Math.sqrt(tmpSum);
+    double avg = this.roomAverage;
+    double dev = OMHelper.calculateSD(values, avg);
     this.roomDeviation = dev;
   }
 
@@ -1036,15 +1034,9 @@ public class OMCampaign {
    * Sets the standard deviation of the selected cellar. The unit is [Bq/m^3].
    */
   private void setCellarDeviation() {
-    double dev = 0;
     double[] values = this.cellarValues;
-    double avg = this.cellarAvarage;
-    double tmpSum = 0;
-    for (int i = 0; i < values.length; i++) {
-      tmpSum = tmpSum + (values[i] - avg) * (values[i] - avg);
-    }
-    tmpSum = tmpSum / values.length;
-    dev = Math.sqrt(tmpSum);
+    double avg = this.cellarAverage;
+    double dev = OMHelper.calculateSD(values, avg);
     this.cellarDeviation = dev;
   }
 
@@ -1063,7 +1055,7 @@ public class OMCampaign {
    * arithmetic mean and standard deviation for normal rooms.
    */
   private void setRoomVarCoefficient() {
-    double avg = this.roomAvarage;
+    double avg = this.roomAverage;
     double dev = this.roomDeviation;
     double vc = OMHelper.calculateCV(avg, dev);
     this.roomVarCoefficient = vc;
@@ -1084,15 +1076,15 @@ public class OMCampaign {
    * arithmetic mean and standard deviation for cellars.
    */
   private void setCellarVarCoefficient() {
-    double avg = this.cellarAvarage;
+    double avg = this.cellarAverage;
     double dev = this.cellarDeviation;
     double vc = OMHelper.calculateCV(avg, dev);
     this.cellarVarCoefficient = vc;
   }
 
   /**
-   * Gets the range of the values which is calculated by substracting the
-   * minimum by the maximum value for normal rooms. The unit is [Bq/m^3].
+   * Gets the range of the values which is calculated by subtracting the minimum
+   * by the maximum value for normal rooms. The unit is [Bq/m^3].
    * 
    * @return The range of the values.
    */
@@ -1101,19 +1093,19 @@ public class OMCampaign {
   }
 
   /**
-   * Sets the range of the values which is calculated by substracting the
-   * minimum by the maximum value for normal rooms. The unit is [Bq/m^3].
+   * Sets the range of the values which is calculated by subtracting the minimum
+   * by the maximum value for normal rooms. The unit is [Bq/m^3].
    */
   private void setRoomRange() {
-    double min = this.roomMinima;
-    double max = this.roomMaxima;
+    double min = this.roomMinimum;
+    double max = this.roomMaximum;
     double range = max - min;
     this.roomRange = range;
   }
 
   /**
-   * Gets the range of the values which is calculated by substracting the
-   * minimum by the maximum value for cellar rooms. The unit is [Bq/m^3].
+   * Gets the range of the values which is calculated by subtracting the minimum
+   * by the maximum value for cellar rooms. The unit is [Bq/m^3].
    * 
    * @return The range of the values.
    */
@@ -1122,12 +1114,12 @@ public class OMCampaign {
   }
 
   /**
-   * Sets the range of the values which is calculated by substracting the
-   * minimum by the maximum value for cellar rooms. The unit is [Bq/m^3].
+   * Sets the range of the values which is calculated by subtracting the minimum
+   * by the maximum value for cellar rooms. The unit is [Bq/m^3].
    */
   private void setCellarRange() {
-    double min = this.cellarMinima;
-    double max = this.cellarMaxima;
+    double min = this.cellarMinimum;
+    double max = this.cellarMaximum;
     double range = max - min;
     this.cellarRange = range;
   }
@@ -1311,25 +1303,65 @@ public class OMCampaign {
   }
 
   /**
+   * Gets the relative quantile deviation for normal rooms which determines the
+   * ratio of the quantiles.
+   * 
+   * @return The relative quantile deviation for normal rooms.
+   */
+  public double getRoomRelativeQuantileDeviation() {
+    return this.roomRelativeQuantileDeviation;
+  }
+
+  /**
+   * Sets the relative quantile deviation for normal rooms which determines the
+   * ratio of the quantiles.
+   */
+  private void setRoomRelativeQuantileDeviation() {
+    double q05 = this.roomQuantile05;
+    double q50 = this.roomMedian;
+    double q95 = this.roomQuantile95;
+    double qrDev = OMHelper.calculateRQD(q05, q50, q95);
+    this.roomRelativeQuantileDeviation = qrDev;
+  }
+
+  /**
+   * Gets the relative quantile deviation for cellar rooms which determines the
+   * ratio of the quantiles.
+   * 
+   * @return The relative quantile deviation for cellar rooms.
+   */
+  public double getCellarRelativeQuantileDeviation() {
+    return this.cellarRelativeQuantileDeviation;
+  }
+
+  /**
+   * Sets the relative quantile deviation for cellar rooms which determines the
+   * ratio of the quantiles.
+   */
+  private void setCellarRelativeQuantileDeviation() {
+    double q05 = this.cellarQuantile05;
+    double q50 = this.cellarMedian;
+    double q95 = this.cellarQuantile95;
+    double qrDev = OMHelper.calculateRQD(q05, q50, q95);
+    this.cellarRelativeQuantileDeviation = qrDev;
+  }
+
+  /**
    * Gets the geometric mean for normal rooms. The unit is [Bq/m^3].
    * 
    * @return The geometric mean for normal rooms.
    */
-  public double getRoomLogAvarage() {
-    return this.roomLogAvarage;
+  public double getRoomLogAverage() {
+    return this.roomLogAverage;
   }
 
   /**
    * Sets the geometric mean for normal rooms. The unit is [Bq/m^3].
    */
-  private void setRoomLogAvarage() {
-    double[] logValues = this.roomLogValues;
-    double sum = 0.0;
-    for (int i = 0; i < logValues.length; i++) {
-      sum = sum + logValues[i];
-    }
-    double tmpAvarage = Math.exp(sum / logValues.length);
-    this.roomLogAvarage = tmpAvarage;
+  private void setRoomLogAverage() {
+    double[] values = this.roomValues;
+    double tmpAverage = OMHelper.calculateGM(values);
+    this.roomLogAverage = tmpAverage;
   }
 
   /**
@@ -1337,21 +1369,17 @@ public class OMCampaign {
    * 
    * @return The geometric mean for cellar rooms.
    */
-  public double getCellarLogAvarage() {
-    return this.cellarLogAvarage;
+  public double getCellarLogAverage() {
+    return this.cellarLogAverage;
   }
 
   /**
    * Sets the geometric mean for cellar rooms. The unit is [Bq/m^3].
    */
-  private void setCellarLogAvarage() {
-    double[] logValues = this.cellarLogValues;
-    double sum = 0.0;
-    for (int i = 0; i < logValues.length; i++) {
-      sum = sum + logValues[i];
-    }
-    double tmpAvarage = Math.exp(sum / logValues.length);
-    this.cellarLogAvarage = tmpAvarage;
+  private void setCellarLogAverage() {
+    double[] values = this.cellarValues;
+    double tmpAverage = OMHelper.calculateGM(values);
+    this.cellarLogAverage = tmpAverage;
   }
 
   /**
@@ -1367,10 +1395,9 @@ public class OMCampaign {
    * Sets the geometric standard deviation for normal rooms.
    */
   private void setRoomLogDeviation() {
-    double geoMean = this.roomLogAvarage;
+    double geoMean = this.roomLogAverage;
     double[] values = this.roomValues;
-    int n = values.length;
-    double gsd = OMHelper.calculateGSD(n, values, geoMean);
+    double gsd = OMHelper.calculateGSD(values, geoMean);
     this.roomLogDeviation = gsd;
   }
 
@@ -1387,10 +1414,9 @@ public class OMCampaign {
    * Sets the geometric standard deviation for cellar rooms.
    */
   private void setCellarLogDeviation() {
-    double geoMean = this.cellarLogAvarage;
+    double geoMean = this.cellarLogAverage;
     double[] values = this.cellarValues;
-    int n = values.length;
-    double gsd = OMHelper.calculateGSD(n, values, geoMean);
+    double gsd = OMHelper.calculateGSD(values, geoMean);
     this.cellarLogDeviation = gsd;
   }
 
@@ -1460,9 +1486,9 @@ public class OMCampaign {
     setCellarValues();
     setValueChain();
     setRoomLogValues();
-    setRoomAvarage();
-    setRoomMaxima();
-    setRoomMinima();
+    setRoomAverage();
+    setRoomMaximum();
+    setRoomMinimum();
     setRoomDeviation();
     setRoomVarCoefficient();
     setRoomRange();
@@ -1470,12 +1496,13 @@ public class OMCampaign {
     setRoomQuantile95();
     setRoomMedian();
     setRoomQuantileDeviation();
-    setRoomLogAvarage();
+    setRoomRelativeQuantileDeviation();
+    setRoomLogAverage();
     setRoomLogDeviation();
     setCellarLogValues();
-    setCellarAvarage();
-    setCellarMaxima();
-    setCellarMinima();
+    setCellarAverage();
+    setCellarMaximum();
+    setCellarMinimum();
     setCellarDeviation();
     setCellarVarCoefficient();
     setCellarRange();
@@ -1483,7 +1510,8 @@ public class OMCampaign {
     setCellarQuantile95();
     setCellarMedian();
     setCellarQuantileDeviation();
-    setCellarLogAvarage();
+    setCellarRelativeQuantileDeviation();
+    setCellarLogAverage();
     setCellarLogDeviation();
   }
 
@@ -1555,10 +1583,10 @@ public class OMCampaign {
   @Override
   public String toString() {
     return "Campaign: T=" + this.start + ",\tR=" + this.variation + ",\tR_AM="
-        + (int) this.roomAvarage + ",\tR_GM=" + (int) this.roomLogAvarage
+        + (int) this.roomAverage + ",\tR_GM=" + (int) this.roomLogAverage
         + ",\tR_Q50=" + (int) this.roomMedian + ",\tR_MAX="
-        + (int) this.roomMaxima + ",\tC_AM=" + (int) this.cellarAvarage
-        + ",\tC_GM=" + (int) this.cellarLogAvarage + ",\tC_Q50="
-        + (int) this.cellarMedian + ",\tC_MAX=" + (int) this.cellarMaxima;
+        + (int) this.roomMaximum + ",\tC_AM=" + (int) this.cellarAverage
+        + ",\tC_GM=" + (int) this.cellarLogAverage + ",\tC_Q50="
+        + (int) this.cellarMedian + ",\tC_MAX=" + (int) this.cellarMaximum;
   }
 }

@@ -1,7 +1,7 @@
 /*
  * OM Simulation Tool: This tool intends to test and evaluate the scientific
  * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
- * virtual measurement campaigns based on real radon concentration data 
+ * virtual measurement campaigns based on real radon concentration data
  * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -70,7 +70,7 @@ public class OMSimulation {
   private DescriptiveStatistics roomAmDescriptiveStats;
 
   /**
-   * Stores all cellar's arithmetric means and connected statistics.
+   * Stores all cellar's arithmetic means and connected statistics.
    */
   private DescriptiveStatistics cellarAmDescriptiveStats;
 
@@ -80,7 +80,7 @@ public class OMSimulation {
   private DescriptiveStatistics roomGmDescriptiveStats;
 
   /**
-   * Stores all cellar's geometic means and connected statistics.
+   * Stores all cellar's geometric means and connected statistics.
    */
   private DescriptiveStatistics cellarGmDescriptiveStats;
 
@@ -90,17 +90,17 @@ public class OMSimulation {
   private DescriptiveStatistics roomMedDescriptiveStats;
 
   /**
-   * Stiores all cellar's medians and connected statistics.
+   * Stores all cellar's medians and connected statistics.
    */
   private DescriptiveStatistics cellarMedDescriptiveStats;
 
   /**
-   * Stores all room's maxima and connected statistics.
+   * Stores all room's maximum and connected statistics.
    */
   private DescriptiveStatistics roomMaxDescriptiveStats;
 
   /**
-   * Stores all cellar's maxima and connected statistics.
+   * Stores all cellar's maximum and connected statistics.
    */
   private DescriptiveStatistics cellarMaxDescriptiveStats;
 
@@ -222,19 +222,19 @@ public class OMSimulation {
   }
 
   /**
-   * Gets all cellar's arithmetric means and connected statistics.
+   * Gets all cellar's arithmetic means and connected statistics.
    * 
-   * @return All cellar's arithmetric means and connected statistics.
+   * @return All cellar's arithmetic means and connected statistics.
    */
   public DescriptiveStatistics getCellarAmDescriptiveStats() {
     return this.cellarAmDescriptiveStats;
   }
 
   /**
-   * Sets all cellar's arithmetric means and connected statistics.
+   * Sets all cellar's arithmetic means and connected statistics.
    * 
    * @param cellarAmDescriptiveStats
-   *          All cellar's arithmetric means and connected statistics.
+   *          All cellar's arithmetic means and connected statistics.
    */
   public void setCellarAmDescriptiveStats(
       DescriptiveStatistics cellarAmDescriptiveStats) {
@@ -262,19 +262,19 @@ public class OMSimulation {
   }
 
   /**
-   * Gets all cellar's geometic means and connected statistics.
+   * Gets all cellar's geometric means and connected statistics.
    * 
-   * @return All cellar's geometic means and connected statistics.
+   * @return All cellar's geometric means and connected statistics.
    */
   public DescriptiveStatistics getCellarGmDescriptiveStats() {
     return this.cellarGmDescriptiveStats;
   }
 
   /**
-   * Sets all cellar's geometic means and connected statistics.
+   * Sets all cellar's geometric means and connected statistics.
    * 
    * @param cellarGmDescriptiveStats
-   *          All cellar's geometic means and connected statistics.
+   *          All cellar's geometric means and connected statistics.
    */
   public void setCellarGmDescriptiveStats(
       DescriptiveStatistics cellarGmDescriptiveStats) {
@@ -322,19 +322,19 @@ public class OMSimulation {
   }
 
   /**
-   * Gets all room's maxima and connected statistics.
+   * Gets all room's maximum and connected statistics.
    * 
-   * @return All room's maxima and connected statistics.
+   * @return All room's maximum and connected statistics.
    */
   public DescriptiveStatistics getRoomMaxDescriptiveStats() {
     return this.roomMaxDescriptiveStats;
   }
 
   /**
-   * Sets all room's maxima and connected statistics.
+   * Sets all room's maximum and connected statistics.
    * 
    * @param roomMaxDescriptiveStats
-   *          All room's maxima and connected statistics.
+   *          All room's maximum and connected statistics.
    */
   public void setRoomMaxDescriptiveStats(
       DescriptiveStatistics roomMaxDescriptiveStats) {
@@ -342,19 +342,19 @@ public class OMSimulation {
   }
 
   /**
-   * Gets all cellar's maxima and connected statistics.
+   * Gets all cellar's maximum and connected statistics.
    * 
-   * @return All cellar's maxima and connected statistics.
+   * @return All cellar's maximum and connected statistics.
    */
   public DescriptiveStatistics getCellarMaxDescriptiveStats() {
     return this.cellarMaxDescriptiveStats;
   }
 
   /**
-   * Sets all cellar's maxima and connected statistics.
+   * Sets all cellar's maximum and connected statistics.
    * 
    * @param cellarMaxDescriptiveStats
-   *          All cellar's maxima and connected statistics.
+   *          All cellar's maximum and connected statistics.
    */
   public void setCellarMaxDescriptiveStats(
       DescriptiveStatistics cellarMaxDescriptiveStats) {
@@ -374,19 +374,19 @@ public class OMSimulation {
    * @param roomAmDescriptiveStats
    *          All room's arithmetic means and connected statistics.
    * @param cellarAmDescriptiveStats
-   *          All cellar's arithmetric means and connected statistics.
+   *          All cellar's arithmetic means and connected statistics.
    * @param roomGmDescriptiveStats
    *          All room's geometric means and connected statistics.
    * @param cellarGmDescriptiveStats
-   *          All cellar's geometic means and connected statistics.
+   *          All cellar's geometric means and connected statistics.
    * @param roomMedDescriptiveStats
    *          All room's medians and connected statistics.
    * @param cellarMedDescriptiveStats
    *          All cellar's medians and connected statistics.
    * @param roomMaxDescriptiveStats
-   *          All room's maxima and connected statistics.
+   *          All room's maximum and connected statistics.
    * @param cellarMaxDescriptiveStats
-   *          All cellar's maxima and connected statistics.
+   *          All cellar's maximum and connected statistics.
    */
   public OMSimulation(String name, OMBuilding building, OMCampaign[] campaigns,
       DescriptiveStatistics roomAmDescriptiveStats,

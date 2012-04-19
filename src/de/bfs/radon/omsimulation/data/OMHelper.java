@@ -1,7 +1,7 @@
 /*
  * OM Simulation Tool: This tool intends to test and evaluate the scientific
  * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
- * virtual measurement campaigns based on real radon concentration data 
+ * virtual measurement campaigns based on real radon concentration data
  * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -43,13 +43,13 @@ public abstract class OMHelper {
   private static BufferedWriter logOutput;
 
   /**
-   * Indicates whether a logoutput buffer is initialized or not.
+   * Indicates whether a log-output buffer is initialised or not.
    */
   private static boolean        isLogOutputEnabled = false;
 
   /**
    * Sets the log-writer, creates a filename based on the path and the project
-   * type and finally initializes the log writer.
+   * type and finally initialises the log writer.
    * 
    * @param path
    *          The complete path and file name of the OMB or OMS object.
@@ -85,32 +85,68 @@ public abstract class OMHelper {
   }
 
   /**
-   * Indicates whether a logoutput buffer is initialized or not. Only writes log
-   * messages if true.
+   * Indicates whether a log-output buffer is initialised or not. Only writes
+   * log messages if true.
    * 
-   * @return True if a logoutput buffer is initialized.
+   * @return True if a log-output buffer is initialised.
    */
   public static boolean isLogOutputEnabled() {
     return OMHelper.isLogOutputEnabled;
   }
 
   /**
-   * Indicates whether a logoutput buffer is initialized or not. Set true after
-   * successfully initializing logoutput.
+   * Indicates whether a log-output buffer is initialised or not. Set true after
+   * successfully initialising log-output.
    * 
    * @param isLogOutput
-   *          Indicator whether a logoutput buffer is initialized or not.
+   *          Indicator whether a log-output buffer is initialised or not.
    */
   private static void setLogOutputEnabled(boolean isLogOutput) {
     OMHelper.isLogOutputEnabled = isLogOutput;
   }
 
   /**
-   * Calculates the variation coefficient using the arithmetric mean and
-   * standard deviation.
+   * Calculates the arithmetic mean using a set of values.
+   * 
+   * @param values
+   *          Set of values used to calculate the arithmetic mean.
+   * @return The arithmetic mean.
+   */
+  public static double calculateAM(double[] values) {
+    double am = 0.0;
+    for (int i = 0; i < values.length; i++) {
+      am = am + values[i];
+    }
+    am = am / values.length;
+    return am;
+  }
+
+  /**
+   * Calculates the standard deviation using a set of values and the arithmetic
+   * mean.
+   * 
+   * @param values
+   *          Set of values used to calculate the standard deviation.
+   * @param am
+   *          The arithmetic mean.
+   * @return The standard deviation.
+   */
+  public static double calculateSD(double[] values, double am) {
+    double sd = 0.0;
+    for (int i = 0; i < values.length; i++) {
+      sd = sd + (values[i] - am) * (values[i] - am);
+    }
+    sd = sd / (values.length - 1.0);
+    sd = Math.sqrt(sd);
+    return sd;
+  }
+
+  /**
+   * Calculates the variation coefficient using the arithmetic mean and standard
+   * deviation.
    * 
    * @param arithMean
-   *          The arithmetric mean.
+   *          The arithmetic mean.
    * @param stdDeviation
    *          The standard deviation.
    * @return The variations coefficient.
@@ -121,12 +157,54 @@ public abstract class OMHelper {
   }
 
   /**
-   * Calculates the quantile deviations using the quantiles 5 and 95.
+   * Calculates the geometric mean using a set of values.
+   * 
+   * @param values
+   *          Set of values used to calculate the geometric mean.
+   * @return The geometric mean.
+   */
+  public static double calculateGM(double[] values) {
+    double gm = 0.0;
+    for (int i = 0; i < values.length; i++) {
+      if (values[i] > 0) {
+        gm = gm + Math.log(values[i]);
+      }
+    }
+    gm = gm / values.length;
+    gm = Math.exp(gm);
+    return gm;
+  }
+
+  /**
+   * Calculates the geometric standard deviation.
+   * 
+   * @param values
+   *          An array of values.
+   * @param geoMean
+   *          The geometric mean of the values.
+   * @return The geometric standard deviation.
+   */
+  public static double calculateGSD(double[] values, double geoMean) {
+    double gsd = 0.0;
+    for (int i = 0; i < values.length; i++) {
+      if (values[i] > 0 && geoMean > 0) {
+        gsd = gsd + (Math.log(values[i]) - Math.log(geoMean))
+            * (Math.log(values[i]) - Math.log(geoMean));
+      }
+    }
+    gsd = gsd / (values.length - 1);
+    gsd = Math.sqrt(gsd);
+    gsd = Math.exp(gsd);
+    return gsd;
+  }
+
+  /**
+   * Calculates the quantile deviation using the quantiles 5 and 95.
    * 
    * @param q5
    *          The quantile 5.
    * @param q95
-   *          The quantile 95).
+   *          The quantile 95.
    * @return The quantile deviation.
    */
   public static double calculateQD(double q5, double q95) {
@@ -135,28 +213,20 @@ public abstract class OMHelper {
   }
 
   /**
-   * Calculates the geometric standard deviation.
+   * Calculates the relative quantile deviation using the quantiles 5, 50 and
+   * 95.
    * 
-   * @param n
-   *          The number of values.
-   * @param values
-   *          An array of values.
-   * @param geoMean
-   *          The geometric mean of the values.
-   * @return The geometric standard deviation.
+   * @param q5
+   *          The quantile 5.
+   * @param q50
+   *          The quantile 50.
+   * @param q95
+   *          The quantile 95.
+   * @return The quantile deviation.
    */
-  public static double calculateGSD(long n, double[] values, double geoMean) {
-    double gsd = 0.0;
-    for (int i = 0; i < n; i++) {
-      if (values[i] > 0) {
-        gsd = gsd + Math.log(values[i] / geoMean)
-            * Math.log(values[i] / geoMean);
-      }
-    }
-    gsd = gsd / n;
-    gsd = Math.sqrt(gsd);
-    gsd = Math.exp(gsd);
-    return gsd;
+  public static double calculateRQD(double q5, double q50, double q95) {
+    double rqd = (q95 - q5) / (2.0 * q50);
+    return rqd;
   }
 
   /**

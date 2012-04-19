@@ -5,9 +5,9 @@
 <project name="OMSimulation" default="run" basedir="..">
     <property name="name" value="omsimulation" />
     <property name="Name" value="OMSimulation" />
-    <property name="version" value="0.4.53-rc2" />
+    <property name="version" value="0.4.54-rc2" />
     <property name="author" value="Alexander Schoedon" />
-    <property name="modified" value="2012-04-17" />
+    <property name="modified" value="2012-04-19" />
     <property name="year" value="2012" />
     <property name="bin.dir" value="bin" />
     <property name="doc.dir" value="doc" />

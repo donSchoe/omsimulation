@@ -1,7 +1,7 @@
 /*
  * OM Simulation Tool: This tool intends to test and evaluate the scientific
  * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
- * virtual measurement campaigns based on real radon concentration data 
+ * virtual measurement campaigns based on real radon concentration data
  * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -315,14 +315,14 @@ public class OMPanelData extends JPanel {
   }
 
   /**
-   * Initializes the interface of the data panel without any preloaded objects.
+   * Initialises the interface of the data panel without any preloaded objects.
    */
   public OMPanelData() {
     initialize();
   }
 
   /**
-   * Initializes the interface of the data panel with a preloaded object from
+   * Initialises the interface of the data panel with a preloaded object from
    * import panel. Launching a refresh task in background.
    * 
    * @param ombFile
@@ -339,7 +339,7 @@ public class OMPanelData extends JPanel {
   }
 
   /**
-   * Initializes the interface of the data panel.
+   * Initialises the interface of the data panel.
    */
   protected void initialize() {
     setLayout(null);

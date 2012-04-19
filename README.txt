@@ -1,5 +1,5 @@
 ------------------------------------
-*  OM Simulation Tool v0.4.53-rc2  *
+*  OM Simulation Tool v0.4.54-rc2  *
 ------------------------------------
 
 Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -95,6 +95,12 @@ of this document (8. Notice).
 
 6. Changelog
 ----------------------------------
+0.4.54-rc2: (2012-04-19)
+    - fixed some calculations (now really)
+    - completely overhauled the calculation system
+    - moved 3rd-party-libs licenses to /lib/README
+    - did some spellchecking on documentation finally
+
 0.4.53-rc2: (2012-04-17)
     - fixed some calculations
 
@@ -174,7 +180,7 @@ of this document (8. Notice).
 	- fixed: export buttons went missing on testing panel while analyzing
 
 0.4.41-alpha1: (2012-03-06)
-    - 0.3:40-dev fork to start public testing
+    - version bump to start public testing
 
 0.3.40-dev: (2012-03-06)
     - added PDF+CSV exports to all charts
@@ -257,7 +263,7 @@ of this document (8. Notice).
     - added a jframe swing window 
 	
 0.3.20-dev: (2012-02-07)
-    - v0.2:19-dev fork for desktop application
+    - version bump for desktop application
 
 0.2.19-dev: (2012-02-07)
     - final commit for v0.2 prototype (database application) 
@@ -320,7 +326,7 @@ of this document (8. Notice).
     - prepared libraries for db4b object database 
 	
 0.2.6-dev: (2012-01-24)
-    - v0.1:5-dev fork for database application
+    - version bump for database application
 	
 0.1.5-dev: (2012-01-20)
     - final commit for v0.1 prototype (command line application)

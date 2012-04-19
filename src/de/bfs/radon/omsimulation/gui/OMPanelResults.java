@@ -1,7 +1,7 @@
 /*
  * OM Simulation Tool: This tool intends to test and evaluate the scientific
  * robustness of the protocol `6+1`. Therefore, it generates a huge amount of
- * virtual measurement campaigns based on real radon concentration data 
+ * virtual measurement campaigns based on real radon concentration data
  * following the mentioned protocol. <http://github.com/donschoe/omsimulation>
  * 
  * Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
@@ -377,7 +377,7 @@ public class OMPanelResults extends JPanel {
   }
 
   /**
-   * Initializes the interface of the results panel without any preloaded
+   * Initialises the interface of the results panel without any preloaded
    * objects.
    */
   public OMPanelResults() {
@@ -385,7 +385,7 @@ public class OMPanelResults extends JPanel {
   }
 
   /**
-   * Initializes the interface of the results panel with a preloaded object from
+   * Initialises the interface of the results panel with a preloaded object from
    * simulation panel. Launching a refresh task in background.
    * 
    * @param oms
@@ -403,7 +403,7 @@ public class OMPanelResults extends JPanel {
   }
 
   /**
-   * Initializes the interface of the results panel.
+   * Initialises the interface of the results panel.
    */
   protected void initialize() {
     setLayout(null);
@@ -554,31 +554,31 @@ public class OMPanelResults extends JPanel {
             for (int i = 0; i < campaigns.length; i++) {
               switch (statisticsType) {
                 case RoomArithmeticMeans:
-                  value = (int) campaigns[i].getRoomAvarage();
+                  value = (int) campaigns[i].getRoomAverage();
                   break;
                 case RoomGeometricMeans:
-                  value = (int) campaigns[i].getRoomLogAvarage();
+                  value = (int) campaigns[i].getRoomLogAverage();
                   break;
                 case RoomMedianQ50:
                   value = (int) campaigns[i].getRoomMedian();
                   break;
                 case RoomMaxima:
-                  value = (int) campaigns[i].getRoomMaxima();
+                  value = (int) campaigns[i].getRoomMaximum();
                   break;
                 case CellarArithmeticMeans:
-                  value = (int) campaigns[i].getCellarAvarage();
+                  value = (int) campaigns[i].getCellarAverage();
                   break;
                 case CellarGeometricMeans:
-                  value = (int) campaigns[i].getCellarLogAvarage();
+                  value = (int) campaigns[i].getCellarLogAverage();
                   break;
                 case CellarMedianQ50:
                   value = (int) campaigns[i].getCellarMedian();
                   break;
                 case CellarMaxima:
-                  value = (int) campaigns[i].getCellarMaxima();
+                  value = (int) campaigns[i].getCellarMaximum();
                   break;
                 default:
-                  value = (int) campaigns[i].getRoomAvarage();
+                  value = (int) campaigns[i].getRoomAverage();
                   break;
               }
               csvOutput.write("\"" + i + "\";\"" + campaigns[i].getVariation()
@@ -850,7 +850,8 @@ public class OMPanelResults extends JPanel {
     lblExportChartTo.setVisible(false);
 
     lblHelp = new JLabel(
-        "Select an OMS-Simulation file to analyse the simulation results and display the distribution chart.");
+        "Select an OMS-Simulation file to analyse the simulation results and "
+            + "display the distribution chart.");
     lblHelp.setForeground(Color.GRAY);
     lblHelp.setFont(new Font("SansSerif", Font.PLAIN, 11));
     lblHelp.setBounds(10, 10, 730, 14);
@@ -909,7 +910,7 @@ public class OMPanelResults extends JPanel {
    *          The selected statistics of a campaign containing all needed
    *          values.
    * @param roomType
-   *          The room type to determine the color of the chart.
+   *          The room type to determine the colour of the chart.
    * @param preview
    *          Will hide annotations, labels and headlines if set true.
    * @param fullscreen
@@ -954,31 +955,31 @@ public class OMPanelResults extends JPanel {
             for (int i = 0; i < campaigns.length; i++) {
               switch (selectedType) {
                 case RoomArithmeticMeans:
-                  comparable = campaigns[i].getRoomAvarage();
+                  comparable = campaigns[i].getRoomAverage();
                   break;
                 case RoomGeometricMeans:
-                  comparable = campaigns[i].getRoomLogAvarage();
+                  comparable = campaigns[i].getRoomLogAverage();
                   break;
                 case RoomMedianQ50:
                   comparable = campaigns[i].getRoomMedian();
                   break;
                 case RoomMaxima:
-                  comparable = campaigns[i].getRoomMaxima();
+                  comparable = campaigns[i].getRoomMaximum();
                   break;
                 case CellarArithmeticMeans:
-                  comparable = campaigns[i].getCellarAvarage();
+                  comparable = campaigns[i].getCellarAverage();
                   break;
                 case CellarGeometricMeans:
-                  comparable = campaigns[i].getCellarLogAvarage();
+                  comparable = campaigns[i].getCellarLogAverage();
                   break;
                 case CellarMedianQ50:
                   comparable = campaigns[i].getCellarMedian();
                   break;
                 case CellarMaxima:
-                  comparable = campaigns[i].getCellarMaxima();
+                  comparable = campaigns[i].getCellarMaximum();
                   break;
                 default:
-                  comparable = campaigns[i].getRoomAvarage();
+                  comparable = campaigns[i].getRoomAverage();
                   break;
               }
               if (comparable == x) {
