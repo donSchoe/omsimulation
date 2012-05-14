@@ -2,14 +2,14 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="ReText 1.1.2">
-  <title>Summary</title>
+  <meta name="generator" content="ReText 2.1.4">
+  <title>New document</title>
 </head>
 <body>
 <h1>Manual</h1>
 <p>This tool intends to test and evaluate the scientific robustness of the protocol <code>6+1</code>. Therefore, it generates a huge amount of virtual measurement campaigns based on real radon concentration data following the mentioned protocol.</p>
 <p>This tool is <strong>not</strong> used for evaluating the level of radon exposure in buildings. Prerequisite for using this simulation tool is that you already know if a building has a radon issue or not.</p>
-<p><code>OM</code> stands for <code>orientation measurement</code> and refers to the quick procedure of the protocol <code>6+1</code>.</p>
+<p><code>OM</code> stands for <code>orientating measurement</code> and refers to the quick procedure of the protocol <code>6+1</code>.</p>
 <p>The protocol <code>6+1</code> refers to a quick measurement procedure to gauge the radon concentration on six days <code>6</code> in habitated rooms of a building (e.g. bed room, living room, etc.) and on one day <code>+1</code> in an uninhabitated room close to the surface with potentially high radon concentration (e.g. boiler room, laundry, etc.).</p>
 <h2>Help content</h2>
 <ul>
@@ -38,7 +38,7 @@
 <li>The iText Software Corp. and 1T3XT BVBA (<a href="http://itextpdf.com/">http://itextpdf.com/</a>): iTextPDF</li>
 <li>Kai Tödter (<a href="http://toedter.com/">http://toedter.com/</a>): JCalendar</li>
 </ul>
-<p>Note the seperate README, NOTICE and LICENSE files in the <code>./lib/read/</code> directory.</p>
+<p>Note the seperate README, NOTICE and LICENSE files in the <code>./lib/README/</code> directory.</p>
 <hr />
 <h1>Installation</h1>
 <h2>System requirements</h2>
@@ -47,10 +47,11 @@
 <ul>
 <li>Operating system: Windows, Linux, Mac OS, Solaris</li>
 <li>Memory space RAM: 2 GB (<em>4 GB</em>)</li>
-<li>Disk space HDD: 5 GB (<em>50 GB</em>)</li>
+<li>Disk space HDD*: 5 GB (<em>50 GB</em>)</li>
 <li>Screen resolution: 800x600 (<em>1024x768</em>)</li>
 <li>Java Runtime Environment 7, JRE 7</li>
 </ul>
+<p><em>*) Huge simulations will generate huge LOG and CSV files.</em></p>
 <h2>Preparation and installation</h2>
 <p>The <strong>omsimulation</strong> tool requires the latest Java version 7 (JRE 7), it wont work with versions prior 7. To download Java 7, please refer to: <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
 <p>To find out how to install Java on your System, please refer to: <a href="http://docs.oracle.com/javase/7/docs/webnotes/install/index.html">http://docs.oracle.com/javase/7/docs/webnotes/install/index.html</a></p>
@@ -63,7 +64,7 @@
 <li>JFreeChart 1.0.14</li>
 <li>JCalendar 1.4</li>
 </ul>
-<p>Note the separate licenses for using and distributing them in the <code>./lib/read</code> directory.</p>
+<p>Note the separate licenses for using and distributing them in the <code>./lib/README/</code> directory.</p>
 <h2>Running the tool</h2>
 <h3>Windows</h3>
 <ol>
@@ -77,7 +78,6 @@
 <li>Download the latest <strong>omsimulation</strong> tool: <a href="https://github.com/donSchoe/omsimulation/tarball/master">https://github.com/donSchoe/omsimulation/tarball/master</a></li>
 <li>Extract the tarball (for example) to <code>/home/myname/OMSimulation/</code>.</li>
 <li>Navigate to the extracted files and find the shell script file <code>omsimulation-x.y.z-linux.sh</code> taking care of setting all VM settings and classpaths required by the tool.</li>
-<li>Make it executable. <code>$ chmod +x omsimulation-x.y.z-linux.sh</code></li>
 <li>Run it. <code>$ ./omsimulation-x.y.z-linux.sh</code></li>
 <li>Now the program should run.</li>
 </ol>
@@ -86,10 +86,12 @@
 <li>Download the latest <strong>omsimulation</strong> tool: <a href="https://github.com/donSchoe/omsimulation/tarball/master">https://github.com/donSchoe/omsimulation/tarball/master</a></li>
 <li>Extract the tarball and navigate to the extracted files. </li>
 <li>Find the shell script file <code>omsimulation-x.y.z-macos.command</code> taking care of setting all VM settings and classpaths required by the tool.</li>
-<li>Make it executable. <code>$ chmod +x omsimulation-x.y.z-macos.command</code></li>
 <li>Run it by clicking it or dragging it into the terminal window.</li>
 <li>Now the program should run.</li>
 </ol>
+<h2>Rebuilding the tool</h2>
+<p>If you want to compile the source code again, simply navigate to the <code>./src/</code> directory and run the command <code>ant build</code>. You will need to have any version of Apache Ant 1.8 installed or higher. <a href="https://ant.apache.org/">https://ant.apache.org/</a></p>
+<p>To compile and run the tool, simply type <code>ant</code> or <code>ant run</code> from within the <code>./src/</code> directory.</p>
 <hr />
 <h1>Data preparation</h1>
 <p>The <strong>omsimulation</strong> tool works with radon data prepared in CSV files. CSV files can easily be created using Microsoft Excel, Libre Office Calc or similar tools. One CSV file will be created for each building that has to be analysed, containing all the rooms with radon data of at least one measurement per hour.</p>
@@ -259,6 +261,6 @@ Calc or any statistics software.</p>
 </li>
 </ul>
 <h2>What does <code>OM</code> stand for?</h2>
-<p><code>OM</code> stands for <code>orientation measurement</code> and refers to the quick procedure of the protocol <code>6+1</code>.</p>
+<p><code>OM</code> stands for <code>orientating measurement</code> and refers to the quick procedure of the protocol <code>6+1</code>.</p>
 </body>
 </html>

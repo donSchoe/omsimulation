@@ -84,7 +84,7 @@ public class OMPanelAbout extends JPanel {
     txtpnCredits.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
     txtpnCredits.setEditable(false);
     txtpnCredits.setText("OM Simulation Tool " + version
-        + ", April/2012.\r\n\r\nThis tool intends to test and evaluate the"
+        + ", May/2012.\r\n\r\nThis tool intends to test and evaluate the"
         + " scientific robustness of the protocol \"6+1\". Therefore, it"
         + " generates a huge amount of virtual measurement campaigns based"
         + " on real radon concentration data following the mentioned protocol."

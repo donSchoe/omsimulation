@@ -1,6 +1,6 @@
-------------------------------------
-*  OM Simulation Tool v0.4.54-rc2  *
-------------------------------------
+-----------------------------------
+*     OM Simulation Tool v1.0     *
+-----------------------------------
 
 Copyright (C) 2012 Alexander Schoedon <a.schoedon@student.htw-berlin.de>
 
@@ -79,7 +79,7 @@ For source API, have a look at the javadocs:
 
 5. Dependencies
 ----------------------------------
-The OM-Simulation tool requires JDK 1.7.0 (Java SE 7) or higher.
+The OM-Simulation tool requires JRE 7 (Java 1.7) or higher.
 
 The following 3rd-party-libraries are required:
 - Apache Commons Math 2.2 or higher.
@@ -95,6 +95,10 @@ of this document (8. Notice).
 
 6. Changelog
 ----------------------------------
+1.0: (2012-05-14)
+    - version bump stable release :-)
+    - updated documentation and manual
+
 0.4.54-rc2: (2012-04-19)
     - fixed some calculations (now really)
     - completely overhauled the calculation system

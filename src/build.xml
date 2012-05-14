@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 
-<!-- ant makefile for OM Simulation Tool 0.4, (c) 2012 Alexander Schoedon -->
+<!-- ANT makefile for OM Simulation Tool 1.0, (c) 2012 Alexander Schoedon -->
 
 <project name="OMSimulation" default="run" basedir="..">
     <property name="name" value="omsimulation" />
     <property name="Name" value="OMSimulation" />
-    <property name="version" value="0.4.54-rc2" />
+    <property name="version" value="1.0" />
     <property name="author" value="Alexander Schoedon" />
-    <property name="modified" value="2012-04-19" />
+    <property name="modified" value="2012-05-14" />
     <property name="year" value="2012" />
     <property name="bin.dir" value="bin" />
     <property name="doc.dir" value="doc" />
@@ -21,20 +21,8 @@
     <path id="classpath">
         <fileset dir="${lib.dir}" includes="**/*.jar"/>
     </path>
-    <target name="run" depends="jar">
-        <echo file="${run.sh}">#!/bin/sh
-java -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*:${bin.dir}/${name}-${version}.jar ${main.class}
-        </echo>
-        <chmod file="${run.sh}" perm="ugo+rx"/>
-        <echo file="${run.bat}">@echo off
-javaw -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*;${bin.dir}/${name}-${version}.jar ${main.class}
-        </echo>
-        <echo file="${run.cmd}">#!/bin/bash
-cd "$(dirname "$0")"
-java -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*:${bin.dir}/${name}-${version}.jar ${main.class}
-        </echo>
-        <chmod file="${run.cmd}" perm="ugo+rx"/>
-        <echo>Running: ${bin.dir}/${name}-${version}.jar</echo>
+    <target name="run" depends="build">
+        <echo>Running ${bin.dir}/${name}-${version}.jar ...</echo>
         <java fork="true" classname="${main.class}">
             <jvmarg line="-Xss1024k -Xmn256m -Xms512m -Xmx1024m"/>
             <classpath>
@@ -43,39 +31,60 @@ java -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*:${bin.dir}/${name}-$
             </classpath>
         </java>
     </target>
+    <target name="build" depends="jar">
+        <echo>Generating starting-scripts ...</echo>
+        <echo>Generating ${run.sh}</echo>
+        <echo file="${run.sh}">#!/bin/sh
+java -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*:${bin.dir}/${name}-${version}.jar ${main.class}
+        </echo>
+        <chmod file="${run.sh}" perm="ugo+rx"/>
+        <echo>Generating ${run.bat}</echo>
+        <echo file="${run.bat}">@echo off
+javaw -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*;${bin.dir}/${name}-${version}.jar ${main.class}
+        </echo>
+        <echo>Generating ${run.cmd}</echo>
+        <echo file="${run.cmd}">#!/bin/bash
+cd "$(dirname "$0")"
+java -Xss1024k -Xmn256m -Xms512m -Xmx1024m -cp ${lib.dir}/*:${bin.dir}/${name}-${version}.jar ${main.class}
+        </echo>
+        <chmod file="${run.cmd}" perm="ugo+rx"/>
+    </target>
     <target name="jar" depends="manifest">
-        <mkdir dir="${bin.dir}" />
+        <echo>Creating java archive ${bin.dir}/${name}-${version}.jar ...</echo>
         <jar jarfile="${bin.dir}/${name}-${version}.jar" manifest="${src.dir}/${name}.manifest" compress="no" basedir="${bin.dir}" includes="de/**" />
     </target>
     <target name="manifest" depends="compile">
+        <echo>Creating manifest ${src.dir}/${name}.manifest ...</echo>
         <manifestclasspath property="manifest.cp" jarfile="${bin.dir}/${name}-${version}.jar">
             <classpath refid="classpath" />
         </manifestclasspath>
-        <echo>Creating manifest: ${src.dir}/${name}.manifest</echo>
         <manifest file="${src.dir}/${name}.manifest">
             <attribute name="Built-By" value="${author}"/>
             <attribute name="Main-Class" value="${main.class}"/>
         </manifest>
     </target>
     <target name="compile" depends="javadocs">
+        <echo>Building version ${version} on ${os.name} ${os.version} ...</echo>
         <copy todir="${bin.dir}">
             <fileset dir="${src.dir}">
                 <patternset>
                     <include name="**/*.png" />
-                    <include name="**/*.java" />
                 </patternset>
             </fileset>
         </copy>
         <javac srcdir="${src.dir}" destdir="${bin.dir}" classpathref="classpath" debug="off" deprecation="on" optimize="on" source="1.7" includeantruntime="false" />
     </target>
     <target name="javadocs" depends="prepare">
-        <javadoc packagenames="${packages}" sourcepath="${basedir}/${src.dir}" classpathref="classpath" destdir="${doc.dir}" author="true" version="true" windowtitle="${Name} API" doctitle="${Name}" bottom="Copyleft &#169; ${year} ${author}." />
+        <echo>Generating documentation ...</echo>
+        <javadoc packagenames="${packages}" sourcepath="${basedir}/${src.dir}" classpathref="classpath" destdir="${doc.dir}" author="true" version="true" windowtitle="${Name} API" doctitle="${Name}" bottom="CC-BY-SA-3.0 ${year} ${author}. Last update ${modified}." />
     </target>
     <target name="prepare" depends="clean">
+        <echo>Creating build directories ...</echo>
         <mkdir dir="${bin.dir}" />
         <mkdir dir="${doc.dir}" />
     </target>
     <target name="clean">
+        <echo>Cleaning build directories ...</echo>
         <delete file="${run.sh}" />
         <delete file="${run.bat}" />
         <delete file="${run.cmd}" />
