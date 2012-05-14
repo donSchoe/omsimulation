@@ -1,11 +1,12 @@
 var classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation =
 [
     [ "OMPanelSimulation", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#ae1c3a5362f5aa23a331510aa7f741322", null ],
-    [ "OMPanelSimulation", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#ad3264fad4d7367443967a7d899247ba1", null ],
+    [ "OMPanelSimulation", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#ac68eeda5b385faf0ee155127f7540101", null ],
     [ "actionPerformed", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#a50a046d7cbbd99290a20920d6deabcf9", null ],
     [ "getLogMsg", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#a8df2d0c9295215d3fdb367ac86fc656c", null ],
     [ "getOmbFile", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#aef61ed4905da77c70c8d05a960e830f5", null ],
     [ "getOmsFile", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#a983151260622d6af4118fab835dba7f7", null ],
+    [ "getOmsObject", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#aa73cebe38fd21db9d29d49fcb566f99a", null ],
     [ "getProjectName", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#a08dd35cad2947d4c3b58a4e9fed1445c", null ],
     [ "getRandomCampaigns", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#aecea030dee63769dea82aa14176a3321", null ],
     [ "getRandomNoise", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#ad7ca35b4fdbaaa420b97ba0b06680a3f", null ],
@@ -20,6 +21,7 @@ var classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation =
     [ "setLogMsg", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#a4b902ef9f8c9a3738220d5568fd15aa9", null ],
     [ "setOmbFile", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#a7a75d9ee7be3b1076b29de4e8de6974c", null ],
     [ "setOmsFile", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#a8fc9afb58e0e4b9c5266cb87c4852365", null ],
+    [ "setOmsObject", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#a6e9758e5ea752f25531b8232f6bf66b0", null ],
     [ "setProjectName", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#a279c21ba961e731db5d485828b13fa59", null ],
     [ "setRandomCampaigns", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#aea03f9798328feded5bed08c8adb07eb", null ],
     [ "setRandomNoise", "classde_1_1bfs_1_1radon_1_1omsimulation_1_1gui_1_1_o_m_panel_simulation.html#a98706cc54eb1dacf04ca869dd49b4871", null ],
